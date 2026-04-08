@@ -193,4 +193,16 @@ def save_trained_bundle(bundle: TrainedModelBundle, output_path: str = "trained_
 
 
 def load_trained_bundle(path: str = "trained_model.pkl") -> TrainedModelBundle:
-    return load(path)
+    bundle = load(path)
+    # Fix sklearn version mismatch: newer sklearn removed multi_class from
+    # LogisticRegression but old-version-trained models still reference it.
+    _patch_sklearn_compat(bundle.model)
+    return bundle
+
+
+def _patch_sklearn_compat(model):
+    """Patch deprecated/removed sklearn attributes for cross-version compat."""
+    # StackingClassifier -> final_estimator_ (LogisticRegression)
+    final = getattr(model, "final_estimator_", None)
+    if final is not None and not hasattr(final, "multi_class"):
+        final.multi_class = "auto"
