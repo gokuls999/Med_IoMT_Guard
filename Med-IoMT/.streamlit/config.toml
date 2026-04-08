@@ -1,0 +1,17 @@
+[theme]
+base = "dark"
+backgroundColor = "#0d1117"
+secondaryBackgroundColor = "#0a1628"
+textColor = "#c8d6e5"
+primaryColor = "#06b6d4"
+
+[server]
+port = 8501
+headless = true
+
+[client]
+toolbarMode = "minimal"
+showSidebarNavigation = false
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,2702 @@
+[
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.970318233098584,
+    "final_score": 0.485159116549292,
+    "threshold": 0.25,
+    "prediction": 1,
+    "trust": 0.42,
+    "block_hash": "7d9b755a2db659d960f00dc9016aaa576a161ca15f0a08ce3f6612f6c7dd9f6b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871158993687448,
+    "final_score": 0.4145886777348728,
+    "threshold": 0.29000000000000004,
+    "prediction": 1,
+    "trust": 0.33999999999999997,
+    "block_hash": "d7853568453294c000359da087dc0f9a2d20933c22ab109739a12dbb6ba2701f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011967151526142519,
+    "final_score": 0.004068831518888456,
+    "threshold": 0.33,
+    "prediction": 0,
+    "trust": 0.37,
+    "block_hash": "5c0ba9f4465401f769bfc035dcc1b9522be407d5a07ee0bf8fe561193843d5ef"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987229409067794,
+    "final_score": 0.3652748813550838,
+    "threshold": 0.315,
+    "prediction": 1,
+    "trust": 0.29,
+    "block_hash": "e2991637d2a1bfd1875cb37e46be771b75a19b3c91af351d36a72dc69a8f5bb3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872241972619448,
+    "final_score": 0.28629501720596395,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "block_hash": "1f289dd9676a7f1899612ea51c267e53e08c214adddbc2dae6fc8d4c902f1c73"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872202296932415,
+    "final_score": 0.31591047350183726,
+    "threshold": 0.34,
+    "prediction": 0,
+    "trust": 0.35,
+    "block_hash": "5ce112be66191f1433642638b6da162114118cedbe85f24a2271914448c57f4a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011700967612954211,
+    "final_score": 0.0040953386645339734,
+    "threshold": 0.325,
+    "prediction": 0,
+    "trust": 0.38,
+    "block_hash": "db7315022c66937006ed05dd68248bb1e32615e1dd9a974241e027b126661e15"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986717209726303,
+    "final_score": 0.3749525396959951,
+    "threshold": 0.31,
+    "prediction": 1,
+    "trust": 0.3,
+    "block_hash": "30a453d452b249c2502719f8432db319440367f95e605163388b528f4e814cce"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865151679824598,
+    "final_score": 0.2959545503947379,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "block_hash": "9b482ffe22b074d3ed7aee5ac54460855f12582a3538a8e009937a784083d08c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.018188712611453103,
+    "final_score": 0.006002275161779523,
+    "threshold": 0.335,
+    "prediction": 0,
+    "trust": 0.36,
+    "block_hash": "48769214961d953053f29c54a1c9784f88017e0981d2fd5e87ac2c807c540bec"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864046094133916,
+    "final_score": 0.35510565938882094,
+    "threshold": 0.32,
+    "prediction": 1,
+    "trust": 0.27999999999999997,
+    "block_hash": "1d3d84df78cea5826eecb39611057e9994a9346719d4dcdc7248561c01a2562a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.873146207497348,
+    "final_score": 0.2444809380992574,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.30999999999999994,
+    "block_hash": "c87039f402a79fd1f123b7258b87008f67c794b748009086f1516c0a47ff8d43"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868932920640803,
+    "final_score": 0.3059369205398648,
+    "threshold": 0.34500000000000003,
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "block_hash": "7dbccdde754cbc0056f8cf9ff55f6d15855df7b8e6996497cb9509b71f8772b0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011898778138451922,
+    "final_score": 0.004045584567073653,
+    "threshold": 0.33,
+    "prediction": 0,
+    "trust": 0.37,
+    "block_hash": "157014a92630bad388f27ba0bee4eba25009f2d21d09c983d256fea911f12d91"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9667901489093326,
+    "final_score": 0.35771235509645305,
+    "threshold": 0.315,
+    "prediction": 1,
+    "trust": 0.29,
+    "block_hash": "846a6fcc428444403bf0862da508f07a54eaf2277bb699599852a67c8642acc3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872186162824589,
+    "final_score": 0.28629339872191306,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "block_hash": "4e77199a5196b45c0a2ded675985d9563c3171ad0ac3bf163ae07ca357e4a491"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872371942666958,
+    "final_score": 0.3159159021653426,
+    "threshold": 0.34,
+    "prediction": 0,
+    "trust": 0.35,
+    "block_hash": "956bd9edc297f6cfa1c3a0c67c8e6fce7340ad8bf2466a7f72b904b3ec426f87"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871602307061428,
+    "final_score": 0.34550608074714995,
+    "threshold": 0.325,
+    "prediction": 1,
+    "trust": 0.26999999999999996,
+    "block_hash": "5ae0077ec730e3ef3ec879848c9a5196fa782cd81623ae5056bf9cbdaf2b06e8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011615482411097042,
+    "final_score": 0.003136180250996201,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.29999999999999993,
+    "block_hash": "6576c9c99e243ba4a9749a273947020d3506cee405e82a37f220f86805c7d20a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.017074797890592356,
+    "final_score": 0.005122439367177705,
+    "threshold": 0.35000000000000003,
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "block_hash": "c6532f0fab2c066d14d82bdb11d9d31308a350893ad634c490c2036df3b975e1"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.022273783898755336,
+    "final_score": 0.00735034868658926,
+    "threshold": 0.335,
+    "prediction": 0,
+    "trust": 0.36,
+    "block_hash": "d6db5baab6cadd9aad61b008d43a4c1b2fb7fee13566274e7619991a368ce3d9"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872300922557561,
+    "final_score": 0.35540283321207217,
+    "threshold": 0.32,
+    "prediction": 1,
+    "trust": 0.27999999999999997,
+    "block_hash": "0877f83c95b12d29d16d8d65774fab6ea9b98ce8cf3adcd14d5ecb5a3029b13e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.0121813349275522,
+    "final_score": 0.0034107737797146155,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.30999999999999994,
+    "block_hash": "781c67ad495ecd2abbc12881173427c8841975dd4951f0a18272b3bac9df5ca4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9813066306999267,
+    "final_score": 0.30420505551697724,
+    "threshold": 0.34500000000000003,
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "block_hash": "c4d21c33e02cd47a819b09e0194bcb6a611d20f5009ad5dca6bee0c458e5cd1a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9870760124493252,
+    "final_score": 0.3356058442327705,
+    "threshold": 0.33,
+    "prediction": 1,
+    "trust": 0.25999999999999995,
+    "block_hash": "9af1f2e67dc05a2d7bcc45e8f67f4f73fc739001b3415939835096e09c0f149c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012876865375252903,
+    "final_score": 0.003347984997565754,
+    "threshold": 0.37,
+    "prediction": 0,
+    "trust": 0.2899999999999999,
+    "block_hash": "bad1e1ae2d8ee72eb9d0eed77e15d94930a2fc141803555e54a1e678f7f3a35c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9862494224465889,
+    "final_score": 0.2860123325095107,
+    "threshold": 0.35500000000000004,
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "block_hash": "f77b13cb561647bd79e01c7d7b8fb15fd40cc2b7bffb467aa542ebff79777b5e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9844231951958162,
+    "final_score": 0.3150154224626611,
+    "threshold": 0.34,
+    "prediction": 0,
+    "trust": 0.35,
+    "block_hash": "f2693162a29265fb3b6ead77b80ea250d074760365a0fa4e8fc30493dee95d4a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872263990650079,
+    "final_score": 0.34552923967275273,
+    "threshold": 0.325,
+    "prediction": 1,
+    "trust": 0.26999999999999996,
+    "block_hash": "a41f4bba3978eab821b0d4da51fdd385c34f41c14c9ec5bbe5d726ff4b4ca288"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.28166042249260254,
+    "final_score": 0.07604831407300268,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.29999999999999993,
+    "block_hash": "f0d4dfa0e9d59eb4f4717bc7803dd4319ce73f145b44d103959106e46478e5b0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865897960982263,
+    "final_score": 0.2959769388294678,
+    "threshold": 0.35000000000000003,
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "block_hash": "4c9931638ea548cfe5781c6858f2ffd8c9810ce2d19fdda5cca0eb3f18353fef"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011636786458297528,
+    "final_score": 0.003840139531238184,
+    "threshold": 0.335,
+    "prediction": 0,
+    "trust": 0.36,
+    "block_hash": "8e336c9735e6fc8edc53077f3ac344ad743ff53de3d62423be99967604241e57"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.0122733796302938,
+    "final_score": 0.004418416666905768,
+    "threshold": 0.32,
+    "prediction": 0,
+    "trust": 0.39,
+    "block_hash": "1afa2b5f774a9b44142395f366bf3896f3bfa08cdfb021ef83107ef844f3b027"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.984976265846093,
+    "final_score": 0.3841407436799763,
+    "threshold": 0.305,
+    "prediction": 1,
+    "trust": 0.31,
+    "block_hash": "307a293081dd68c6681c63abe420c897aeed888d0764258de76697c08f4494d3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872409626438824,
+    "final_score": 0.3060446984196035,
+    "threshold": 0.345,
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "block_hash": "016894be407f02837ead4a5c6e068d23dcdc58e21a9361cf7e4df3787787758c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.013332063023916848,
+    "final_score": 0.004532901428131728,
+    "threshold": 0.33,
+    "prediction": 0,
+    "trust": 0.37,
+    "block_hash": "0b22ac976dbb7302754f9264a435038f32c6a1a0027a3ff0de4856edea8f3d21"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987118563123109,
+    "final_score": 0.36523386835555033,
+    "threshold": 0.315,
+    "prediction": 1,
+    "trust": 0.29,
+    "block_hash": "519a41b06cb16e097a556483964b6e59d21985ac3ac8d266186c634ee1e12f26"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872233528326684,
+    "final_score": 0.2862947723214738,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "block_hash": "9029dc9ae20aa35fbd4174bd85ab0405b6f4e837c614aa43ff8d9606722f3830"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9099581999544659,
+    "final_score": 0.29118662398542905,
+    "threshold": 0.34,
+    "prediction": 0,
+    "trust": 0.35,
+    "block_hash": "199a9e734c4c6288b68589cff4a244d7c96dbede32e3295d166328c2fd954454"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01227416119163526,
+    "final_score": 0.004295956417072341,
+    "threshold": 0.325,
+    "prediction": 0,
+    "trust": 0.38,
+    "block_hash": "ae698f21e495de89cdbe46e7eba6fae1527e977a38d9e0a371fe04c5c68a36e3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9862961669185106,
+    "final_score": 0.37479254342903406,
+    "threshold": 0.31,
+    "prediction": 1,
+    "trust": 0.3,
+    "block_hash": "a2e777aa03dbc2a11c4d3c82291d6ae32c2826f9c6eb37a3cad2e587880d38b8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011932881317240136,
+    "final_score": 0.003579864395172041,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "block_hash": "8ee18d725256313bc2c5a3465080403d0e1d12d524edbe8c460cf3c5c1022b71"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869416853147004,
+    "final_score": 0.32569075615385107,
+    "threshold": 0.335,
+    "prediction": 0,
+    "trust": 0.36,
+    "block_hash": "1c821a1f6aa1d88bc2b1809fefa6872db5f2fedf9a7058bdd6017c6c6aa2f015"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986577744126603,
+    "final_score": 0.3551679878855771,
+    "threshold": 0.32,
+    "prediction": 1,
+    "trust": 0.27999999999999997,
+    "block_hash": "ab9504efada78f39ecde2a1c03316f074607b646f116231528f7ca2947bcd408"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868819725241035,
+    "final_score": 0.2763269523067489,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.30999999999999994,
+    "block_hash": "7e34d80df0b28c38272c8869196eea3ad73b33d399a1c79c8a6b5870756f8515"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869886312631287,
+    "final_score": 0.3059664756915699,
+    "threshold": 0.34500000000000003,
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "block_hash": "2baea9d5911f1622ddbb108fbde9800a4de85d9ed8ca1af3803663096309c1a7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864427782456286,
+    "final_score": 0.3353905446035137,
+    "threshold": 0.33,
+    "prediction": 1,
+    "trust": 0.25999999999999995,
+    "block_hash": "9a5802621fd48249977daf42a33f31a9b4b2b30a6c0dd1ec9cf52100a55c08e6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864840798750633,
+    "final_score": 0.2564858607675164,
+    "threshold": 0.37,
+    "prediction": 0,
+    "trust": 0.2899999999999999,
+    "block_hash": "9fdd6216b2ebe9f2753f192c3b4baebdd9943278688f807b6f791c802bc53b5a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011885690477960452,
+    "final_score": 0.00344685023860853,
+    "threshold": 0.35500000000000004,
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "block_hash": "10a43998df6da7d7546b8c33fdc6b75ab79a9c99e0c73d3cd0f141b81f9e3351"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011642807446247808,
+    "final_score": 0.003725698382799298,
+    "threshold": 0.34,
+    "prediction": 0,
+    "trust": 0.35,
+    "block_hash": "1dc006faa35b015ec8904a343edb782668da550ffe8290aec8b0b6b98665b0e8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872418999396345,
+    "final_score": 0.3455346649788721,
+    "threshold": 0.325,
+    "prediction": 1,
+    "trust": 0.26999999999999996,
+    "block_hash": "1fe3a7b7989f113d722c509dab7a800554976ffdead6a7887474cf75eccfde4f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986870723650049,
+    "final_score": 0.2664550953855132,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.29999999999999993,
+    "block_hash": "bb44150a8cbf3444437b21b2ca148f109fcd41c20aa8534bf8a512364d9bd9d8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011609067297882292,
+    "final_score": 0.003482720189364687,
+    "threshold": 0.35000000000000003,
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "block_hash": "042c6a2d48f112b2abe5f3a4962421b18f1f12adb225b2336552eff7d0913b78"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011606486517297348,
+    "final_score": 0.0038301405507081246,
+    "threshold": 0.335,
+    "prediction": 0,
+    "trust": 0.36,
+    "block_hash": "f93cf8b10149d66fef42a53bfa45d0571a7eb08131a3bb8c5eb6868937fa3c25"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872312742950828,
+    "final_score": 0.3554032587462298,
+    "threshold": 0.32,
+    "prediction": 1,
+    "trust": 0.27999999999999997,
+    "block_hash": "38974258eb134438e80b71956681a8cc2dfccf2cd92be3f68821ecd7b31d64d3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.985569908626985,
+    "final_score": 0.2759595744155558,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.30999999999999994,
+    "block_hash": "6a5f7ae5c62121a71e725b666bbb77c678ebe7acb5e7eb8d125eac8259e02e78"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872223222172679,
+    "final_score": 0.306038919887353,
+    "threshold": 0.34500000000000003,
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "block_hash": "de7632667a3f65212b1260e35c9c87f7e36d8e3d578646ed7b43a0d7d06cc672"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.8818199637536096,
+    "final_score": 0.2998187876762272,
+    "threshold": 0.33,
+    "prediction": 0,
+    "trust": 0.37,
+    "block_hash": "fc469076008ce7557a2d650e3c53902a5863e72ee324742b6272fe1933b8502c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.021427838275459077,
+    "final_score": 0.007928300161919859,
+    "threshold": 0.315,
+    "prediction": 0,
+    "trust": 0.4,
+    "block_hash": "c411fe15418624d671af87c3797a10322b1a43bb49c8efa9f56fae99138c5d6f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011925385114558686,
+    "final_score": 0.004770154045823475,
+    "threshold": 0.3,
+    "prediction": 0,
+    "trust": 0.43000000000000005,
+    "block_hash": "9f8eb4efb3c58cc5eda1370208f41a90c880f0e483220e18d1157cc663feee4b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866914242897163,
+    "final_score": 0.42427731244457806,
+    "threshold": 0.285,
+    "prediction": 1,
+    "trust": 0.35000000000000003,
+    "block_hash": "733cdf2a41ea673bc24af9b5922996a0eb1188516628e8a6c59440b39ffe4fc7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871361781030029,
+    "final_score": 0.34549766233605106,
+    "threshold": 0.32499999999999996,
+    "prediction": 1,
+    "trust": 0.27,
+    "block_hash": "72094e5d146bf13c969752a8195a5b4f631334a39a1dbf0edec583a762ea1ada"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986607664036824,
+    "final_score": 0.2663840692899425,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.30000000000000004,
+    "block_hash": "f1ad42cfe365aa52e252d0244ccdaa3e1a437974ef24421e49446a92482d9564"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.07634058935478788,
+    "final_score": 0.02290217680643637,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.33000000000000007,
+    "block_hash": "7f2cae1dfc37728f6445169f3d43639484a2bf7ae8aa8fa3c65d28fe62640d7c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.0194139924534473,
+    "final_score": 0.00640661750963761,
+    "threshold": 0.33499999999999996,
+    "prediction": 0,
+    "trust": 0.3600000000000001,
+    "block_hash": "de6e13867564e4f87bf290fd4e5f738f90cdf1db0221ebc829489b3c07ce68ac"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872376961092817,
+    "final_score": 0.3554055705993415,
+    "threshold": 0.31999999999999995,
+    "prediction": 1,
+    "trust": 0.2800000000000001,
+    "block_hash": "22de9299f09fa0c095d7986ec16e18b6a5c1c749476654c4030ae11388a4ae93"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871186124560988,
+    "final_score": 0.27639321148770774,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.31000000000000005,
+    "block_hash": "d6f60721290b63e4da60370ebc4dc24b38259362492552010611207760e233e4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.014354047822993469,
+    "final_score": 0.004449754825127976,
+    "threshold": 0.345,
+    "prediction": 0,
+    "trust": 0.3400000000000001,
+    "block_hash": "9e67ad2a11ebd3134b163d7799de204b26ac3e0c6adfc21d592fe91eda23a9a4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9054386800224816,
+    "final_score": 0.30784915120764383,
+    "threshold": 0.32999999999999996,
+    "prediction": 0,
+    "trust": 0.3700000000000001,
+    "block_hash": "8def6a7ef861df8d6c7a84f26df04dc08f6d2213346149e6571c328a9d219015"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.0890540041970483,
+    "final_score": 0.03294998155290788,
+    "threshold": 0.31499999999999995,
+    "prediction": 0,
+    "trust": 0.40000000000000013,
+    "block_hash": "c73b66d2743287aef6fb63e90262acbdb1e1e9bfef506e5d3885f09e27d1c7ff"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9123943948308221,
+    "final_score": 0.36495775793232893,
+    "threshold": 0.29999999999999993,
+    "prediction": 1,
+    "trust": 0.3200000000000001,
+    "block_hash": "7799b395218f1da930f6aa980ad7e915f29ac5177eaf94112d9794b82504fde8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.98723631703867,
+    "final_score": 0.3159156214523745,
+    "threshold": 0.33999999999999997,
+    "prediction": 0,
+    "trust": 0.3500000000000001,
+    "block_hash": "9f778180e59f3a25df1beafb665c69d5ba7fcc17f8a7cb6c0edcc6e1de10b33e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872406696621998,
+    "final_score": 0.34553423438177,
+    "threshold": 0.32499999999999996,
+    "prediction": 1,
+    "trust": 0.2700000000000001,
+    "block_hash": "a07e6092db0886ce8fae2db25815e1bf68e7686b74ee7813d740cefa901b3279"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986913591160213,
+    "final_score": 0.2664666696132576,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.30000000000000004,
+    "block_hash": "98681eeea93f2098afc63eaac1e431140e645d503baa9ec4e36c6baddd0b1da6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865919395764168,
+    "final_score": 0.29597758187292506,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.33000000000000007,
+    "block_hash": "20f2223d847dae5db0a2a89664fc0874ef5dff981dbc670970910444b1298acb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864871156229162,
+    "final_score": 0.32554074815556244,
+    "threshold": 0.33499999999999996,
+    "prediction": 0,
+    "trust": 0.3600000000000001,
+    "block_hash": "5ced27ea4fb38b0b37f10c054989e28a2ced53259db6180bf21825a3a5ec8558"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9791010769139646,
+    "final_score": 0.3524763876890274,
+    "threshold": 0.31999999999999995,
+    "prediction": 1,
+    "trust": 0.2800000000000001,
+    "block_hash": "44470f26cb58fb654d1594939d48ff8fb181935917be93430fffc251e31ab453"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9098038286254733,
+    "final_score": 0.2547450720151326,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.31000000000000005,
+    "block_hash": "459bf7b8f9d3f00f9e693cf7cbade588b4ac17139e4c805ebca1b62530357c4b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.5455383842899878,
+    "final_score": 0.16911689912989625,
+    "threshold": 0.345,
+    "prediction": 0,
+    "trust": 0.3400000000000001,
+    "block_hash": "72f7ba0ea8bb9a53a2299605bc2a0e719a3a56d7b5394507f305e50bc4a6deb9"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9002195623444507,
+    "final_score": 0.3060746511971133,
+    "threshold": 0.32999999999999996,
+    "prediction": 0,
+    "trust": 0.3700000000000001,
+    "block_hash": "196a62bf8ad2667ce72777868413d4a0b5a266014f6d0b6d09eabfcf8b6d4c56"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.96333435575001,
+    "final_score": 0.3564337116275038,
+    "threshold": 0.31499999999999995,
+    "prediction": 1,
+    "trust": 0.2900000000000001,
+    "block_hash": "235bb3171fc23838d0086a89b1f0290c7882fbe88619c4d55b44cd66f707cf3c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871225831565454,
+    "final_score": 0.28626554911539825,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.32000000000000006,
+    "block_hash": "ed9886b41f37cc63b6a82209a3ec7fd16b2991db9b8f568f147e165949a127ae"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.12789023884781622,
+    "final_score": 0.0409248764313012,
+    "threshold": 0.33999999999999997,
+    "prediction": 0,
+    "trust": 0.3500000000000001,
+    "block_hash": "c91f0490f0bd24a16007d5b56535b7aa41b23ee6e99e7c64bd37c52069972e8b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9870914840417155,
+    "final_score": 0.34548201941460055,
+    "threshold": 0.32499999999999996,
+    "prediction": 1,
+    "trust": 0.2700000000000001,
+    "block_hash": "f2d360bcf9c59d3e9839f2c60898606bbebd52aa6304d0595400b11b8deaf9d6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872219469589492,
+    "final_score": 0.26654992567891633,
+    "threshold": 0.365,
+    "prediction": 0,
+    "trust": 0.30000000000000004,
+    "block_hash": "d61c183e671445e450bdbe4f3e6262965e27400260f9fcba19f2ff5a89099020"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869244194867504,
+    "final_score": 0.29607732584602514,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.33000000000000007,
+    "block_hash": "fa0e661be0487414f3e9bf74edf3edea62b3f809463a0d4588b2964bb6085e85"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9763382100986447,
+    "final_score": 0.3221916093325528,
+    "threshold": 0.33499999999999996,
+    "prediction": 0,
+    "trust": 0.3600000000000001,
+    "block_hash": "0b9d4653845b37fff3368efacb21838ede3515090ad5769b5bad70e53fb39bd1"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869851772395924,
+    "final_score": 0.3553146638062534,
+    "threshold": 0.31999999999999995,
+    "prediction": 1,
+    "trust": 0.2800000000000001,
+    "block_hash": "bdabdff19c24cb05523134be5996d76648278c9301ba8c0c2e964ce12fb389fd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7376968362534125,
+    "final_score": 0.20655511415095557,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.31000000000000005,
+    "block_hash": "ef3101f0d880fd77b066ef60ea73eca9395f2082eff09ed8efd4e0bcdba609ed"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7072772949586723,
+    "final_score": 0.21925596143718845,
+    "threshold": 0.345,
+    "prediction": 0,
+    "trust": 0.3400000000000001,
+    "block_hash": "1d5ee4a126608de9001e6f172ffa3aa3808a87d3907b5a7565f88571076f9bcd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.1420135871158896,
+    "final_score": 0.048284619619402475,
+    "threshold": 0.32999999999999996,
+    "prediction": 0,
+    "trust": 0.3700000000000001,
+    "block_hash": "834adfa6819de6d2291d37383f2b95a6bde26db49b2fded535236a7d01a99a31"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869215298365571,
+    "final_score": 0.36516096603952625,
+    "threshold": 0.31499999999999995,
+    "prediction": 1,
+    "trust": 0.2900000000000001,
+    "block_hash": "19e524cadf8e3108762ea5dd44a6b5f33edd8537ceeba18a0592736062df68bd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9870911301935112,
+    "final_score": 0.28625642775611837,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.32000000000000006,
+    "block_hash": "0cac434c5c92ffdcd9d34ec5c983a958c48015ce2668a1b27176c55956fbc71e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986940628890198,
+    "final_score": 0.3158210012448634,
+    "threshold": 0.33999999999999997,
+    "prediction": 0,
+    "trust": 0.3500000000000001,
+    "block_hash": "0b405c9ec96c3d82bc1cfe75f7b68d9e7f64a771fe88efaadb7fd0a16c0f64ba"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9272983636230165,
+    "final_score": 0.3245544272680559,
+    "threshold": 0.32499999999999996,
+    "prediction": 0,
+    "trust": 0.3800000000000001,
+    "block_hash": "eb134ef950460d295a3e4b5308bb4301270fa263fe47677c9aedc3008553966d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872288611601825,
+    "final_score": 0.37514696724086943,
+    "threshold": 0.30999999999999994,
+    "prediction": 1,
+    "trust": 0.3000000000000001,
+    "block_hash": "b820822533788a78e34cb6b1c820be86d434831926ae5affd9fa3478136517c0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9849401574846955,
+    "final_score": 0.2954820472454088,
+    "threshold": 0.35,
+    "prediction": 0,
+    "trust": 0.33000000000000007,
+    "block_hash": "44dc171e472e228c2abfeaa8ed820902f3e4f1047e59e87c2ff0746ca5b744dc"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7094288108007902,
+    "final_score": 0.23411150756426083,
+    "threshold": 0.33499999999999996,
+    "prediction": 0,
+    "trust": 0.3600000000000001,
+    "block_hash": "8e5a171485d530370f1ee45c95cb7bcc70d22d456bb8a83b70d3853ea5b6da3c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986833522514036,
+    "final_score": 0.35526006810505306,
+    "threshold": 0.31999999999999995,
+    "prediction": 1,
+    "trust": 0.2800000000000001,
+    "block_hash": "d826f43159c7f912c3bcc3a74f9742841712cbd5da951b4620a5b9d661ff84ad"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.3274598774642744,
+    "final_score": 0.09168876568999686,
+    "threshold": 0.36,
+    "prediction": 0,
+    "trust": 0.31000000000000005,
+    "block_hash": "9426e935642cc09beb8524d3aaad26dbd8a710278771fbe79423cbff196389ad"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9862096392319446,
+    "final_score": 0.30572498816190286,
+    "threshold": 0.345,
+    "prediction": 0,
+    "trust": 0.3400000000000001,
+    "block_hash": "349abcb35031bcda326dc544fb1df0adc9c79532dfba847486d02a2d759e0a00"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.98459651006581,
+    "final_score": 0.33476281342237546,
+    "threshold": 0.32999999999999996,
+    "prediction": 1,
+    "trust": 0.26000000000000006,
+    "block_hash": "9e71ab2df6cbc4364eec9a00f1897adbbbb1a86f9edef04cbd5ff40f5b7209f4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.019759981033100425,
+    "final_score": 0.005137595068606111,
+    "threshold": 0.37,
+    "prediction": 0,
+    "trust": 0.29000000000000004,
+    "block_hash": "a52329eb69836d167dbe8a261a264c4dc16f46d7e43db7fffc82f18deaf41fbd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9861950222295739,
+    "final_score": 0.28599655644657646,
+    "threshold": 0.355,
+    "prediction": 0,
+    "trust": 0.32000000000000006,
+    "block_hash": "39fef8842bad6290ad25c039465d4779d04ff663de4d5ac91104f9150876300c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.31327468686668686,
+    "final_score": 0.10024789979733982,
+    "threshold": 0.33999999999999997,
+    "prediction": 0,
+    "trust": 0.3500000000000001,
+    "block_hash": "0683bdb5f39a5b5e5b5d4e9a3a0e108589264caaf483490e237590bbc36a2026"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.8577646521639475,
+    "final_score": 0.3002176282573817,
+    "threshold": 0.32499999999999996,
+    "prediction": 0,
+    "trust": 0.3800000000000001,
+    "block_hash": "b25b37c84c847d34dbb85de55500c1db53af6f53983f1514c1619a0fd785f8ff"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.02304895050499269,
+    "final_score": 0.008758601191897225,
+    "threshold": 0.30999999999999994,
+    "prediction": 0,
+    "trust": 0.41000000000000014,
+    "block_hash": "e3c9c2988f8e6bba45a84d3be626a494e1c7d074fc4e18afa7db3f2370b46dbc"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.06427567364920651,
+    "final_score": 0.02635302619617468,
+    "threshold": 0.29499999999999993,
+    "prediction": 0,
+    "trust": 0.44000000000000017,
+    "block_hash": "335ac11cf603993d9698dbe738f9d205c112bb56e926ec48d5c268f7fefca273"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.014758686701352622,
+    "final_score": 0.006493822148595156,
+    "threshold": 0.2799999999999999,
+    "prediction": 0,
+    "trust": 0.4700000000000002,
+    "block_hash": "3050fa5f455b7932e68c3850d415bf8967f836e6fd07524a3566833c37708b4d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.977617646740921,
+    "final_score": 0.45948029396823303,
+    "threshold": 0.2649999999999999,
+    "prediction": 1,
+    "trust": 0.3900000000000002,
+    "block_hash": "a7c3ecbbd48889c94c1fce1e70a54d7f1426c2447d4a0a40955641846d4ade60"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7819416996501048,
+    "final_score": 0.304957262863541,
+    "threshold": 0.30499999999999994,
+    "prediction": 0,
+    "trust": 0.42000000000000015,
+    "block_hash": "6bd78676ce6dae2516c353aa40a3990d3ae7d523b3955f683614f5568f1ac7b8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.12199752563476926,
+    "final_score": 0.05123896076660311,
+    "threshold": 0.2899999999999999,
+    "prediction": 0,
+    "trust": 0.4500000000000002,
+    "block_hash": "6733e5cf889e910a76c7efe4c79a28b0e8a9b548cbc8d0e9311a40cacdaef945"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869567337017312,
+    "final_score": 0.4441305301657792,
+    "threshold": 0.2749999999999999,
+    "prediction": 1,
+    "trust": 0.37000000000000016,
+    "block_hash": "732457963b6a420645d246cbe6a25ae5af8c7153c2bd27e410b2573da0ba528a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9721072872334134,
+    "final_score": 0.35967969627636315,
+    "threshold": 0.31499999999999995,
+    "prediction": 1,
+    "trust": 0.29000000000000015,
+    "block_hash": "b911b319ba20903db30652f77622251534c0f1cefb9b072d0491a4dd7bd8d9e6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866038880282971,
+    "final_score": 0.28611512752820634,
+    "threshold": 0.3549999999999999,
+    "prediction": 0,
+    "trust": 0.3200000000000002,
+    "block_hash": "80714e685e6beee90c01d8357ce62e893a4524e738c2777ec47a8dfbf1b2cac6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.18659876709998016,
+    "final_score": 0.05971160547199368,
+    "threshold": 0.3399999999999999,
+    "prediction": 0,
+    "trust": 0.3500000000000002,
+    "block_hash": "1a7f1b7d089a3bfe7dce58361de7a98cb2b7015ff5e59e5777a153743a63869d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866364012571522,
+    "final_score": 0.3453227404400035,
+    "threshold": 0.3249999999999999,
+    "prediction": 1,
+    "trust": 0.2700000000000002,
+    "block_hash": "074204f0624d4f62fbb8bc1e1798d2b758ac636c0666703ddb56ea7e5c5421d7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.014805104177251144,
+    "final_score": 0.003997378127857811,
+    "threshold": 0.3649999999999999,
+    "prediction": 0,
+    "trust": 0.30000000000000016,
+    "block_hash": "725d5fcc61620c78ad9686665747df625485edcef2b57a60b91aedfb0c42697f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864932598219324,
+    "final_score": 0.29594797794657984,
+    "threshold": 0.3499999999999999,
+    "prediction": 0,
+    "trust": 0.3300000000000002,
+    "block_hash": "34086caa72dc06751ddc262bdd584bf4b0c8b94c34ac8e7bcc80a42e724a737c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987151285314556,
+    "final_score": 0.32575992415380367,
+    "threshold": 0.3349999999999999,
+    "prediction": 0,
+    "trust": 0.3600000000000002,
+    "block_hash": "4548222c26bb0f65aca3d424159c154a431bd6bce377c6ae60635e05d2f6f182"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866664679189874,
+    "final_score": 0.35519992845083564,
+    "threshold": 0.3199999999999999,
+    "prediction": 1,
+    "trust": 0.2800000000000002,
+    "block_hash": "1efb04c78b9bdb474412ee0d609a95e1b3386b3eb84b96ef151d0d85d6325a5a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.5027539134764165,
+    "final_score": 0.14077109577339672,
+    "threshold": 0.3599999999999999,
+    "prediction": 0,
+    "trust": 0.31000000000000016,
+    "block_hash": "374c73fd729aeacb058c2c26c239c874d80d7932a82ce369e030d50c712d4e15"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012153286515898578,
+    "final_score": 0.0037675188199285613,
+    "threshold": 0.3449999999999999,
+    "prediction": 0,
+    "trust": 0.3400000000000002,
+    "block_hash": "a2dbe4f82ec4c460d1d07c1a633600739ede7641a596643701d90f64897d3ad1"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872392010916169,
+    "final_score": 0.3356613283711499,
+    "threshold": 0.3299999999999999,
+    "prediction": 1,
+    "trust": 0.2600000000000002,
+    "block_hash": "b4aab00b51d2709c6490a16851a72ca8b89349adb67a8f5f25aeccf470c81ecc"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.224797944212448,
+    "final_score": 0.05844746549523652,
+    "threshold": 0.3699999999999999,
+    "prediction": 0,
+    "trust": 0.29000000000000015,
+    "block_hash": "9c35792ffdde6e665cb8029d9293e36397ceea6ee50909b0d8f1cebffa8e1ec2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872393099023506,
+    "final_score": 0.28629939987168185,
+    "threshold": 0.3549999999999999,
+    "prediction": 0,
+    "trust": 0.3200000000000002,
+    "block_hash": "8b4852e6e14d6cc3608bf6b67e31bcb145f02bdb387403a6c96ec58e895dd4e4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01163512441917362,
+    "final_score": 0.0037232398141355603,
+    "threshold": 0.3399999999999999,
+    "prediction": 0,
+    "trust": 0.3500000000000002,
+    "block_hash": "d606b166ac0545b6ee10183a708d604eef263c577543f5824385e909fc990518"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.5795527604990629,
+    "final_score": 0.20284346617467214,
+    "threshold": 0.3249999999999999,
+    "prediction": 0,
+    "trust": 0.3800000000000002,
+    "block_hash": "287df957956fa7a007fb4c38af8d24ed0637baef80877e250d30b9710790d53d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.019909235687684507,
+    "final_score": 0.007565509561320117,
+    "threshold": 0.3099999999999999,
+    "prediction": 0,
+    "trust": 0.41000000000000025,
+    "block_hash": "ca7731559b67ed6a5030e2a83df0278f32216d847fe4af7e749b3907c6f2996a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011676306872565292,
+    "final_score": 0.004787285817751772,
+    "threshold": 0.2949999999999999,
+    "prediction": 0,
+    "trust": 0.4400000000000003,
+    "block_hash": "8109cd09a02eaca4124d9bd23ac4e3d096c2aa0b4ffe31110566f4351662ad18"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986417638824017,
+    "final_score": 0.43402376108256774,
+    "threshold": 0.27999999999999986,
+    "prediction": 1,
+    "trust": 0.36000000000000026,
+    "block_hash": "7704aae199665325647e4d2f161838f4b808b82da3e69666d909545968ecde8d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01214373709684447,
+    "final_score": 0.004371745354864012,
+    "threshold": 0.31999999999999984,
+    "prediction": 0,
+    "trust": 0.39000000000000024,
+    "block_hash": "b733acf38557427e43f07a3dd796559dca0bce5073c7c97339f1db8c1f920bc5"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986330076645012,
+    "final_score": 0.38466872989155493,
+    "threshold": 0.3049999999999999,
+    "prediction": 1,
+    "trust": 0.3100000000000002,
+    "block_hash": "96976bf21fba6a881f25db47feaa4c526fdc266db57bdbe42dc2b1709e06efbd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9867656450983866,
+    "final_score": 0.30589734998050006,
+    "threshold": 0.34499999999999986,
+    "prediction": 0,
+    "trust": 0.3400000000000002,
+    "block_hash": "9cb174c34fc081795d714c1bd2b58797c3dcd905aad88956322fcc0b3d6db742"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865283916862657,
+    "final_score": 0.33541965317333056,
+    "threshold": 0.3299999999999999,
+    "prediction": 1,
+    "trust": 0.2600000000000002,
+    "block_hash": "b37c090e1aec30d8674587889721d71b76702f2aa887535f05b023fe63cd1a4a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872381968734529,
+    "final_score": 0.2566819311870979,
+    "threshold": 0.3699999999999999,
+    "prediction": 0,
+    "trust": 0.29000000000000015,
+    "block_hash": "f3e08731cac15fe907189e78e5335be288ef1c7c7e531ca039fbe5d62bc1586a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9859672023306261,
+    "final_score": 0.2859304886758817,
+    "threshold": 0.3549999999999999,
+    "prediction": 0,
+    "trust": 0.3200000000000002,
+    "block_hash": "856e9d3af6e952b02d71e569205e7a9fb0cd3ed99a4953a589f04f99a2847b3b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987070562836487,
+    "final_score": 0.315862580107676,
+    "threshold": 0.3399999999999999,
+    "prediction": 0,
+    "trust": 0.3500000000000002,
+    "block_hash": "c793ae119131138139586e4e838cf1250074567dce0059f64d7e112e455b89b5"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868909097665041,
+    "final_score": 0.3454118184182766,
+    "threshold": 0.3249999999999999,
+    "prediction": 1,
+    "trust": 0.2700000000000002,
+    "block_hash": "285347dc795d0f1a2a90df08e389638a4685a8ffc6ae3ff72c13d24943ea6b8f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7544133668421444,
+    "final_score": 0.20369160904737912,
+    "threshold": 0.3649999999999999,
+    "prediction": 0,
+    "trust": 0.30000000000000016,
+    "block_hash": "6016f8a143e306373a1f8cfa2404c8919b92729a3e6e2e77e5a8b6d1d003b2b7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.41324637282338955,
+    "final_score": 0.12397391184701693,
+    "threshold": 0.3499999999999999,
+    "prediction": 0,
+    "trust": 0.3300000000000002,
+    "block_hash": "5b52c355cafdb33c1c57f60aec6004735644f8e24c2f86789f3b14bdcb039940"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9863505016806672,
+    "final_score": 0.32549566555462034,
+    "threshold": 0.3349999999999999,
+    "prediction": 0,
+    "trust": 0.3600000000000002,
+    "block_hash": "c3c88079b72f13797720ea9780078de27e9e15f4e2a65284dd48b56fe674fc5d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871129279648155,
+    "final_score": 0.3553606540673338,
+    "threshold": 0.3199999999999999,
+    "prediction": 1,
+    "trust": 0.2800000000000002,
+    "block_hash": "eb32e9621150258b81d9f1e68c4f156b2d10195620d245939feea9aaee2be963"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.028986824787955896,
+    "final_score": 0.008116310940627657,
+    "threshold": 0.3599999999999999,
+    "prediction": 0,
+    "trust": 0.31000000000000016,
+    "block_hash": "2d7f5414e90ad386857d6538df3219307f67ffc36a9a442c5f2e834eb17da884"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9182240268103398,
+    "final_score": 0.2846494483112055,
+    "threshold": 0.3449999999999999,
+    "prediction": 0,
+    "trust": 0.3400000000000002,
+    "block_hash": "9e6a1b045405fec908970307f3e283bbad2afd13645575ec9e1a9db309f81c9a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872357645564028,
+    "final_score": 0.33566015994917714,
+    "threshold": 0.3299999999999999,
+    "prediction": 1,
+    "trust": 0.2600000000000002,
+    "block_hash": "f86f838556b8e4902b98e6de87b374fc7cc9b6760805fc046138652c67d52e2b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865294225587808,
+    "final_score": 0.2564976498652832,
+    "threshold": 0.3699999999999999,
+    "prediction": 0,
+    "trust": 0.29000000000000015,
+    "block_hash": "54f4b6b97d605d141f80d424b52e7b3113bc2b13fadb4f127a25137e15027625"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869882350859966,
+    "final_score": 0.2862265881749392,
+    "threshold": 0.3549999999999999,
+    "prediction": 0,
+    "trust": 0.3200000000000002,
+    "block_hash": "b8c5a2c0298a9fdf78d9f3de980ef8afb6754afa3f4d86338fb8ff06fc23951b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9849401574846955,
+    "final_score": 0.31518085039510274,
+    "threshold": 0.3399999999999999,
+    "prediction": 0,
+    "trust": 0.3500000000000002,
+    "block_hash": "6b6dc043488ef4f5935b705db324a78e1636c224412ec88642749a1b4f657a19"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01420864233670732,
+    "final_score": 0.004973024817847565,
+    "threshold": 0.3249999999999999,
+    "prediction": 0,
+    "trust": 0.3800000000000002,
+    "block_hash": "c920e0227e2d52f75c45ddd50cd0e2e0f4fcc9c031a2327ce3691bb79035dd0e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871723769777008,
+    "final_score": 0.3751255032515265,
+    "threshold": 0.3099999999999999,
+    "prediction": 1,
+    "trust": 0.3000000000000002,
+    "block_hash": "73ae5cb829abeb31b1103211c84f78e798909defa3f035e87a93c53624d10424"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9753882187929853,
+    "final_score": 0.2926164656378958,
+    "threshold": 0.34999999999999987,
+    "prediction": 0,
+    "trust": 0.3300000000000002,
+    "block_hash": "9cebab7168a204a1dc748c09ece7cde485bc3c077be11673d00c6710ed46ba67"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871071349455711,
+    "final_score": 0.3257453545320386,
+    "threshold": 0.3349999999999999,
+    "prediction": 0,
+    "trust": 0.3600000000000002,
+    "block_hash": "c5d97b1b7c8e47fceee90735f78c3570d886581a31a486a530bf18eb917a0122"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.6213450490491698,
+    "final_score": 0.22368421765770125,
+    "threshold": 0.3199999999999999,
+    "prediction": 0,
+    "trust": 0.39000000000000024,
+    "block_hash": "326face7ab828a9931bc899fd303b0370cc21ecf743481dab611c2d7ba6ad720"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987064287907809,
+    "final_score": 0.38495507228404574,
+    "threshold": 0.3049999999999999,
+    "prediction": 1,
+    "trust": 0.3100000000000002,
+    "block_hash": "b8b3337ff332554c2b35cb4ab8e394cec457ef2a1eda6c500057d1618c0479e3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.95613849362958,
+    "final_score": 0.29640293302517,
+    "threshold": 0.34499999999999986,
+    "prediction": 0,
+    "trust": 0.3400000000000002,
+    "block_hash": "cefeaa71bbb3a4916bcf593a733f05a899706e7ccb8270c3f315b8792461ba8c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871138634527258,
+    "final_score": 0.335618713573927,
+    "threshold": 0.3299999999999999,
+    "prediction": 1,
+    "trust": 0.2600000000000002,
+    "block_hash": "4cfef4e85a7b116ccaf1fafc287192141a47be5e980f2e2ffd68f117bea6650e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872272385016302,
+    "final_score": 0.256679082010424,
+    "threshold": 0.3699999999999999,
+    "prediction": 0,
+    "trust": 0.29000000000000015,
+    "block_hash": "a4f12cdcd6464e4cef382bc76af16ed31945932960d7d539c89cc45f6b927f5b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011777709489986157,
+    "final_score": 0.003415535752095987,
+    "threshold": 0.3549999999999999,
+    "prediction": 0,
+    "trust": 0.3200000000000002,
+    "block_hash": "356dc04b6e0d09e6367c6f868366999eaf13af574792db8b2067fc803f151637"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872048350062762,
+    "final_score": 0.31590554720200853,
+    "threshold": 0.3399999999999999,
+    "prediction": 0,
+    "trust": 0.3500000000000002,
+    "block_hash": "6ffa7d43490128ecf34637fb6d839d9843c3bc036044f71e44120c08d852c1a2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9463369878205095,
+    "final_score": 0.3312179457371785,
+    "threshold": 0.3249999999999999,
+    "prediction": 1,
+    "trust": 0.2700000000000002,
+    "block_hash": "de33d0dd9261726a161aff6eca04cf3ed2ddd756bd391c79bc2c43d3ef03bc8d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9858423421922721,
+    "final_score": 0.26617743239191366,
+    "threshold": 0.3649999999999999,
+    "prediction": 0,
+    "trust": 0.30000000000000016,
+    "block_hash": "951aa58edb694b06228937f41c1e2e52853e42b57624f787c66e7f8d625e07d0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872023893102234,
+    "final_score": 0.29616071679306716,
+    "threshold": 0.3499999999999999,
+    "prediction": 0,
+    "trust": 0.3300000000000002,
+    "block_hash": "0e0de6c5c43e7134946343d302fad85d4c7a0ded5d7be247a95b95e833f3b894"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872069903519369,
+    "final_score": 0.32577830681613934,
+    "threshold": 0.3349999999999999,
+    "prediction": 0,
+    "trust": 0.3600000000000002,
+    "block_hash": "15efe372b01d6c690f13031c33f78ba6626f3f9e7cdca8c7797c948f78db71a3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872219469589492,
+    "final_score": 0.3553999009052219,
+    "threshold": 0.3199999999999999,
+    "prediction": 1,
+    "trust": 0.2800000000000002,
+    "block_hash": "352f1c94aaa409c1ee7017c855877e74372aaaec82f049f6abb27acd7a1f4500"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.26381911423986826,
+    "final_score": 0.07386935198716316,
+    "threshold": 0.3599999999999999,
+    "prediction": 0,
+    "trust": 0.31000000000000016,
+    "block_hash": "2e7dc24924df56536df263af160c3cd9bd1c9e01d49d2cefa5447b048bc70b0b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872326343697528,
+    "final_score": 0.30604211665462355,
+    "threshold": 0.3449999999999999,
+    "prediction": 0,
+    "trust": 0.3400000000000002,
+    "block_hash": "fa13121d530e0a72b0f692fc6be6be4cdea826ee978e2c3dc46b3259a2116811"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.6605163475882226,
+    "final_score": 0.22457555817999583,
+    "threshold": 0.3299999999999999,
+    "prediction": 0,
+    "trust": 0.3700000000000002,
+    "block_hash": "58788dff6ff9236c056aef4e2c3702fe79a300fe37becc87226ccbcc5656d446"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7847094306001535,
+    "final_score": 0.290342489322057,
+    "threshold": 0.3149999999999999,
+    "prediction": 0,
+    "trust": 0.40000000000000024,
+    "block_hash": "5655b34b74826edc405f09b3a08bd4ec8d32f7dbfa7efb6fceb3f10dcec278d6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012067280079027218,
+    "final_score": 0.00482691203161089,
+    "threshold": 0.2999999999999999,
+    "prediction": 0,
+    "trust": 0.43000000000000027,
+    "block_hash": "e1de8a3aaf4578c2601b2d9f285e5b969176f8f56f254748e648f5dc225866db"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9798101056701619,
+    "final_score": 0.4213183454381699,
+    "threshold": 0.28499999999999986,
+    "prediction": 1,
+    "trust": 0.35000000000000026,
+    "block_hash": "af67c888eb8874fcc7735c92da699ebb9cc7275c4a55999789dd27c9cdf14b7c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869577402744832,
+    "final_score": 0.3454352090960694,
+    "threshold": 0.32499999999999984,
+    "prediction": 1,
+    "trust": 0.27000000000000024,
+    "block_hash": "3a887bff6d72b075ff55b47b0bc91cc1fcc2a08b7772d07a4c79048c72cfb337"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865730308951484,
+    "final_score": 0.2663747183416903,
+    "threshold": 0.3649999999999999,
+    "prediction": 0,
+    "trust": 0.30000000000000027,
+    "block_hash": "3fa699f7f1fc238ced05158a2ee7b335d572f53542f753df7c15a228e61c6a17"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011876423329381365,
+    "final_score": 0.0035629269988144124,
+    "threshold": 0.34999999999999987,
+    "prediction": 0,
+    "trust": 0.3300000000000003,
+    "block_hash": "1624168d08ec17a3a7b946f554d0da3a5c25403a96a3f2897eed88537284c0da"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.986667181777957,
+    "final_score": 0.3256001699867261,
+    "threshold": 0.33499999999999985,
+    "prediction": 0,
+    "trust": 0.3600000000000003,
+    "block_hash": "59d0ffc63f9d7c0a4323ff662b1c5e86cd6a4164d98d4eb4797590bc58591f9a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987169088190797,
+    "final_score": 0.3553808717486872,
+    "threshold": 0.31999999999999984,
+    "prediction": 1,
+    "trust": 0.2800000000000003,
+    "block_hash": "46c5f1690857640d553399b00d6dad4c8ee9b94d5f69d048ae3c95e047a35ca2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7430614036982698,
+    "final_score": 0.20805719303551576,
+    "threshold": 0.3599999999999999,
+    "prediction": 0,
+    "trust": 0.3100000000000003,
+    "block_hash": "512911d8c3e05964f02721b866d1b3ca43cb79e815bc9fd7b21cff2689ed8805"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987069421972016,
+    "final_score": 0.30599152081132525,
+    "threshold": 0.34499999999999986,
+    "prediction": 0,
+    "trust": 0.3400000000000003,
+    "block_hash": "332cc618d820150d7daad9318872c60f129cb88d5bde67cd99f892294a03ba8d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011608187717362854,
+    "final_score": 0.003946783823903374,
+    "threshold": 0.32999999999999985,
+    "prediction": 0,
+    "trust": 0.37000000000000033,
+    "block_hash": "f4365199e2a659fcc2554b3588e5cb3df66734d86647719cc4257772c80c51a7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012165650088005018,
+    "final_score": 0.004501290532561861,
+    "threshold": 0.31499999999999984,
+    "prediction": 0,
+    "trust": 0.40000000000000036,
+    "block_hash": "a9c54f8b818bdb3f21c06570f275aadc279747222105fc35a1807ae05b0f5545"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872325068132446,
+    "final_score": 0.3948930027252982,
+    "threshold": 0.2999999999999998,
+    "prediction": 1,
+    "trust": 0.32000000000000034,
+    "block_hash": "f492a7491201e22fc9e90758a7853ae90a141a834deda9281dadfff3602193b8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01240100304043744,
+    "final_score": 0.0039683209729399855,
+    "threshold": 0.33999999999999986,
+    "prediction": 0,
+    "trust": 0.3500000000000003,
+    "block_hash": "4c8c91cf6fac93274d2410c965467b5bb589581978098674a06695ef2a7f2e59"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01664965229868042,
+    "final_score": 0.005827378304538153,
+    "threshold": 0.32499999999999984,
+    "prediction": 0,
+    "trust": 0.38000000000000034,
+    "block_hash": "d1a6542b5d2cc6251bedbd00c7cc86545d4c495448bdca9355164dc2f37e6a2c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9862192196346036,
+    "final_score": 0.37476330346114967,
+    "threshold": 0.30999999999999983,
+    "prediction": 1,
+    "trust": 0.3000000000000003,
+    "block_hash": "9bd632a62336aa722e63a31e889bb8f4db5b6587165a79c5ca9c02e98ee1ab1a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868960380763516,
+    "final_score": 0.2960688114229058,
+    "threshold": 0.34999999999999987,
+    "prediction": 0,
+    "trust": 0.3300000000000003,
+    "block_hash": "3c5a78f54d783cea81474da4374ce8443954d131121656af8078e46fc0035e34"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01161571003948107,
+    "final_score": 0.003833184313028757,
+    "threshold": 0.33499999999999985,
+    "prediction": 0,
+    "trust": 0.3600000000000003,
+    "block_hash": "750c3961973deaf1af0272a126f0ab3dc0962b1fc56d244dc49e3fcfb4ccb7c2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871851300348067,
+    "final_score": 0.35538664681253074,
+    "threshold": 0.31999999999999984,
+    "prediction": 1,
+    "trust": 0.2800000000000003,
+    "block_hash": "be9655bb2808a1f49b5e6070e6fe2710e2d8de8ae5f0ea5b84d2cbe94c7844e6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868978619483262,
+    "final_score": 0.27633140134553164,
+    "threshold": 0.3599999999999999,
+    "prediction": 0,
+    "trust": 0.3100000000000003,
+    "block_hash": "b5414d23df597c928312bcce99c064d6bb06d4db8dad4751fc1d87905206169a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.013348059728199746,
+    "final_score": 0.004137898515741925,
+    "threshold": 0.34499999999999986,
+    "prediction": 0,
+    "trust": 0.3400000000000003,
+    "block_hash": "07040beec52c4774d3f921b80982c18048628d431551129c6163102b5007995c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.961418427751888,
+    "final_score": 0.3268822654356422,
+    "threshold": 0.32999999999999985,
+    "prediction": 0,
+    "trust": 0.37000000000000033,
+    "block_hash": "fbb920b7bc0bb39fafaddfd5a8a03505d70b7cea5ddcae39e4faaf9805d5d840"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9863819104109708,
+    "final_score": 0.3649613068520595,
+    "threshold": 0.31499999999999984,
+    "prediction": 1,
+    "trust": 0.2900000000000003,
+    "block_hash": "3d764a23ed91a5ca3549f6f8c79d6aa5e5ee525c21ceddedfa68517002abbfa9"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01164967059581008,
+    "final_score": 0.0033784044727849264,
+    "threshold": 0.35499999999999987,
+    "prediction": 0,
+    "trust": 0.3200000000000003,
+    "block_hash": "e9127c892b170bc59eece594f52de18ad42724e77cb1a12fe01d96013b14a097"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872396571872664,
+    "final_score": 0.31591669029992553,
+    "threshold": 0.33999999999999986,
+    "prediction": 0,
+    "trust": 0.3500000000000003,
+    "block_hash": "8967c5f45f8d6cd5eb2e3c1438fc5d85767b80770fbb49ceb4b52bd4a6d9ac78"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9844395844607868,
+    "final_score": 0.3445538545612757,
+    "threshold": 0.32499999999999984,
+    "prediction": 1,
+    "trust": 0.2700000000000003,
+    "block_hash": "23bae07c2e25ab242560f89084d0bdb5442a6f8b77b72f902891e6a503a1cbb5"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011607674119857948,
+    "final_score": 0.0031340720123616494,
+    "threshold": 0.3649999999999999,
+    "prediction": 0,
+    "trust": 0.30000000000000027,
+    "block_hash": "63e2748aed3194d1b446996db0a8fa707622dd5d6f786d4586e57c8900e689a6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865472836770024,
+    "final_score": 0.29596418510310096,
+    "threshold": 0.34999999999999987,
+    "prediction": 0,
+    "trust": 0.3300000000000003,
+    "block_hash": "9f32a47b7004b034e90c420d004fe5d5d6f06ee1270ea99ee8a6b43ba48cdefa"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9835833229364189,
+    "final_score": 0.32458249656901855,
+    "threshold": 0.33499999999999985,
+    "prediction": 0,
+    "trust": 0.3600000000000003,
+    "block_hash": "fbce5890e4bcf1f1057ca3cef965abda741cece83d2a37af84cc00eade213b58"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.015047009811827222,
+    "final_score": 0.005416923532257804,
+    "threshold": 0.31999999999999984,
+    "prediction": 0,
+    "trust": 0.39000000000000035,
+    "block_hash": "c4587ccaa734296427cf1746761f872ef10d1140e069d7256f4b3bdc8368ed54"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011610417518962534,
+    "final_score": 0.004528062832395392,
+    "threshold": 0.3049999999999998,
+    "prediction": 0,
+    "trust": 0.4200000000000004,
+    "block_hash": "a6364d1b51fb7f347c28249e421d4ad1dfea1ca6980789746e96cb01a689bff7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.31384816793229314,
+    "final_score": 0.13181623053156324,
+    "threshold": 0.2899999999999998,
+    "prediction": 0,
+    "trust": 0.4500000000000004,
+    "block_hash": "20b1070543298e2c55f75deb359c841d1bff0a86075fb33629c68b06d0e7b49e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871983013455976,
+    "final_score": 0.4442392356055193,
+    "threshold": 0.2749999999999998,
+    "prediction": 1,
+    "trust": 0.3700000000000004,
+    "block_hash": "1421d08072ed3bd0b998b0f39a49b5d7a6aeadacbfc630bbdf5abbe34eb12b73"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9867859936914689,
+    "final_score": 0.36511081766584386,
+    "threshold": 0.31499999999999984,
+    "prediction": 1,
+    "trust": 0.29000000000000037,
+    "block_hash": "8ded99da8a52992906f26fcb35a9d008a599fd031daf2fd645d77b7f8ab715b5"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9856931490091848,
+    "final_score": 0.285851013212664,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "e174670916abc3273c3074321f72b85f0b3c04d69e25d6e2dbb3d8b702d846b1"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872381968734529,
+    "final_score": 0.31591622299950534,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "11278ea881cac2f75a58ab6a0ff662d4985f3ac215383ec9e64ac43249751e7a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011788970696580029,
+    "final_score": 0.004126139743803015,
+    "threshold": 0.3249999999999998,
+    "prediction": 0,
+    "trust": 0.38000000000000045,
+    "block_hash": "6a8ce26d74d43fefa97b85a0af86936a61281d51f28ace6f80e079b75b5dbe74"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011835717299837999,
+    "final_score": 0.0044975725739384445,
+    "threshold": 0.3099999999999998,
+    "prediction": 0,
+    "trust": 0.4100000000000005,
+    "block_hash": "eee9b13c041da1b75533268c425231c6cdc2e6192f9a0648b9c81c59e78e755b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9232945424126676,
+    "final_score": 0.37855076238919416,
+    "threshold": 0.29499999999999976,
+    "prediction": 1,
+    "trust": 0.33000000000000046,
+    "block_hash": "f1862eae150764abdd0e06bd63469de9bd747a8d744fdeb3cf734d206438ce5e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9810846527326046,
+    "final_score": 0.32375793540175996,
+    "threshold": 0.33499999999999974,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "135d20fb318718123758646011480aa409f51fef23a2b15ea0f3f76738b4f545"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866844078520531,
+    "final_score": 0.35520638682673955,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "9f08cff322243ec8266346fa354c86e2b5bfb980527b8008599036af8dce6b34"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868669348566915,
+    "final_score": 0.27632274175987404,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "874f49ba8c996a6ef0d77a352a2a3436cf7f87185c62d2d3930b97b642c63ca3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866423192152516,
+    "final_score": 0.30585911895672835,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "b74c09ff9141865292e506c8efcd08c2377c152397e7b83e3b7dbb116d1ae3d8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011609481296641938,
+    "final_score": 0.003947223640858264,
+    "threshold": 0.3299999999999998,
+    "prediction": 0,
+    "trust": 0.37000000000000044,
+    "block_hash": "f6b601ebd62003a458f198d8952ef1aed59ef26d6e1a8ac98f86e75b4a46cf08"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.019148656741329206,
+    "final_score": 0.007085002994291815,
+    "threshold": 0.3149999999999998,
+    "prediction": 0,
+    "trust": 0.40000000000000047,
+    "block_hash": "86f362dda6bea9fbdbec606911c4c95881669f3ab48903bf154aa1df4a19106f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.7927374953491211,
+    "final_score": 0.3170949981396488,
+    "threshold": 0.29999999999999977,
+    "prediction": 1,
+    "trust": 0.32000000000000045,
+    "block_hash": "1aa56251b6ed068e6ef1cd3e97d2a2c52178a8e85895bb0c2d99d55b66a68b14"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9790088141577491,
+    "final_score": 0.3132828205304802,
+    "threshold": 0.33999999999999975,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "3b3cb68ee60f8b44fc52a2b4ff3a11e945a3ab2a9594f6a2b703133d4d07f1e0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012706822596360643,
+    "final_score": 0.00444738790872623,
+    "threshold": 0.3249999999999998,
+    "prediction": 0,
+    "trust": 0.38000000000000045,
+    "block_hash": "93adfd4ae781fdd39efa79378857ff969d53c1a91f72bbb978e116d70e6ea544"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.8717735749357004,
+    "final_score": 0.33127395847556657,
+    "threshold": 0.3099999999999998,
+    "prediction": 1,
+    "trust": 0.30000000000000043,
+    "block_hash": "1f5c1b2fd46b32055e481f3cd69e5e8e96e15d87e88eee813cbc5b514dd48a01"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9867707000577004,
+    "final_score": 0.29603121001731053,
+    "threshold": 0.34999999999999976,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "f3869ea07cce6d5e70a48c501abc58447380e59410d52882b3df46cf15a2a67e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871282400844659,
+    "final_score": 0.3257523192278741,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "24c85240784e5e502b57dc559961d3fbe170e02c993ec9bbf2f44852e457cdc3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.020930525889126698,
+    "final_score": 0.00753498932008562,
+    "threshold": 0.3199999999999998,
+    "prediction": 0,
+    "trust": 0.39000000000000046,
+    "block_hash": "514f4677d9c77514e4c3777b8aed515cb65a50893a0c7ec4578977e19c7d2250"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869571122305673,
+    "final_score": 0.3849132737699217,
+    "threshold": 0.30499999999999977,
+    "prediction": 1,
+    "trust": 0.31000000000000044,
+    "block_hash": "3da94ddd80a25f179bc29baf220f0b204b550dac8b5f24a8f968e15f6246f4ab"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012359414013553035,
+    "final_score": 0.003831418344201446,
+    "threshold": 0.34499999999999975,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "7545742348714c19c7b4e278b4ba8caa83f897529eecdc953143de43a7bebf44"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9852195516595584,
+    "final_score": 0.33497464756425027,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "f9dcdb6efbde09e022c59bce05c1d30da59c73f468af535c572ded3004acd4a2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872407485487247,
+    "final_score": 0.2566825946226688,
+    "threshold": 0.3699999999999998,
+    "prediction": 0,
+    "trust": 0.29000000000000037,
+    "block_hash": "d7821fd6a3e40d5e60496f82d2e26bd1eacbe8d1f35c1e848031f24318b0efcd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872393583523538,
+    "final_score": 0.28629941392218294,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "a5f0dafb5b1c39078821242fb772354eadd316edfcc6b8be607735a1402bd729"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011985344649175816,
+    "final_score": 0.0038353102877362656,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "e8f37470c9485eca4c590a76bf24f26f39814e5f5665983f5f48b514763030d8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9742779379659988,
+    "final_score": 0.3409972782881,
+    "threshold": 0.3249999999999998,
+    "prediction": 1,
+    "trust": 0.2700000000000004,
+    "block_hash": "169f9eb3f10ca0f9dc4922d6cd8b7f693ffe505761781d3110acd64a73df4963"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872376954818263,
+    "final_score": 0.2665541777800935,
+    "threshold": 0.36499999999999977,
+    "prediction": 0,
+    "trust": 0.3000000000000004,
+    "block_hash": "5200f85bbb8204fded0103f2539d5d038000ed0a68ba244c3972886b48f79ebb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.4311647183318751,
+    "final_score": 0.1293494154995627,
+    "threshold": 0.3499999999999998,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "4da6e1ba47ca9472f2e37365282a54eeaf749452040162e9c8346f8b515bfb74"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872360057738417,
+    "final_score": 0.32578788190536817,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "7470884aa97286147a16ecd501c8552186e2ae8b7e17a2bb3baf65c167990362"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866623894417091,
+    "final_score": 0.35519846019901574,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "4574f632efcc56da3772ae7c4f4f6d9fc9b5fc8514f3789aac959583618bcda3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872342691910524,
+    "final_score": 0.2764255953734951,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "7509ca64a1209ea1102d02a9e95af5593de4795c42e4bdb21fdd17c0dbb8d76e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9859559987888494,
+    "final_score": 0.30564635962454373,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "712d2bbfc255dde96b1b0d7761cf68e9cdc65a25353c8c5e559c9914277677e3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9832504317307169,
+    "final_score": 0.33430514678844414,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "dbd4e94bdeb2fbac7a8806340d8158c548e79056634b4aa673ae85e2508dfba7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869956119660598,
+    "final_score": 0.25661885911117593,
+    "threshold": 0.3699999999999998,
+    "prediction": 0,
+    "trust": 0.29000000000000037,
+    "block_hash": "7232d4cbb24c3948be927d004e353597534e7493cb39f8edeb2da3be8d0e34e4"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.015961834835280117,
+    "final_score": 0.00462893210223124,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "f243c17f1c45650abba25da1c00fdd324c663c7857548a5a6c5ddb9cf4b7cc51"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872409971763606,
+    "final_score": 0.3159171190964358,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "84480dff227788bcd9babb008670a896575eb1ca5e1fcee79e096b7b271995bb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.016574125370623135,
+    "final_score": 0.005800943879718104,
+    "threshold": 0.3249999999999998,
+    "prediction": 0,
+    "trust": 0.38000000000000045,
+    "block_hash": "d9cd0b79af907661bcbbc31193afa20dd86bad9ff085c335ecee0736fd400ef8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866392277478265,
+    "final_score": 0.37492290654417454,
+    "threshold": 0.3099999999999998,
+    "prediction": 1,
+    "trust": 0.30000000000000043,
+    "block_hash": "13fec39f6b1adc4a58511a4e872255a348f75f90f6ded1b437b1cfacba037dbb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.014306124274490007,
+    "final_score": 0.004291837282347008,
+    "threshold": 0.34999999999999976,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "af426d38ac16ff42a6dfac2149d6ee45373b7c138aad9e2b38cbcf1e513a754e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9863356405029713,
+    "final_score": 0.32549076136598093,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "3a12dcd7fefeb6c1b0399f33664075e1c3aaa0556600356e356873e8b70de524"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9865188730578818,
+    "final_score": 0.35514679430083784,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "49ab605f4fcfdd56fc05a85177d697d17b1440b15fcfc4480e147efac36986b0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872152785806424,
+    "final_score": 0.2764202780025803,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "cf9b81e9626fc4beeeefff9332f7c5557991616214767f8e28fa00b5a4553bf8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872409971763606,
+    "final_score": 0.3060447091246722,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "ae7075ddb5c26cb87d468d8da4811f8311412d7fcc48523cfccddb637fa30a2e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9833449777337028,
+    "final_score": 0.33433729242945937,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "d22ab7c72ec751db14e7743ad6f2d2f35f3bce864490de21d1ace22c346add78"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872366784609354,
+    "final_score": 0.2566815363998436,
+    "threshold": 0.3699999999999998,
+    "prediction": 0,
+    "trust": 0.29000000000000037,
+    "block_hash": "52304b62e706f12d09398a6959b32ef3508f01e82849b960ebcf66514b3d390a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012302246697925897,
+    "final_score": 0.003567651542398515,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "9d7071f88a47ffd6a07aad848ea308bffcef4cf106f63b3095f10e5547f6e9fa"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.961432653425059,
+    "final_score": 0.30765844909601925,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "76c001109b8de5d266bd9467a58b96fced16ef039b6cd27b944e8872fc85203d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01194055123044718,
+    "final_score": 0.004179192930656518,
+    "threshold": 0.3249999999999998,
+    "prediction": 0,
+    "trust": 0.38000000000000045,
+    "block_hash": "b7196bb75b0f673e25193e486f4594829faa458fb2ad81b6206d78f0e9658078"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9860058908411062,
+    "final_score": 0.3746822385196208,
+    "threshold": 0.3099999999999998,
+    "prediction": 1,
+    "trust": 0.30000000000000043,
+    "block_hash": "1c5cc83ad5f8457084c6a03fc3514349d82ff17921c7f6875817ec9f001de036"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868755959791179,
+    "final_score": 0.29606267879373577,
+    "threshold": 0.34999999999999976,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "f1768106c08adee222ff8e98cc6718393a57d8726472b4fc6e04e01e2e63c60b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.014490198283746564,
+    "final_score": 0.004781765433636372,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "094cfd66379e28271eefc3b59d2ec25323d78b3a5b0f131d9b2c724d68a18b82"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9866816342013097,
+    "final_score": 0.35520538831247195,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "b7be169d1aa45bd9dd49c9341664fb902dc86fb2a1529fc7d17e90d848aab9df"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.3879879486049911,
+    "final_score": 0.10863662560939766,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "8d87e32eb352ef72eca2faf4f72d302e9fb5c2d978493eb71900b5375e22a027"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01928773991039791,
+    "final_score": 0.00597919937222336,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "e2508e9a4d4db7cbaa2aebc19c7678c96b0f4f0fb3bd19f5e3b2f13297cfa3fa"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872390094526831,
+    "final_score": 0.33566126321391265,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "ab7e08695476253235e6943da9a5478e9b46b71b8684db47ecbd5c32d1e59225"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9869416229967286,
+    "final_score": 0.25660482197914986,
+    "threshold": 0.3699999999999998,
+    "prediction": 0,
+    "trust": 0.29000000000000037,
+    "block_hash": "ae58e8de0538d7ac9251aa566457381ee759ebe83d7a8495c2c0a121d6c7c87c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9848641418820239,
+    "final_score": 0.2856106011457873,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "2060c97b02dfbabee68aab528b9a1a4de08490f6fe6ff659809e9f7e32495feb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.6311741762331567,
+    "final_score": 0.20197573639461042,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "4e96e68507d33258bb6b82ecdb82ec3066a04be23f909bfd6f269cadbb324e2d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871515623274506,
+    "final_score": 0.34550304681460814,
+    "threshold": 0.3249999999999998,
+    "prediction": 1,
+    "trust": 0.2700000000000004,
+    "block_hash": "13776a9a1a594ef65370f461d072ac862283fb3442a861b9b51306ea126c4a05"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.24567822637361353,
+    "final_score": 0.06633312112087575,
+    "threshold": 0.36499999999999977,
+    "prediction": 0,
+    "trust": 0.3000000000000004,
+    "block_hash": "be17cc564e89f6dee35c81db63bb181016b0d6784718baee70bdd17176f1eacd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.013023357214840334,
+    "final_score": 0.003907007164452105,
+    "threshold": 0.3499999999999998,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "f97588b863f9434f68dfdbd56b1e48e52e7d0aca8117475e0d56cd9d0256a632"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012258097989201622,
+    "final_score": 0.004045172336436541,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "09591d07e2c133e774441d46e065a679ea51f0b5893e4b065a555cd2b70f3bce"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011635124445112914,
+    "final_score": 0.004188644800240654,
+    "threshold": 0.3199999999999998,
+    "prediction": 0,
+    "trust": 0.39000000000000046,
+    "block_hash": "030c96132cd4edeb7d83d1df076908a048f2ddcc169f4204ff3f805207a581d3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9863968828236485,
+    "final_score": 0.38469478430122334,
+    "threshold": 0.30499999999999977,
+    "prediction": 1,
+    "trust": 0.31000000000000044,
+    "block_hash": "9385b84d59677ecbf0f842782d5d9f34d943e2bb6c14c35a0381bd230a85582d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872276850637559,
+    "final_score": 0.3060405823697648,
+    "threshold": 0.34499999999999975,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "937936a14669c400c9addf62d38f0bf1db4ee94291a44ca5f2f84b57ef4a25b7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871983198295446,
+    "final_score": 0.33564742874204556,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "ddae2ea6aef4bbe6f7d2371a5a1d324583a85bdb91c464c9a9ad1cb897cf23d0"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9070646360377949,
+    "final_score": 0.235836805369827,
+    "threshold": 0.3699999999999998,
+    "prediction": 0,
+    "trust": 0.29000000000000037,
+    "block_hash": "131077cbc3adc0b21c388911c8b0ee8ac8912da7c037a84a80bf17bf0b46c49b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.04503259871753408,
+    "final_score": 0.0130594536280849,
+    "threshold": 0.3549999999999998,
+    "prediction": 0,
+    "trust": 0.3200000000000004,
+    "block_hash": "aaf268894a9e3dd09052c60ea707400d6772770af8917920e6e3d2f8a30b3109"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01561579853685576,
+    "final_score": 0.00499705553179385,
+    "threshold": 0.3399999999999998,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "daa390b6efd7e7a2ee1f06c8975b1176e31cad3eb681179a5f4347a568514f93"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.3393894365001166,
+    "final_score": 0.11878630277504096,
+    "threshold": 0.3249999999999998,
+    "prediction": 0,
+    "trust": 0.38000000000000045,
+    "block_hash": "a9c976515502d6916d35f3de2a5c411d45fcbbec7f2f38f7e00e6e8c63931fc3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.98532378949572,
+    "final_score": 0.374423040008374,
+    "threshold": 0.3099999999999998,
+    "prediction": 1,
+    "trust": 0.30000000000000043,
+    "block_hash": "959719869caaff3fe42f4b8832bced5abbfa675e54c4ecf59e25b01578dbab63"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9868428142379211,
+    "final_score": 0.29605284427137674,
+    "threshold": 0.34999999999999976,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "f11427fe7d3b334d8614a4ad54818c9baf398fb8f6c860cd023a660a5f09a33e"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.012191632037269048,
+    "final_score": 0.004023238572298791,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "cf16864e9725e6e73e378a095ab69bce857e2d90f0038fc72c6ad392224918b2"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9858815795432102,
+    "final_score": 0.3549173686355561,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "76e7a4b441b044c025d5d57cad300a9f4b1660f032333384d465a47df959e7e7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864908709396387,
+    "final_score": 0.27621744386309927,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "5b5e0cfdbf5ba7e890c53ec6f11cdf3c3679c18bd0ff2462995536234b67e725"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.3169749531638167,
+    "final_score": 0.09826223548078329,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "49a08286ba32ad2e8297c480e6325794178dbe8777e48362e337f597f9708f01"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.0117934603312537,
+    "final_score": 0.004009776512626263,
+    "threshold": 0.3299999999999998,
+    "prediction": 0,
+    "trust": 0.37000000000000044,
+    "block_hash": "6c10b4b0ea22c7d825417fa5552fcbd30e366bb4fb08b05b3b3f39bab271c59f"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.022088417279271452,
+    "final_score": 0.008172714393330447,
+    "threshold": 0.3149999999999998,
+    "prediction": 0,
+    "trust": 0.40000000000000047,
+    "block_hash": "1be900c15ba632ee92555635c6125e97a54031924c7bcbea6acdc37797c43bf5"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872390642951534,
+    "final_score": 0.3948956257180618,
+    "threshold": 0.29999999999999977,
+    "prediction": 1,
+    "trust": 0.32000000000000045,
+    "block_hash": "cb45a5d4029973b64aecf7cec16f254d0e689058286806b025c2720e4e08ef0a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9832474731435951,
+    "final_score": 0.31463919140595087,
+    "threshold": 0.33999999999999975,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "9a2b4d59bddeea85a2e5c2a5ecbff262b7b34376515d6387b1fbae7ac05e38ce"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9719419282240838,
+    "final_score": 0.3401796748784297,
+    "threshold": 0.3249999999999998,
+    "prediction": 1,
+    "trust": 0.2700000000000004,
+    "block_hash": "17852d5bcdce016de56467c795a9e2fc5be0b78ca8e27b25ccfd54a39d35f194"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.25375764397962297,
+    "final_score": 0.06851456387449831,
+    "threshold": 0.36499999999999977,
+    "prediction": 0,
+    "trust": 0.3000000000000004,
+    "block_hash": "2ac56a72b7d77e812a7bf7f8edac4a0a2666c58bc429ace2d89d2d06d0f37f74"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.015503886212777108,
+    "final_score": 0.004651165863833138,
+    "threshold": 0.3499999999999998,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "cc12139c6baf65c9507a9258f200e4d43c40ec2c08b372273173dac209028fb8"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011612294066796805,
+    "final_score": 0.00383205704204295,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "ec588a7527386cb59da417db9361de640ada2a5396cd7f7ad14e5a0330193cf7"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987230458158208,
+    "final_score": 0.3554029649369553,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "fa96931c55437196227415e81571c6afc497d7c102bac2f90265a08d62c36a6b"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.987092776103465,
+    "final_score": 0.27638597730897063,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "a8df3d71b5b714139e525a20f5e0bbbc26efff4d4e3b13a3c10186b718374dda"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011637519373819079,
+    "final_score": 0.003607631005883919,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "08290d5c6f7168989fe196014c1e079df5d887b4f2874c80783d16dd41a9c802"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.808813950101106,
+    "final_score": 0.2749967430343764,
+    "threshold": 0.3299999999999998,
+    "prediction": 0,
+    "trust": 0.37000000000000044,
+    "block_hash": "56c8bbb0dc5950273c3eebd00e014aee4eb4dd8db111841756a6aa72e93afd30"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.01190168626018817,
+    "final_score": 0.004403623916269628,
+    "threshold": 0.3149999999999998,
+    "prediction": 0,
+    "trust": 0.40000000000000047,
+    "block_hash": "45bcaa82c2ff91d8657554391218d9fa0f148f7fa79df1f9746db51ff3bd3cbd"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9864420528391697,
+    "final_score": 0.39457682113566833,
+    "threshold": 0.29999999999999977,
+    "prediction": 1,
+    "trust": 0.32000000000000045,
+    "block_hash": "4157d908e36f213d4550cc87417fe1a0ba843932fbbccb4bddc0d80efcff1089"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872394926899696,
+    "final_score": 0.3159166376607907,
+    "threshold": 0.33999999999999975,
+    "prediction": 0,
+    "trust": 0.3500000000000004,
+    "block_hash": "16b3a41aef4ad9e945c7b66e5e208bf6dae6a039af6e7cdd2c0ee17576808062"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9871186253991935,
+    "final_score": 0.34549151888971813,
+    "threshold": 0.3249999999999998,
+    "prediction": 1,
+    "trust": 0.2700000000000004,
+    "block_hash": "a24cf924c892e53bbe501c80f3e195f91d845e0617528fcf38b74fcd6c9126d6"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.011655397297993033,
+    "final_score": 0.0031469572704581235,
+    "threshold": 0.36499999999999977,
+    "prediction": 0,
+    "trust": 0.3000000000000004,
+    "block_hash": "e1bbf30541b7e6ad3a61c7a2f91f0e3e1504734ff436c7a4198d2ca93447e03d"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.016977992830981822,
+    "final_score": 0.0050933978492945535,
+    "threshold": 0.3499999999999998,
+    "prediction": 0,
+    "trust": 0.3300000000000004,
+    "block_hash": "18bbb4dbeb373ea0f9c8a30bb88e8febd313502111aeccc6d17833939cb09adb"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9870225686992501,
+    "final_score": 0.32571744767075295,
+    "threshold": 0.3349999999999998,
+    "prediction": 0,
+    "trust": 0.36000000000000043,
+    "block_hash": "cc1c5a207afaa1fa7999f7f7e9bd8e1c9002679af817a253e21cf1f3973cfbd3"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9843562664962373,
+    "final_score": 0.35436825593864585,
+    "threshold": 0.3199999999999998,
+    "prediction": 1,
+    "trust": 0.2800000000000004,
+    "block_hash": "93fe193d9e771719860894951f9e85e63d44d97e2786fdda23e9a590d035af71"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9834014347653762,
+    "final_score": 0.27535240173430575,
+    "threshold": 0.35999999999999976,
+    "prediction": 0,
+    "trust": 0.3100000000000004,
+    "block_hash": "990764e89540d0e0db7b03e5210f98377932901a7a818ce0e5d81e478b28eb1c"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.10237262360379562,
+    "final_score": 0.03173551331717668,
+    "threshold": 0.3449999999999998,
+    "prediction": 0,
+    "trust": 0.3400000000000004,
+    "block_hash": "c8aa9a8f464e30fbaba62100c3a24b80d13ccbbf5765210eddd83520d3c7341a"
+  },
+  {
+    "device_id": "unknown_device",
+    "anomaly_score": 0.9872389103704137,
+    "final_score": 0.3356612295259411,
+    "threshold": 0.3299999999999998,
+    "prediction": 1,
+    "trust": 0.2600000000000004,
+    "block_hash": "d4fdf0b6298345a25411620c50ca5e8fc43c7190ea694b4ae20edae3549e066a"
+  }
+]

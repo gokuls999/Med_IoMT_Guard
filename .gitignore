@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Large data files (too big for GitHub)
+Med-IoMT/data/NF_ToN_IoT_V2.csv
+Med-IoMT/data/UNSW_NB15_merged.csv
+Med-IoMT/data/NF-ToN-IoT-V2.parquet
+Med-IoMT/trained_model.pkl
+
+# Database files (regenerated on run)
+*.db
+
+# Generated outputs (regenerated on run)
+hospital_workflow_system/outputs/*.csv
+hospital_workflow_system/outputs/*.json
+hospital_workflow_system/outputs_ransomware_backup/
+Med-IoMT/hospital/outputs/
+iomt_attack_lab/generated/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+
+# Claude internal
+.claude/
+
+# Empty folders
+New folder/
+
+# Video files (too large)
+documents/*.mp4

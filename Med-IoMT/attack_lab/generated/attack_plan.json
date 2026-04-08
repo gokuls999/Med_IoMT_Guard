@@ -1,0 +1,14 @@
+{
+  "attacks": [
+    {
+      "type": "dos"
+    },
+    {
+      "type": "tamper"
+    },
+    {
+      "type": "spoof"
+    }
+  ],
+  "timestamp": "2026-04-06T07:59:35.545305+00:00"
+}

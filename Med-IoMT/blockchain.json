@@ -1,0 +1,182 @@
+[
+  {
+    "index": 0,
+    "timestamp": "2026-04-07T07:50:00.799841+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.42,
+    "prev_hash": "0",
+    "hash": "b02a1b1fb76edb822301d6b5b75f4702fa9e0f59f8d8063a91e58f94091550a9"
+  },
+  {
+    "index": 1,
+    "timestamp": "2026-04-07T07:50:00.856480+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.33999999999999997,
+    "prev_hash": "b02a1b1fb76edb822301d6b5b75f4702fa9e0f59f8d8063a91e58f94091550a9",
+    "hash": "db18e04cead181a42c145a94579feee50aafe91197f6e8fd687270c768662378"
+  },
+  {
+    "index": 2,
+    "timestamp": "2026-04-07T07:50:00.913615+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.37,
+    "prev_hash": "db18e04cead181a42c145a94579feee50aafe91197f6e8fd687270c768662378",
+    "hash": "f93aa90c9fc5ce33dcaa6b620008f1c314312d42c509bdce0d351e9f12116f52"
+  },
+  {
+    "index": 3,
+    "timestamp": "2026-04-07T07:50:00.969474+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.29,
+    "prev_hash": "f93aa90c9fc5ce33dcaa6b620008f1c314312d42c509bdce0d351e9f12116f52",
+    "hash": "4720ab17a073b4b772f20bd1a86c6c6d7a2bcd5c70a774a07421172ce7ced366"
+  },
+  {
+    "index": 4,
+    "timestamp": "2026-04-07T07:50:01.027434+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.31999999999999995,
+    "prev_hash": "4720ab17a073b4b772f20bd1a86c6c6d7a2bcd5c70a774a07421172ce7ced366",
+    "hash": "8764441f6e1308312b7b36c48ddb826f6f845b18ffcca23996157a0d0eb7eabb"
+  },
+  {
+    "index": 5,
+    "timestamp": "2026-04-07T07:50:01.083526+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.35,
+    "prev_hash": "8764441f6e1308312b7b36c48ddb826f6f845b18ffcca23996157a0d0eb7eabb",
+    "hash": "55d07438cf6c3a38393b9f7d1f9fe7ef4b3f2d3f880f15889210a775c533d211"
+  },
+  {
+    "index": 6,
+    "timestamp": "2026-04-07T07:50:01.139398+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.38,
+    "prev_hash": "55d07438cf6c3a38393b9f7d1f9fe7ef4b3f2d3f880f15889210a775c533d211",
+    "hash": "563f67723a6bdc5aafa5253a522e46b508b47e172d19d230a7d862c56c855b74"
+  },
+  {
+    "index": 7,
+    "timestamp": "2026-04-07T07:50:01.196142+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.3,
+    "prev_hash": "563f67723a6bdc5aafa5253a522e46b508b47e172d19d230a7d862c56c855b74",
+    "hash": "1efa4ac8b3c509d6c9f101697c47e572b5dc75c1c5332e4a3baa2f08d3377066"
+  },
+  {
+    "index": 8,
+    "timestamp": "2026-04-07T07:50:01.252312+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.32999999999999996,
+    "prev_hash": "1efa4ac8b3c509d6c9f101697c47e572b5dc75c1c5332e4a3baa2f08d3377066",
+    "hash": "b93046b44db4132f6b7efd52f6fdca2be6be6dcf9f36edd089b69794a157e6dc"
+  },
+  {
+    "index": 9,
+    "timestamp": "2026-04-07T07:50:01.310065+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.36,
+    "prev_hash": "b93046b44db4132f6b7efd52f6fdca2be6be6dcf9f36edd089b69794a157e6dc",
+    "hash": "619e0fb923196fe61790ebc2e5afa41216b41468181c1e1c2ed4aa6be3164b69"
+  },
+  {
+    "index": 10,
+    "timestamp": "2026-04-07T07:50:01.366563+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.39,
+    "prev_hash": "619e0fb923196fe61790ebc2e5afa41216b41468181c1e1c2ed4aa6be3164b69",
+    "hash": "cbbb620239e9804e8f5b7b91ea10df23ae9d94349e6dce4b947de6835e02ce1a"
+  },
+  {
+    "index": 11,
+    "timestamp": "2026-04-07T07:50:01.423058+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.31,
+    "prev_hash": "cbbb620239e9804e8f5b7b91ea10df23ae9d94349e6dce4b947de6835e02ce1a",
+    "hash": "de97120be54838f341058a83665f6ef0de28feb8605ff4324423dc1deecd1ee1"
+  },
+  {
+    "index": 12,
+    "timestamp": "2026-04-07T07:50:01.470824+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.33999999999999997,
+    "prev_hash": "de97120be54838f341058a83665f6ef0de28feb8605ff4324423dc1deecd1ee1",
+    "hash": "b474261213d5d0d99d82d5be1d7786c75a61f94a20545fe16fb211fa5bfa026d"
+  },
+  {
+    "index": 13,
+    "timestamp": "2026-04-07T07:50:01.529069+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.37,
+    "prev_hash": "b474261213d5d0d99d82d5be1d7786c75a61f94a20545fe16fb211fa5bfa026d",
+    "hash": "47b70eea7e9bb7cec99f30a25f2272861ba2dba359a5c53a3ec695b5d0af337c"
+  },
+  {
+    "index": 14,
+    "timestamp": "2026-04-07T07:50:01.586013+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.4,
+    "prev_hash": "47b70eea7e9bb7cec99f30a25f2272861ba2dba359a5c53a3ec695b5d0af337c",
+    "hash": "611411702faef3e0715194c116993f88a73781e8e236aa466926f58407da7cdd"
+  },
+  {
+    "index": 15,
+    "timestamp": "2026-04-07T07:50:01.643533+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.32,
+    "prev_hash": "611411702faef3e0715194c116993f88a73781e8e236aa466926f58407da7cdd",
+    "hash": "55e0154d53d2d954d417e56ea0e1c306c7c4f0c6bfcaa90b341eaed52619c364"
+  },
+  {
+    "index": 16,
+    "timestamp": "2026-04-07T07:50:01.701786+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.35,
+    "prev_hash": "55e0154d53d2d954d417e56ea0e1c306c7c4f0c6bfcaa90b341eaed52619c364",
+    "hash": "557c1e59f6f90a02bc8ce151e3d13edf77d1452905156ba65b9a7930be5e8373"
+  },
+  {
+    "index": 17,
+    "timestamp": "2026-04-07T07:50:01.758215+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.38,
+    "prev_hash": "557c1e59f6f90a02bc8ce151e3d13edf77d1452905156ba65b9a7930be5e8373",
+    "hash": "04fd5945a8314e1437da7a1d078422daf7911b9298b8a168d114f6e81b975a4c"
+  },
+  {
+    "index": 18,
+    "timestamp": "2026-04-07T07:50:01.816062+00:00",
+    "device_id": "unknown_device",
+    "prediction": 0,
+    "trust": 0.41000000000000003,
+    "prev_hash": "04fd5945a8314e1437da7a1d078422daf7911b9298b8a168d114f6e81b975a4c",
+    "hash": "134be0e21aa50e974a13535b69c9564de84486df247570102a7387e0acfb54e9"
+  },
+  {
+    "index": 19,
+    "timestamp": "2026-04-07T07:50:01.872244+00:00",
+    "device_id": "unknown_device",
+    "prediction": 1,
+    "trust": 0.33,
+    "prev_hash": "134be0e21aa50e974a13535b69c9564de84486df247570102a7387e0acfb54e9",
+    "hash": "4d581fd0e245830b5700af590cb8bbcdd241ff15909fc65b905e4c7b3695818b"
+  }
+]
