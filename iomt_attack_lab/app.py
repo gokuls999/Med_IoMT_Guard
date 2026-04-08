@@ -422,14 +422,22 @@ def _live_event_stream() -> None:
                 else:
                     delta_line = f'+{delta:.0f}' if delta >= 0 else f'{delta:.0f}'
 
+            delta_html = (
+                '<div style="font-size:0.60rem;color:#ef444499;margin-top:1px">'
+                + delta_line + ' from baseline</div>'
+            ) if delta_line else ''
+            base_html = (
+                '<div style="font-size:0.57rem;color:#1f3a1f;margin-top:1px">'
+                + base_line + '</div>'
+            ) if base_line else ''
             m_cols[idx].markdown(
                 f'<div style="background:#0c0c0c;border:1px solid #2a1010;'
                 f'border-top:2px solid {c_col};border-radius:6px;padding:10px 12px;text-align:center">'
                 f'<div style="font-family:\'Share Tech Mono\',monospace;font-size:1.05rem;'
                 f'font-weight:700;color:{c_col}">{fmt.format(cur)}</div>'
-                f'{"<div style=\"font-size:0.60rem;color:#ef444499;margin-top:1px\">" + delta_line + " from baseline</div>" if delta_line else ""}'
+                f'{delta_html}'
                 f'<div style="font-size:0.60rem;color:#334155;margin-top:3px">{lbl}</div>'
-                f'{"<div style=\"font-size:0.57rem;color:#1f3a1f;margin-top:1px\">" + base_line + "</div>" if base_line else ""}'
+                f'{base_html}'
                 f'</div>',
                 unsafe_allow_html=True,
             )
