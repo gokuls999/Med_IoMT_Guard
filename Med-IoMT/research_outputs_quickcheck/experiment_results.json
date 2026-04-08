@@ -1,0 +1,87 @@
+{
+  "config": {
+    "sample_size": 10000,
+    "test_size": 0.2,
+    "base_threshold": 0.5,
+    "alpha": 0.08,
+    "beta": 0.03,
+    "random_state": 42
+  },
+  "baseline_static": {
+    "accuracy": 0.946,
+    "precision": 0.9515895953757225,
+    "recall": 0.9698085419734904,
+    "f1": 0.9606126914660832,
+    "false_positives": 67,
+    "true_negatives": 575,
+    "false_positive_rate": 0.1043613707165109,
+    "true_positives": 1317,
+    "false_negatives": 41,
+    "latency_mean_ms": 65.85130000021309,
+    "latency_std_ms": 0.9386034576084363,
+    "latency_min_ms": 64.81799999892246,
+    "latency_max_ms": 67.19129999692086,
+    "runs": 5,
+    "samples": 2000
+  },
+  "adaptive_threshold_only": {
+    "accuracy": 0.9455,
+    "precision": 0.9509025270758122,
+    "recall": 0.9698085419734904,
+    "f1": 0.960262486328837,
+    "false_positives": 68,
+    "true_negatives": 574,
+    "false_positive_rate": 0.1059190031152648,
+    "true_positives": 1317,
+    "false_negatives": 41,
+    "latency_mean_ms": 56.27882159998262,
+    "latency_std_ms": 2.8659560279357694,
+    "latency_min_ms": 45.73050000180956,
+    "latency_max_ms": 76.94310000078985,
+    "records": 2000
+  },
+  "adaptive_threshold_trust_weighted": {
+    "accuracy": 0.5815,
+    "precision": 0.9762340036563071,
+    "recall": 0.39322533136966126,
+    "f1": 0.5606299212598426,
+    "false_positives": 13,
+    "true_negatives": 629,
+    "false_positive_rate": 0.020249221183800622,
+    "true_positives": 534,
+    "false_negatives": 824,
+    "latency_mean_ms": 56.450284800064765,
+    "latency_std_ms": 2.6927230216641402,
+    "latency_min_ms": 45.7038000022294,
+    "latency_max_ms": 78.95650000136811,
+    "records": 2000
+  },
+  "cross_dataset": {
+    "train_unsw_test_ton": {
+      "accuracy": 0.7192422731804586,
+      "precision": 0.7192422731804586,
+      "recall": 1.0,
+      "f1": 0.8366968220830434,
+      "false_positives": 1408,
+      "true_negatives": 0,
+      "false_positive_rate": 1.0,
+      "true_positives": 3607,
+      "false_negatives": 0,
+      "train_samples": 4985,
+      "test_samples": 5015
+    },
+    "train_ton_test_unsw": {
+      "accuracy": 0.638716148445336,
+      "precision": 0.638716148445336,
+      "recall": 1.0,
+      "f1": 0.7795323785041008,
+      "false_positives": 1801,
+      "true_negatives": 0,
+      "false_positive_rate": 1.0,
+      "true_positives": 3184,
+      "false_negatives": 0,
+      "train_samples": 5015,
+      "test_samples": 4985
+    }
+  }
+}
