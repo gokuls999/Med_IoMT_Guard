@@ -177,10 +177,10 @@ def _silent_watcher() -> None:
     # random sampling produces a momentarily clean scan.
     try:
         full_log = st.session_state.get("_log", rows)
-        full_anomaly = sum(1 for r in full_log if r.get("prediction") == 1)
-        # If attack is active but this scan happened to be clean, keep the
-        # accumulated counts so the hospital dashboard stays consistent.
-        write_anomaly = max(anomaly_count, full_anomaly) if active_atks else anomaly_count
+        # Only write the latest scan's 140 records (not accumulated history)
+        # so anomaly_count never exceeds total device count.
+        write_log = full_log[:len(rows)] if len(full_log) > len(rows) else full_log
+        write_anomaly = sum(1 for r in write_log if r.get("prediction") == 1)
         IDS_OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
         IDS_OUT_JSON.write_text(json.dumps({
             "log": full_log[:140], "anomaly_count": write_anomaly,
