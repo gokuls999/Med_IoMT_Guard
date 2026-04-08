@@ -1555,7 +1555,7 @@ _ATTACK_COLORS = {
 _ATTACK_LABELS = {
     "dos": "DoS Flood", "spoof": "Device Spoofing",
     "tamper": "Data Tampering", "replay": "Replay Attack",
-    "ransomware": "Ransomware",
+    "ransomware": "Ransomware", "cpu": "CPU Stress",
 }
 _ATTACK_EXPLAIN = {
     "dos": {
@@ -1592,6 +1592,13 @@ _ATTACK_EXPLAIN = {
                 "hospital staff out of critical IoMT equipment.",
         "risk": "Life-support and monitoring devices become completely unusable. Hospital "
                 "operations may halt until devices are restored or replaced.",
+    },
+    "cpu": {
+        "what": "CPU Stress Attack",
+        "desc": "Attackers overloaded IoMT device processors with intensive computations, "
+                "consuming all available CPU resources and degrading device performance.",
+        "risk": "Medical devices become sluggish or unresponsive. Real-time monitoring "
+                "and alerting may be delayed, risking missed critical patient events.",
     },
 }
 
@@ -1655,8 +1662,10 @@ def _generate_hospital_attack_pdf(live_data: dict, device_df: pd.DataFrame) -> b
     pdf.set_x(LM + 6)
     pdf.set_font("Helvetica", "", 10)
     pdf.set_text_color(80, 80, 80)
-    pdf.cell(60, 7, f"Devices Affected:  {n}", ln=False)
-    pdf.cell(60, 7, f"Devices Safe:  {clear_count}", ln=False)
+    n_flagged = len(flagged)
+    n_clear = len(log) - n_flagged
+    pdf.cell(60, 7, f"Devices Affected:  {n_flagged}", ln=False)
+    pdf.cell(60, 7, f"Devices Safe:  {n_clear}", ln=False)
     pdf.cell(0, 7, f"Total Scanned:  {len(log)}", ln=True)
     pdf.set_y(box_y + 36)
 

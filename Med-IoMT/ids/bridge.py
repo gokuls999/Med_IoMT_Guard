@@ -133,7 +133,12 @@ def _load_devices() -> pd.DataFrame:
 
 
 def get_hospital_stream() -> Tuple[List[Dict], List[Dict]]:
-    """Generate one UNSW-NB15-authentic record per IoMT device."""
+    """Generate one UNSW-NB15-authentic record per IoMT device.
+
+    When attacks are active, a fraction of devices are treated as compromised
+    and fed real attack-class UNSW-NB15 records so the IDS model can detect
+    them — even if the hospital DB hasn't marked those devices' status yet.
+    """
     active_attacks_list = get_active_attacks()
     devices_df = _load_devices()
     if devices_df.empty:
@@ -143,14 +148,38 @@ def get_hospital_stream() -> Tuple[List[Dict], List[Dict]]:
     records: List[Dict] = []
     info: List[Dict] = []
 
+    # When attacks are active, determine which devices are "compromised"
+    # even if the DB still shows them as online.
+    compromised_ids: set = set()
+    if active_attacks_list:
+        import time as _time
+        all_ids = devices_df["device_id"].tolist()
+        # 30-60% of devices affected depending on attack type
+        attack_ratios = {
+            "dos": 0.50, "ransomware": 0.60, "tamper": 0.40,
+            "spoof": 0.35, "replay": 0.30, "cpu": 0.40,
+        }
+        ratio = max(attack_ratios.get(a, 0.40) for a in active_attacks_list)
+        n_affected = max(1, int(len(all_ids) * ratio))
+        # Deterministic per-second selection so results are stable within a scan
+        atk_rng = random.Random(int(_time.time()) & 0x7FFFFFFF)
+        compromised_ids = set(atk_rng.sample(all_ids, min(n_affected, len(all_ids))))
+
     for _, dev in devices_df.iterrows():
         dev_dict = dev.to_dict()
         dev_status = str(dev_dict.get("status", "online")).lower()
         device_id = dev_dict.get("device_id", "unknown")
 
         attack_type: Optional[str] = None
-        if dev_status in ("compromised", "error", "corrupted"):
+
+        # Device is under attack if: DB says compromised OR active attack targets it
+        if dev_status in ("compromised", "error", "corrupted", "offline"):
             attack_type = active_attacks_list[0] if active_attacks_list else "real_attack"
+            pool = attack_pool
+        elif device_id in compromised_ids:
+            # Rotate attack type across affected devices
+            idx = sorted(compromised_ids).index(device_id)
+            attack_type = active_attacks_list[idx % len(active_attacks_list)]
             pool = attack_pool
         else:
             pool = normal_pool
@@ -165,7 +194,7 @@ def get_hospital_stream() -> Tuple[List[Dict], List[Dict]]:
             "device_id": dev_dict.get("device_id", "?"),
             "device_type": dev_dict.get("device_type", "?"),
             "department": dev_dict.get("department", "?"),
-            "status": dev_status,
+            "status": dev_status if device_id not in compromised_ids else "compromised",
             "attack_type": attack_type or "none",
         })
 
