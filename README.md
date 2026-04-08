@@ -166,4 +166,4 @@ The system generates three types of PDF reports:
 
 ## Author
 
-**Binu Gokul S** - PhD Research Project
+**Gokul A S** - PhD Research Project
