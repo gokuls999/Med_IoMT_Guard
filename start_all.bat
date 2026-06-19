@@ -1,7 +1,7 @@
 @echo off
 title MedGuard IoMT - Launcher
 echo ============================================
-echo   MedGuard IoMT System - Starting All 3 Terminals
+echo   MedGuard IoMT System - Starting All 4 Terminals
 echo ============================================
 echo.
 
@@ -41,18 +41,23 @@ start "Hospital Dashboard" cmd /k "cd /d "%BASE%hospital_workflow_system" && str
 timeout /t 2 >nul
 
 start "Attack Lab" cmd /k "cd /d "%BASE%iomt_attack_lab" && streamlit run app.py --server.port 8503 --server.headless true"
+timeout /t 2 >nul
+
+start "Quantum IoMT" cmd /k "cd /d "%BASE%quantum_diagnostic" && streamlit run app.py --server.port 8504 --server.headless true"
 
 echo.
 echo [4/4] All terminals launched!
 echo ============================================
-echo   IDS Dashboard:    http://localhost:8501
-echo   Hospital System:  http://localhost:8502
-echo   Attack Lab:       http://localhost:8503
+echo   IDS Dashboard:       http://localhost:8501
+echo   Hospital System:     http://localhost:8502
+echo   Attack Lab:          http://localhost:8503
+echo   Quantum Diagnostics: http://localhost:8504
 echo ============================================
 echo.
-echo Press any key to open all 3 in browser...
+echo Press any key to open all 4 in browser...
 pause >nul
 
 start "" http://localhost:8501
 start "" http://localhost:8502
 start "" http://localhost:8503
+start "" http://localhost:8504
