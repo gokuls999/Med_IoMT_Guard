@@ -198,11 +198,9 @@ st.markdown("""
 }
 
 /* ── Misc ───────────────────────────────────────────── */
-#MainMenu { visibility: hidden; }
-footer    { visibility: hidden; }
-/* Hide ONLY the deploy button — do NOT touch stToolbar (sidebar toggle lives there) */
-[data-testid="stDeployButton"]         { display: none !important; }
-button[title*="Deploy"]                { display: none !important; }
+header    { display: none !important; }
+#MainMenu { display: none !important; }
+footer    { display: none !important; }
 
 /* ── Page nav buttons ───────────────────────────────── */
 .nav-wrap {
@@ -393,7 +391,7 @@ st.sidebar.markdown(
     unsafe_allow_html=True,
 )
 
-run_btn = st.sidebar.button("Run Pipeline")
+run_btn = st.sidebar.button("Run Pipeline")  # also triggered by main_run below
 
 # Status indicators
 if hosp_connected and st.session_state.get("results_hospital"):
@@ -443,6 +441,39 @@ for _i, (_col, _label) in enumerate(zip(_r2_cols, _ROW2), start=len(_ROW1)):
         st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
+
+# ── Action bar (below nav, always visible) ────────────────────────────────────
+_a1, _a2, _a3, _a4 = st.columns([3, 2, 2, 3])
+with _a2:
+    if hosp_available:
+        if hosp_connected:
+            if st.button("Disconnect HMS", key="main_disconnect", use_container_width=True):
+                st.session_state["hospital_connected"] = False
+                st.rerun()
+        else:
+            if st.button("Connect to HMS", key="main_connect", use_container_width=True):
+                st.session_state["hospital_connected"] = True
+                st.rerun()
+    else:
+        st.markdown(
+            '<div style="font-size:.72rem;color:#ef4444;padding:.35rem 0">HMS offline</div>',
+            unsafe_allow_html=True,
+        )
+with _a3:
+    run_btn_main = st.button(
+        "Run Pipeline", key="main_run", type="primary", use_container_width=True
+    )
+
+# Status dot
+_src_color = "#16a34a" if hosp_connected else "#64748b"
+_src_label  = "MediCore HMS" if hosp_connected else "Synthetic data"
+_a1.markdown(
+    f'<div style="font-size:.72rem;color:{_src_color};padding:.35rem 0">'
+    f'&#9679; {_src_label}</div>',
+    unsafe_allow_html=True,
+)
+
+st.markdown('<hr style="margin:.3rem 0 .8rem;border-color:#e2e8f0">', unsafe_allow_html=True)
 page = PAGES[st.session_state["page_idx"]]
 
 
@@ -470,7 +501,7 @@ def _execute_pipeline(seed, fast_mode, hospital_patients=None, n_patients=60):
     return result
 
 
-if run_btn:
+if run_btn or run_btn_main:
     with st.spinner("Initialising quantum circuits…"):
         if hosp_connected:
             patients, dept_rows = hb.fetch_hospital_patients(seed=int(seed))

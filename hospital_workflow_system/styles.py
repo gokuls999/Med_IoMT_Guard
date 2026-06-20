@@ -15,6 +15,9 @@ CSS = """
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 .stApp { background-color: #f1f5f9; }
 .block-container { padding: 1.5rem 2rem 2rem 2rem !important; }
+header { display: none !important; }
+#MainMenu { display: none !important; }
+footer { display: none !important; }
 
 /* ── Sidebar ──────────────────────────────────────────────── */
 [data-testid="stSidebar"] {

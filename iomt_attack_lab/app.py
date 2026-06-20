@@ -235,8 +235,9 @@ CSS = """
 html, body, [class*="css"] { font-family: 'Inter', sans-serif !important; }
 .stApp { background-color: #080808 !important; }
 .block-container { padding: 0.3rem 1.8rem 2rem 1.8rem !important; }
-header[data-testid="stHeader"] { display: none !important; }
+header { display: none !important; }
 #MainMenu { display: none !important; }
+footer { display: none !important; }
 
 [data-testid="stSidebar"] {
     background-color: #050505 !important;
