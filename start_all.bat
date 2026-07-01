@@ -1,7 +1,7 @@
 @echo off
 title MedGuard IoMT - Launcher
 echo ============================================
-echo   MedGuard IoMT System - Starting All 4 Terminals
+echo   MedGuard IoMT System - Starting All 5 Terminals
 echo ============================================
 echo.
 
@@ -31,7 +31,7 @@ cd /d "%BASE%"
 echo       Done.
 echo.
 
-:: Start all 3 terminals in separate windows
+:: Start all 5 terminals in separate windows
 echo [3/4] Starting all terminals...
 
 start "IDS Dashboard" cmd /k "cd /d "%BASE%Med-IoMT" && streamlit run demo_app.py --server.port 8501 --server.headless true"
@@ -43,21 +43,26 @@ timeout /t 2 >nul
 start "Attack Lab" cmd /k "cd /d "%BASE%iomt_attack_lab" && streamlit run app.py --server.port 8503 --server.headless true"
 timeout /t 2 >nul
 
-start "Quantum IoMT" cmd /k "cd /d "%BASE%quantum_diagnostic" && streamlit run app.py --server.port 8504 --server.headless true"
+start "Quantum Diagnostics" cmd /k "cd /d "%BASE%quantum_diagnostic" && streamlit run app.py --server.port 8504 --server.headless true"
+timeout /t 2 >nul
+
+start "Quantum Live Monitor" cmd /k "cd /d "%BASE%quantum_live_monitor" && streamlit run app.py --server.port 8505 --server.headless true"
 
 echo.
 echo [4/4] All terminals launched!
 echo ============================================
-echo   IDS Dashboard:       http://localhost:8501
-echo   Hospital System:     http://localhost:8502
-echo   Attack Lab:          http://localhost:8503
-echo   Quantum Diagnostics: http://localhost:8504
+echo   IDS Dashboard:         http://localhost:8501
+echo   Hospital System:       http://localhost:8502
+echo   Attack Lab:            http://localhost:8503
+echo   Quantum Diagnostics:   http://localhost:8504
+echo   Quantum Live Monitor:  http://localhost:8505
 echo ============================================
 echo.
-echo Press any key to open all 4 in browser...
+echo Press any key to open all 5 in browser...
 pause >nul
 
 start "" http://localhost:8501
 start "" http://localhost:8502
 start "" http://localhost:8503
 start "" http://localhost:8504
+start "" http://localhost:8505
