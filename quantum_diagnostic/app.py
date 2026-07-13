@@ -1,7 +1,7 @@
 """
-Quantum IoMT Diagnostic Dashboard  —  port 8504
-Binu's hierarchical quantum-enhanced IoMT framework:
-  ANUKF  ->  Q-Flex ViT  ->  BMOCO  ->  HQAN  ->  RBWKA  ->  VQC  ->  Adaptive SHARP
+Quantum IoMT IDS Dashboard — port 8504
+Binu's Quantum-Enhanced Intrusion Detection System for IoMT Networks:
+  ANUKF → Q-Flex ViT → BMOCO → HQAN → RBWKA → VQC → Adaptive SHARP
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
@@ -12,1317 +12,796 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 
-# ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Quantum IoMT Diagnostics",
-    page_icon="assets/icon.png" if os.path.exists("assets/icon.png") else None,
+    page_title="Quantum IoMT IDS",
+    page_icon="⚛",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
 # ── Colour tokens ──────────────────────────────────────────────────────────────
-C_PRIMARY  = "#2563eb"   # blue
-C_TEAL     = "#0891b2"   # secondary
-C_GREEN    = "#16a34a"
-C_AMBER    = "#d97706"
-C_RED      = "#dc2626"
-C_PURPLE   = "#7c3aed"
-C_SLATE    = "#64748b"
-C_NAVY     = "#0f172a"
-C_TEXT     = "#0f172a"
-C_MUTED    = "#64748b"
-C_BORDER   = "#e2e8f0"
-C_BG       = "#f1f5f9"
-C_SURFACE  = "#ffffff"
+C_PRIMARY = "#2563eb"; C_TEAL  = "#0891b2"; C_GREEN  = "#16a34a"
+C_AMBER   = "#d97706"; C_RED   = "#dc2626"; C_PURPLE = "#7c3aed"
+C_NAVY    = "#0f172a"; C_TEXT  = "#0f172a"; C_MUTED  = "#64748b"
+C_BORDER  = "#e2e8f0"; C_BG    = "#f1f5f9"; C_CARD   = "#ffffff"
 
-# ── Global CSS ─────────────────────────────────────────────────────────────────
-st.markdown("""
+ATK_COLORS = {
+    "normal":     C_GREEN,
+    "dos":        C_RED,
+    "spoof":      C_AMBER,
+    "tamper":     C_PURPLE,
+    "replay":     C_TEAL,
+    "ransomware": "#b91c1c",
+}
+
+# ── CSS ────────────────────────────────────────────────────────────────────────
+st.markdown(f"""
 <style>
-/* ── Layout ─────────────────────────────────────────── */
-.stApp { background: #f1f5f9; color: #0f172a; }
-/* padding-top: 4rem clears the Streamlit header bar */
-.block-container { padding: 4rem 2.5rem 2rem !important; max-width: 1280px; }
-
-/* ── Sidebar ────────────────────────────────────────── */
-[data-testid="stSidebar"] {
-    background: #0f172a !important;
-    border-right: 1px solid #1e293b;
-}
-[data-testid="stSidebar"] p,
-[data-testid="stSidebar"] span,
-[data-testid="stSidebar"] div { color: #94a3b8 !important; }
-[data-testid="stSidebar"] hr  { border-color: #1e293b !important; }
-
-/* Sidebar nav labels */
-[data-testid="stSidebar"] .stRadio label {
-    color: #cbd5e1 !important;
-    font-size: 0.84rem !important;
-    padding: 0.25rem 0 !important;
-}
-/* ALL sidebar buttons — outlined ghost style by default */
-[data-testid="stSidebar"] .stButton > button {
-    background: transparent !important;
-    color: #cbd5e1 !important;
-    border: 1px solid #334155 !important;
-    border-radius: 6px !important;
-    font-size: 0.82rem !important;
-    font-weight: 500 !important;
-    width: 100% !important;
-    padding: 0.5rem 0 !important;
-    transition: background .15s, border-color .15s !important;
-}
-[data-testid="stSidebar"] .stButton > button:hover {
-    background: #1e293b !important;
-    border-color: #475569 !important;
-    color: #f1f5f9 !important;
-}
-/* "Run Pipeline" button — highlight with blue (it is always the last button) */
-[data-testid="stSidebar"] .stButton:last-of-type > button {
-    background: #2563eb !important;
-    color: #ffffff !important;
-    border-color: #2563eb !important;
-    font-weight: 700 !important;
-}
-[data-testid="stSidebar"] .stButton:last-of-type > button:hover {
-    background: #1d4ed8 !important;
-    border-color: #1d4ed8 !important;
-}
-/* Sidebar widget labels */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+html,body,[class*="css"]{{font-family:'Inter',sans-serif!important;}}
+.stApp{{background:{C_BG};color:{C_TEXT};}}
+.block-container{{padding:4rem 2.5rem 2rem!important;max-width:1280px;}}
+[data-testid="stSidebar"]{{background:{C_NAVY}!important;border-right:1px solid #1e293b;}}
+[data-testid="stSidebar"] p,[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div{{color:#94a3b8!important;}}
+[data-testid="stSidebar"] hr{{border-color:#1e293b!important;}}
+[data-testid="stSidebar"] .stRadio label{{color:#cbd5e1!important;font-size:.84rem!important;}}
 [data-testid="stSidebar"] .stSlider label,
 [data-testid="stSidebar"] .stNumberInput label,
-[data-testid="stSidebar"] .stCheckbox label,
-[data-testid="stSidebar"] .stSelectbox label {
-    color: #94a3b8 !important;
-    font-size: 0.78rem !important;
-}
-
-/* ── KPI cards ──────────────────────────────────────── */
-.kpi-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-top: 3px solid;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-}
-.kpi-label {
-    font-size: 0.67rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 600;
-}
-.kpi-value {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 0.2rem 0 0.1rem;
-    line-height: 1;
-}
-.kpi-sub { font-size: 0.71rem; color: #94a3b8; }
-
-/* ── Surface card ───────────────────────────────────── */
-.surface {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 1.25rem 1.5rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    margin-bottom: 1rem;
-}
-
-/* ── Page headers ───────────────────────────────────── */
-.page-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin: 0 0 0.25rem;
-}
-.page-desc { font-size: 0.82rem; color: #64748b; margin: 0 0 1.2rem; }
-
-/* Stage tag */
-.stage-tag {
-    display: inline-block;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    color: #1d4ed8;
-    border-radius: 4px;
-    padding: 0.15rem 0.55rem;
-    font-size: 0.67rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-bottom: 0.6rem;
-}
-
-/* Section divider */
-.sec {
-    font-size: 0.73rem;
-    font-weight: 700;
-    color: #475569;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 0.35rem;
-    margin: 1.4rem 0 0.9rem;
-}
-
-/* ── Alert boxes ────────────────────────────────────── */
-.a-critical {
-    background:#fef2f2; border:1px solid #fecaca;
-    border-left:4px solid #dc2626; border-radius:6px;
-    padding:.65rem 1rem; color:#991b1b; margin:3px 0;
-}
-.a-warning {
-    background:#fffbeb; border:1px solid #fde68a;
-    border-left:4px solid #d97706; border-radius:6px;
-    padding:.65rem 1rem; color:#92400e; margin:3px 0;
-}
-.a-normal {
-    background:#f0fdf4; border:1px solid #bbf7d0;
-    border-left:4px solid #16a34a; border-radius:6px;
-    padding:.65rem 1rem; color:#14532d; margin:3px 0;
-}
-.a-info {
-    background:#eff6ff; border:1px solid #bfdbfe;
-    border-left:4px solid #2563eb; border-radius:6px;
-    padding:.65rem 1rem; color:#1e40af; margin:3px 0;
-}
-
-/* ── Patient list rows ──────────────────────────────── */
-.pat-row {
-    background:#ffffff; border:1px solid #e2e8f0;
-    border-radius:6px; padding:.45rem .9rem; margin:2px 0;
-    display:flex; justify-content:space-between; align-items:center;
-    font-size:.79rem; color:#334155;
-}
-
-/* ── Misc ───────────────────────────────────────────── */
-header    { display: none !important; }
-#MainMenu { display: none !important; }
-footer    { display: none !important; }
-
-/* ── Page nav buttons ───────────────────────────────── */
-.nav-wrap {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    padding: .6rem .8rem .5rem;
-    margin-bottom: .8rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-.nav-wrap .stButton > button {
-    background: #f8fafc !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 6px !important;
-    color: #475569 !important;
-    font-size: .77rem !important;
-    font-weight: 500 !important;
-    padding: .3rem .5rem !important;
-    width: 100% !important;
-    transition: all .12s !important;
-}
-.nav-wrap .stButton > button:hover {
-    background: #eff6ff !important;
-    border-color: #93c5fd !important;
-    color: #1d4ed8 !important;
-}
-.nav-wrap .nav-active > button {
-    background: #2563eb !important;
-    border-color: #2563eb !important;
-    color: #ffffff !important;
-    font-weight: 700 !important;
-}
-
-
-.stTabs [data-baseweb="tab"] { font-size:0.82rem; font-weight:600; color:#334155; }
-.stDataFrame { border-radius:8px; overflow:hidden; }
+[data-testid="stSidebar"] .stSelectbox label{{color:#94a3b8!important;font-size:.78rem!important;}}
+[data-testid="stSidebar"] .stButton>button{{
+  background:transparent!important;color:#cbd5e1!important;
+  border:1px solid #334155!important;border-radius:6px!important;
+  font-size:.82rem!important;font-weight:500!important;
+  width:100%!important;padding:.5rem 0!important;}}
+[data-testid="stSidebar"] .stButton>button:hover{{
+  background:#1e293b!important;border-color:#475569!important;color:#f1f5f9!important;}}
+[data-testid="stSidebar"] .stButton:last-of-type>button{{
+  background:{C_PRIMARY}!important;color:#fff!important;
+  border-color:{C_PRIMARY}!important;font-weight:700!important;}}
+header{{display:none!important;}} #MainMenu{{display:none!important;}} footer{{display:none!important;}}
+.kpi-card{{background:#fff;border:1px solid {C_BORDER};border-top:3px solid;
+  border-radius:8px;padding:1rem 1.25rem;box-shadow:0 1px 3px rgba(0,0,0,.06);}}
+.kpi-label{{font-size:.67rem;color:{C_MUTED};text-transform:uppercase;
+  letter-spacing:.08em;font-weight:600;}}
+.kpi-value{{font-size:1.6rem;font-weight:700;color:{C_TEXT};margin:.2rem 0 .1rem;line-height:1;}}
+.kpi-sub{{font-size:.71rem;color:#94a3b8;}}
+.surface{{background:#fff;border:1px solid {C_BORDER};border-radius:8px;
+  padding:1.25rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:1rem;}}
+.page-title{{font-size:1.3rem;font-weight:700;color:{C_TEXT};margin:0 0 .25rem;}}
+.page-desc{{font-size:.82rem;color:{C_MUTED};margin:0 0 1.2rem;}}
+.stage-tag{{display:inline-block;background:#eff6ff;border:1px solid #bfdbfe;
+  color:#1d4ed8;border-radius:4px;padding:.15rem .55rem;font-size:.67rem;
+  font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.6rem;}}
+.sec{{font-size:.73rem;font-weight:700;color:#475569;text-transform:uppercase;
+  letter-spacing:.08em;border-bottom:1px solid {C_BORDER};
+  padding-bottom:.35rem;margin:1.4rem 0 .9rem;}}
+.a-attack{{background:#fef2f2;border:1px solid #fecaca;border-left:4px solid {C_RED};
+  border-radius:6px;padding:.6rem 1rem;color:#991b1b;margin:3px 0;font-size:.82rem;}}
+.a-normal{{background:#f0fdf4;border:1px solid #bbf7d0;border-left:4px solid {C_GREEN};
+  border-radius:6px;padding:.6rem 1rem;color:#14532d;margin:3px 0;font-size:.82rem;}}
+.pkt-row{{background:#fff;border:1px solid {C_BORDER};border-radius:6px;
+  padding:.4rem .9rem;margin:2px 0;display:flex;justify-content:space-between;
+  align-items:center;font-size:.79rem;}}
 </style>
 """, unsafe_allow_html=True)
 
+# ── Helpers ────────────────────────────────────────────────────────────────────
+def _pd():
+    return dict(template="plotly_white", paper_bgcolor=C_CARD,
+                plot_bgcolor=C_CARD, font=dict(family="Inter", color=C_TEXT))
 
-# ── Plotly light-theme helper ──────────────────────────────────────────────────
-def _pl(**kw):
-    base = dict(
-        template="plotly_white",
-        paper_bgcolor=C_SURFACE,
-        plot_bgcolor="#f8fafc",
-        font=dict(color="#334155", size=11),
-        margin=dict(l=48, r=20, t=44, b=40),
-        colorway=[C_PRIMARY, C_TEAL, C_GREEN, C_AMBER, C_RED, C_PURPLE, C_SLATE],
-    )
-    base.update(kw)
-    return base
-
-
-# ── KPI card helper ────────────────────────────────────────────────────────────
 def kpi(col, label, value, sub, color):
-    col.markdown(
-        f'<div class="kpi-card" style="border-top-color:{color}">'
-        f'<div class="kpi-label">{label}</div>'
-        f'<div class="kpi-value" style="color:{color}">{value}</div>'
-        f'<div class="kpi-sub">{sub}</div></div>',
-        unsafe_allow_html=True,
-    )
+    col.markdown(f"""
+    <div class="kpi-card" style="border-top-color:{color}">
+      <div class="kpi-label">{label}</div>
+      <div class="kpi-value" style="color:{color}">{value}</div>
+      <div class="kpi-sub">{sub}</div>
+    </div>""", unsafe_allow_html=True)
 
-
-# ── Hospital connection state ──────────────────────────────────────────────────
-import hospital_bridge as hb
-
-if "hospital_connected" not in st.session_state:
-    st.session_state["hospital_connected"] = False
-if "results_synthetic" not in st.session_state:
-    st.session_state["results_synthetic"] = None
-if "results_hospital" not in st.session_state:
-    st.session_state["results_hospital"] = None
-
-hosp_available = hb.is_available()
-hosp_connected = st.session_state["hospital_connected"]
-
+# ── Session state ──────────────────────────────────────────────────────────────
+if "results" not in st.session_state:
+    st.session_state.results   = None
+if "pipeline_status" not in st.session_state:
+    st.session_state.pipeline_status = "idle"
 
 # ── Sidebar ────────────────────────────────────────────────────────────────────
-st.sidebar.markdown(
-    '<div style="font-size:1rem;font-weight:700;color:#f1f5f9;padding:.4rem 0 .05rem">'
-    'Quantum IoMT</div>'
-    '<div style="font-size:.7rem;color:#475569;margin-bottom:.6rem">'
-    'Hierarchical Diagnostic Framework</div>',
-    unsafe_allow_html=True,
-)
-st.sidebar.markdown("---")
+with st.sidebar:
+    st.markdown(f"""
+    <div style="padding:.75rem 0 1rem;border-bottom:1px solid #1e293b;margin-bottom:1rem;">
+      <div style="font-size:1.1rem;font-weight:800;color:#f1f5f9;letter-spacing:-.01em;">
+        ⚛ Quantum IDS</div>
+      <div style="font-size:.72rem;color:#64748b;margin-top:.2rem;">
+        IoMT Intrusion Detection</div>
+    </div>""", unsafe_allow_html=True)
 
-PAGES = [
-    "Pipeline Overview",
-    "Biosignal Input",
-    "ANUKF Preprocessing",
-    "Q-Flex ViT  —  Feature Extraction",
-    "BMOCO  —  Feature Selection",
-    "HQAN + VQC  —  Prediction",
-    "Adaptive SHARP  —  Explainability",
-    "Clinical Alerts",
-    "Hospital Comparison",
-]
-PAGE_SHORT = [
-    "Overview",
-    "Biosignals",
-    "ANUKF",
-    "Q-Flex ViT",
-    "BMOCO",
-    "HQAN + VQC",
-    "Adaptive SHARP",
-    "Alerts",
-    "Comparison",
-]
+    PAGES = [
+        "1 · Pipeline Overview",
+        "2 · Network Traffic",
+        "3 · ANUKF Preprocessing",
+        "4 · Q-Flex ViT",
+        "5 · BMOCO Selection",
+        "6 · HQAN + VQC Detection",
+        "7 · Adaptive SHARP",
+        "8 · Live Detection",
+        "9 · vs Classical MedGuard",
+    ]
+    page = st.radio("Navigate", PAGES, label_visibility="collapsed")
 
-if "page_idx" not in st.session_state:
-    st.session_state["page_idx"] = 0
+    st.markdown('<hr style="border-color:#1e293b;margin:.75rem 0">', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:.72rem;color:#475569;margin-bottom:.4rem;">CONFIGURATION</div>',
+                unsafe_allow_html=True)
+    n_packets   = st.slider("Packets",      30, 200, 80, 10)
+    seed_val    = st.number_input("Seed",   0, 9999, 42)
+    bmoco_iters = st.slider("BMOCO iters", 5, 30, 15, 5)
+    rbwka_iters = st.slider("RBWKA iters", 5, 30, 20, 5)
 
-# ── Hospital connection panel ──────────────────────────────────────────────────
-st.sidebar.markdown("---")
-st.sidebar.markdown(
-    '<div style="font-size:.72rem;font-weight:600;color:#64748b;'
-    'text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">'
-    'Hospital Connection</div>',
-    unsafe_allow_html=True,
-)
+    st.markdown('<hr style="border-color:#1e293b;margin:.75rem 0">', unsafe_allow_html=True)
+    if st.button("⚛ Run Pipeline"):
+        from pipeline import run_pipeline
+        prog = st.empty()
+        log  = st.empty()
+        def _cb(step, msg):
+            prog.progress(step / 9)
+            log.markdown(f'<div style="font-size:.72rem;color:#94a3b8;">[{step}/9] {msg}</div>',
+                         unsafe_allow_html=True)
+        st.session_state.pipeline_status = "running"
+        try:
+            st.session_state.results = run_pipeline(
+                n_packets=n_packets, seed=seed_val,
+                bmoco_iters=bmoco_iters, rbwka_iters=rbwka_iters,
+                progress_cb=_cb,
+            )
+            st.session_state.pipeline_status = "done"
+        except Exception as e:
+            st.session_state.pipeline_status = "error"
+            st.error(str(e))
+        prog.empty(); log.empty()
 
-if not hosp_available:
-    st.sidebar.markdown(
-        '<div style="background:#1c1010;border:1px solid #7f1d1d;border-radius:6px;'
-        'padding:.5rem .8rem;font-size:.75rem;color:#fca5a5">'
-        '&#9679; MediCore offline — start the hospital dashboard (port 8502) first.'
-        '</div>',
-        unsafe_allow_html=True,
-    )
-else:
-    if hosp_connected:
-        stats = hb.get_stats()
-        st.sidebar.markdown(
-            f'<div style="background:#052e16;border:1px solid #166534;border-radius:6px;'
-            f'padding:.55rem .8rem;font-size:.74rem;color:#4ade80">'
-            f'&#9679; Connected to MediCore HMS<br>'
-            f'<span style="color:#86efac">'
-            f'{stats.get("n_devices","?")} devices &nbsp;|&nbsp; '
-            f'{stats.get("n_depts","?")} depts &nbsp;|&nbsp; '
-            f'{stats.get("n_alerts","?")} alerts</span></div>',
-            unsafe_allow_html=True,
-        )
-        if st.sidebar.button("Disconnect from Hospital"):
-            st.session_state["hospital_connected"] = False
-            st.rerun()
-    else:
-        st.sidebar.markdown(
-            '<div style="background:#0f172a;border:1px solid #334155;border-radius:6px;'
-            'padding:.55rem .8rem;font-size:.74rem;color:#64748b">'
-            '&#9675; Not connected &nbsp;—&nbsp; using synthetic data</div>',
-            unsafe_allow_html=True,
-        )
-        if st.sidebar.button("Connect to MediCore HMS"):
-            st.session_state["hospital_connected"] = True
-            st.rerun()
+    status = st.session_state.pipeline_status
+    if status == "done":
+        st.markdown('<div style="color:#22c55e;font-size:.75rem;">✓ Pipeline complete</div>',
+                    unsafe_allow_html=True)
+    elif status == "running":
+        st.markdown('<div style="color:#f59e0b;font-size:.75rem;">⟳ Running…</div>',
+                    unsafe_allow_html=True)
+    elif status == "idle":
+        st.markdown('<div style="color:#475569;font-size:.75rem;">Click Run Pipeline to begin</div>',
+                    unsafe_allow_html=True)
 
-st.sidebar.markdown("---")
-st.sidebar.markdown(
-    '<div style="font-size:.72rem;font-weight:600;color:#64748b;'
-    'text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">'
-    'Pipeline Settings</div>',
-    unsafe_allow_html=True,
-)
-
-# When connected, patient slider is disabled (count comes from hospital)
-if hosp_connected:
-    n_patients = None
-    st.sidebar.markdown(
-        '<div style="font-size:.74rem;color:#64748b;margin-bottom:.4rem">'
-        'Patient count: from hospital DB</div>',
-        unsafe_allow_html=True,
-    )
-else:
-    n_patients = st.sidebar.slider("Patients (synthetic)", 30, 100, 60, step=10)
-
-fast_mode = st.sidebar.checkbox("Fast mode (fewer iterations)", value=True)
-seed      = st.sidebar.number_input("Random seed", value=42, step=1)
-
-# Data source badge
-src_label = "MediCore HMS" if hosp_connected else "Synthetic data"
-src_color = "#16a34a"      if hosp_connected else "#64748b"
-st.sidebar.markdown(
-    f'<div style="font-size:.72rem;color:{src_color};margin-bottom:.5rem">'
-    f'Data source: <strong>{src_label}</strong></div>',
-    unsafe_allow_html=True,
-)
-
-run_btn = st.sidebar.button("Run Pipeline")  # also triggered by main_run below
-
-# Status indicators
-if hosp_connected and st.session_state.get("results_hospital"):
-    st.sidebar.markdown(
-        '<div style="text-align:center;font-size:.74rem;color:#16a34a;margin-top:.3rem">'
-        '&#10003; Hospital pipeline complete</div>',
-        unsafe_allow_html=True,
-    )
-if st.session_state.get("results_synthetic"):
-    st.sidebar.markdown(
-        '<div style="text-align:center;font-size:.74rem;color:#2563eb;margin-top:.3rem">'
-        '&#10003; Synthetic pipeline complete</div>',
-        unsafe_allow_html=True,
-    )
-
-st.sidebar.markdown("---")
-st.sidebar.markdown(
-    '<div style="font-size:.65rem;color:#334155">Binu — PhD Research &nbsp;·&nbsp; 2026</div>',
-    unsafe_allow_html=True,
-)
+R = st.session_state.results
 
 
-# ── Top navigation bar (always visible, independent of sidebar) ───────────────
-st.markdown('<div class="nav-wrap">', unsafe_allow_html=True)
-_ROW1 = PAGE_SHORT[:5]   # Overview · Biosignals · ANUKF · Q-Flex ViT · BMOCO
-_ROW2 = PAGE_SHORT[5:]   # HQAN+VQC · Adaptive SHARP · Alerts · Comparison
-_cur  = st.session_state["page_idx"]
-
-_r1_cols = st.columns(len(_ROW1))
-for _i, (_col, _label) in enumerate(zip(_r1_cols, _ROW1)):
-    _cls = "nav-active" if _cur == _i else ""
-    with _col:
-        st.markdown(f'<div class="{_cls}">', unsafe_allow_html=True)
-        if st.button(_label, key=f"nav_{_i}"):
-            st.session_state["page_idx"] = _i
-            st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
-
-_r2_cols = st.columns(len(_ROW2))
-for _i, (_col, _label) in enumerate(zip(_r2_cols, _ROW2), start=len(_ROW1)):
-    _cls = "nav-active" if _cur == _i else ""
-    with _col:
-        st.markdown(f'<div class="{_cls}">', unsafe_allow_html=True)
-        if st.button(_label, key=f"nav_{_i}"):
-            st.session_state["page_idx"] = _i
-            st.rerun()
-        st.markdown("</div>", unsafe_allow_html=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
-
-# ── Action bar (below nav, always visible) ────────────────────────────────────
-_a1, _a2, _a3, _a4 = st.columns([3, 2, 2, 3])
-with _a2:
-    if hosp_available:
-        if hosp_connected:
-            if st.button("Disconnect HMS", key="main_disconnect", use_container_width=True):
-                st.session_state["hospital_connected"] = False
-                st.rerun()
-        else:
-            if st.button("Connect to HMS", key="main_connect", use_container_width=True):
-                st.session_state["hospital_connected"] = True
-                st.rerun()
-    else:
-        st.markdown(
-            '<div style="font-size:.72rem;color:#ef4444;padding:.35rem 0">HMS offline</div>',
-            unsafe_allow_html=True,
-        )
-with _a3:
-    run_btn_main = st.button(
-        "Run Pipeline", key="main_run", type="primary", use_container_width=True
-    )
-
-# Status dot
-_src_color = "#16a34a" if hosp_connected else "#64748b"
-_src_label  = "MediCore HMS" if hosp_connected else "Synthetic data"
-_a1.markdown(
-    f'<div style="font-size:.72rem;color:{_src_color};padding:.35rem 0">'
-    f'&#9679; {_src_label}</div>',
-    unsafe_allow_html=True,
-)
-
-st.markdown('<hr style="margin:.3rem 0 .8rem;border-color:#e2e8f0">', unsafe_allow_html=True)
-page = PAGES[st.session_state["page_idx"]]
-
-
-# ── Pipeline runner ────────────────────────────────────────────────────────────
-def _execute_pipeline(seed, fast_mode, hospital_patients=None, n_patients=60):
-    from pipeline import run_pipeline
-    status = st.empty()
-
-    def cb(step, msg):
-        pct = int(step / 9 * 100)
-        status.markdown(
-            f'<div class="a-info" style="padding:.5rem 1rem">'
-            f'Step {step}/8 &nbsp;—&nbsp; {msg} &nbsp; ({pct}%)</div>',
-            unsafe_allow_html=True,
-        )
-
-    result = run_pipeline(
-        n_patients=n_patients, seed=seed,
-        bmoco_iters=8 if fast_mode else 20,
-        rbwka_iters=12 if fast_mode else 30,
-        progress_cb=cb,
-        override_patients=hospital_patients,
-    )
-    status.empty()
-    return result
-
-
-if run_btn or run_btn_main:
-    with st.spinner("Initialising quantum circuits…"):
-        if hosp_connected:
-            patients, dept_rows = hb.fetch_hospital_patients(seed=int(seed))
-            result = _execute_pipeline(int(seed), fast_mode,
-                                       hospital_patients=patients,
-                                       n_patients=len(patients))
-            result["_source"]    = "hospital"
-            result["_dept_rows"] = dept_rows
-            st.session_state["results_hospital"] = result
-        else:
-            result = _execute_pipeline(int(seed), fast_mode,
-                                       n_patients=n_patients or 60)
-            result["_source"] = "synthetic"
-            st.session_state["results_synthetic"] = result
-
-# Active result = hospital if connected, else synthetic
-R = (st.session_state["results_hospital"] if hosp_connected
-     else st.session_state["results_synthetic"])
+def _get_role(feat_name: str) -> str:
+    roles = {
+        "packet_rate":     "DoS indicator",
+        "byte_ratio":      "Exfil / DoS",
+        "duration":        "Session type",
+        "proto_enc":       "Protocol anomaly",
+        "ttl_norm":        "Spoofing indicator",
+        "payload_entropy": "Ransomware / tamper",
+        "conn_count":      "DoS / scanning",
+        "failed_auth":     "Spoofing indicator",
+        "port_enc":        "C2 / ransomware",
+        "flag_enc":        "SYN flood / replay",
+    }
+    return roles.get(feat_name, "")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 1  —  Pipeline Overview
+# PAGE 1 — Pipeline Overview
 # ══════════════════════════════════════════════════════════════════════════════
 if page == PAGES[0]:
-    st.markdown('<div class="page-title">Pipeline Overview</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="page-desc">Binu\'s hierarchical quantum-enhanced IoMT diagnostic framework '
-        '— 9 integrated stages from raw biosignals to clinical alerts.</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="page-title">⚛ Quantum-Enhanced IoMT Intrusion Detection System</div>',
+                unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Binu\'s novel framework: quantum computing applied to IoMT cyberattack detection — replacing classical ML with a quantum pipeline for superior accuracy and lower false-positive rates.</div>',
+                unsafe_allow_html=True)
 
-    # Stage pipeline chart
-    stage_labels = [
-        "Data\nInput", "ANUKF\nFilter", "Q-Flex\nViT", "BMOCO\nSelect",
-        "HQAN\nAttention", "DQA + DRA\nDynamic", "RBWKA\nOptimise",
-        "VQC\nPredict", "Adaptive\nSHARP",
+    if R:
+        c1,c2,c3,c4,c5 = st.columns(5)
+        kpi(c1, "Packets", R['n_packets'], "total processed", C_PRIMARY)
+        kpi(c2, "Attacks", R['n_attacks'], f"{R['n_attacks']/R['n_packets']*100:.0f}% of traffic", C_RED)
+        kpi(c3, "Accuracy", f"{R['accuracy']*100:.1f}%", "quantum VQC", C_GREEN)
+        kpi(c4, "F1 Score", f"{R['f1']*100:.1f}%", "precision × recall", C_TEAL)
+        kpi(c5, "FPR", f"{R['fpr']*100:.1f}%", "false positive rate", C_AMBER)
+        st.markdown("")
+
+    # Architecture diagram
+    st.markdown('<div class="surface">', unsafe_allow_html=True)
+    st.markdown('<div class="sec">9-STAGE QUANTUM IDS PIPELINE</div>', unsafe_allow_html=True)
+    stages = [
+        ("1", "NETWORK INPUT",   "Multimodal IoMT traffic: packet rate, bytes, TTL, entropy, auth failures",  C_PRIMARY),
+        ("2", "ANUKF",           "Adaptive Neural Unscented Kalman Filter — denoises packet streams",           C_TEAL),
+        ("3", "Q-Flex ViT",      "Quantum Flexibility Vision Transformer — extracts quantum features",          C_PURPLE),
+        ("4", "BMOCO",           "Binary Multi-Objective Cheetah Optimization — selects best features",         C_AMBER),
+        ("5", "HQAN",            "Hybrid Quantum Attention Network — quantum-weighted feature analysis",         C_PRIMARY),
+        ("6", "DQA + DRA",       "Dynamic Quantum Attention + Resource Adaptation",                             C_TEAL),
+        ("7", "RBWKA",           "Revamped Black-Winged Kite Algorithm — optimises VQC weights",               C_GREEN),
+        ("8", "VQC",             "Variational Quantum Circuits (4-qubit) — final attack classification",        C_RED),
+        ("9", "Adaptive SHARP",  "Adaptive SHAP — explains which traffic features triggered detection",         C_MUTED),
     ]
-    stage_colors = [C_TEAL, C_PRIMARY, C_PURPLE, C_GREEN,
-                    C_PURPLE, C_PRIMARY, C_AMBER, C_PURPLE, C_GREEN]
+    for num, name, desc, color in stages:
+        st.markdown(f"""
+        <div style="display:flex;align-items:flex-start;margin:.45rem 0;gap:.8rem;">
+          <div style="min-width:2rem;height:2rem;background:{color};border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            color:#fff;font-size:.72rem;font-weight:700;">{num}</div>
+          <div>
+            <span style="font-weight:700;font-size:.85rem;color:{C_TEXT};">{name}</span>
+            <span style="font-size:.8rem;color:{C_MUTED};margin-left:.5rem;">{desc}</span>
+          </div>
+        </div>""", unsafe_allow_html=True)
+        if int(num) < 9:
+            st.markdown(f'<div style="margin-left:.9rem;color:#cbd5e1;font-size:.8rem;">↓</div>',
+                        unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    fig = go.Figure()
-    for i, (lbl, col) in enumerate(zip(stage_labels, stage_colors)):
-        fig.add_trace(go.Scatter(
-            x=[i], y=[0], mode="markers+text",
-            marker=dict(size=58, color=col, opacity=0.9,
-                        line=dict(color="#ffffff", width=2)),
-            text=[lbl], textposition="bottom center",
-            textfont=dict(size=9, color=C_TEXT),
-            hovertext=lbl, hoverinfo="text", showlegend=False,
-        ))
-        if i < len(stage_labels) - 1:
-            fig.add_annotation(
-                x=i + 0.52, y=0, ax=i + 0.48, ay=0,
-                xref="x", yref="y", axref="x", ayref="y",
-                showarrow=True, arrowhead=2, arrowsize=1.4,
-                arrowcolor="#94a3b8", arrowwidth=2,
-            )
+    # Research gaps
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">RESEARCH GAPS ADDRESSED</div>', unsafe_allow_html=True)
+        gaps = [
+            ("Noisy IoMT signals",       "ANUKF adaptive non-linear filtering"),
+            ("Feature redundancy",        "BMOCO multi-objective selection"),
+            ("Computation cost",          "DRA dynamic resource allocation"),
+            ("Poor detection accuracy",   "VQC + HQAN quantum-enhanced inference"),
+            ("Lack of explainability",    "Adaptive SHARP clinical XAI"),
+            ("Isolated research silos",   "Single integrated quantum pipeline"),
+        ]
+        for gap, sol in gaps:
+            st.markdown(f"""
+            <div style="display:flex;gap:.6rem;margin:.35rem 0;font-size:.8rem;">
+              <span style="color:{C_RED};font-weight:700;">✗</span>
+              <span style="color:{C_MUTED};">{gap}</span>
+              <span style="color:{C_MUTED};">→</span>
+              <span style="color:{C_GREEN};font-weight:600;">{sol}</span>
+            </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+    with c2:
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">NOVEL CONTRIBUTIONS</div>', unsafe_allow_html=True)
+        contribs = [
+            ("ANUKF",        "First application to IoMT network stream denoising"),
+            ("Q-Flex ViT",   "Quantum attention for network traffic feature extraction"),
+            ("BMOCO",        "Multi-objective feature selection for IDS"),
+            ("HQAN",         "Hybrid quantum attention for packet classification"),
+            ("RBWKA",        "Nature-inspired VQC weight optimisation"),
+            ("VQC",          "4-qubit quantum circuit for attack/normal classification"),
+            ("Adap. SHARP",  "Context-aware XAI for forensic audit trail"),
+        ]
+        for name, desc in contribs:
+            st.markdown(f"""
+            <div style="display:flex;gap:.6rem;margin:.35rem 0;font-size:.8rem;">
+              <span style="color:{C_PRIMARY};font-weight:700;min-width:4.5rem;">{name}</span>
+              <span style="color:{C_MUTED};">{desc}</span>
+            </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    fig.update_layout(
-        height=210, showlegend=False,
-        xaxis=dict(visible=False, range=[-0.6, len(stage_labels) - 0.4]),
-        yaxis=dict(visible=False, range=[-0.9, 0.45]),
-        **_pl(margin=dict(l=10, r=10, t=10, b=95), plot_bgcolor=C_BG),
-    )
-    st.plotly_chart(fig, use_container_width=True)
-
-    # Summary KPIs
-    c1, c2, c3, c4 = st.columns(4)
-    kpi(c1, "Pipeline Stages",    "9",  "End-to-end integrated",         C_PRIMARY)
-    kpi(c2, "Quantum Circuits",   "2",  "VQC + Q-Flex attention",        C_PURPLE)
-    kpi(c3, "Biosignal Inputs",   "5",  "ECG · BP · Temp · EEG · SpO2", C_TEAL)
-    kpi(c4, "Novel Algorithms",   "5",  "ANUKF · BMOCO · HQAN · RBWKA · VQC", C_GREEN)
-
-    # Research gap table
-    st.markdown('<div class="sec">Research Gaps Addressed</div>', unsafe_allow_html=True)
-    import pandas as pd
-    df = pd.DataFrame([
-        ["Noisy biosignals",        "ANUKF adaptive non-linear filtering",     "Classical low-pass / basic Kalman"],
-        ["Feature redundancy",      "BMOCO binary multi-objective optimisation","PCA / manual selection"],
-        ["Computational overhead",  "DRA dynamic resource allocation",          "Fixed-size classical models"],
-        ["Diagnosis accuracy",      "VQC + HQAN quantum-enhanced inference",    "Classical CNN / LSTM"],
-        ["No explainability",       "Adaptive SHARP context-aware XAI",         "Black-box predictions"],
-        ["Isolated research silos", "Single integrated 9-stage pipeline",       "Signal / optimise / predict separately"],
-    ], columns=["Research Gap", "This Framework", "Existing Approaches"])
-    st.dataframe(df, use_container_width=True, hide_index=True)
-
-    # Algorithm reference
-    st.markdown('<div class="sec">Novel Algorithm Reference</div>', unsafe_allow_html=True)
-    df2 = pd.DataFrame([
-        ["ANUKF",         "Adaptive Neural Unscented Kalman Filter",  "Stage 2",  "Biosignal denoising"],
-        ["Q-Flex ViT",    "Quantum Flexibility Vision Transformer",   "Stage 3",  "Feature extraction"],
-        ["BMOCO",         "Binary Multi-Objective Cheetah Optimisation","Stage 4","Feature selection"],
-        ["HQAN",          "Hybrid Quantum Attention Network",          "Stage 5",  "Attention-based analysis"],
-        ["DQA",           "Dynamic Quantum Attention",                 "Stage 5",  "Adaptive attention weighting"],
-        ["DRA",           "Dynamic Resource Allocation",               "Stage 5",  "Runtime resource management"],
-        ["RBWKA",         "Revamped Black-Winged Kite Algorithm",      "Stage 6",  "VQC weight optimisation"],
-        ["VQC",           "Variational Quantum Circuits",              "Stage 7",  "Quantum-classical prediction"],
-        ["Adaptive SHARP","Adaptive SHAP",                             "Stage 8",  "Clinical explainability"],
-    ], columns=["Acronym", "Full Name", "Stage", "Role"])
-    st.dataframe(df2, use_container_width=True, hide_index=True)
-
+    if not R:
+        st.info("Run the pipeline from the sidebar to see live results across all pages.")
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 2  —  Biosignal Input
+# PAGE 2 — Network Traffic Input
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[1]:
-    st.markdown('<div class="stage-tag">Stage 1  —  Data Collection</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">Biosignal Input</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Multimodal physiological data streams: ECG, Blood Pressure, Temperature, EEG, and Pulse Oximetry.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 1 — Input</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Network Traffic Input</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Multimodal IoMT network packet features fed into the quantum pipeline.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Click <strong>Run Full Pipeline</strong> in the sidebar to load patient data.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline to see traffic data.")
     else:
-        patients = R["patients"]
-        pid = st.selectbox(
-            "Select patient",
-            range(len(patients)),
-            format_func=lambda i: f"Patient {i:03d}  —  {'Abnormal' if patients[i].label else 'Normal'}",
-        )
-        p = patients[pid]
+        packets = R['packets']
+        atk_counts = R['attack_counts']
 
-        if p.label:
-            st.markdown('<div class="a-critical"><strong>Ground truth: ABNORMAL</strong> — Patient flags active diagnostic concern.</div>', unsafe_allow_html=True)
-        else:
-            st.markdown('<div class="a-normal"><strong>Ground truth: NORMAL</strong> — All vitals within expected range.</div>', unsafe_allow_html=True)
+        c1, c2 = st.columns([1, 2])
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">TRAFFIC DISTRIBUTION</div>', unsafe_allow_html=True)
+            labels = list(atk_counts.keys())
+            values = list(atk_counts.values())
+            colors = [ATK_COLORS.get(l, C_MUTED) for l in labels]
+            fig = go.Figure(go.Pie(labels=labels, values=values, marker_colors=colors,
+                                   hole=0.42, textinfo="label+percent"))
+            fig.update_layout(**_pd(), height=280, margin=dict(l=0,r=0,t=10,b=0),
+                              showlegend=False)
+            st.plotly_chart(fig, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        t = np.arange(len(p.ecg))
-        fig = make_subplots(
-            rows=3, cols=2,
-            subplot_titles=["ECG", "Systolic Blood Pressure",
-                            "Body Temperature", "EEG",
-                            "SpO2", "Diastolic Blood Pressure"],
-            vertical_spacing=0.12, horizontal_spacing=0.1,
-        )
-        signals = [
-            (1, 1, p.ecg,  C_PRIMARY, "mV"),
-            (1, 2, p.sbp,  C_RED,     "mmHg"),
-            (2, 1, p.temp, C_AMBER,   "deg C"),
-            (2, 2, p.eeg,  C_PURPLE,  "uV"),
-            (3, 1, p.spo2, C_GREEN,   "%"),
-            (3, 2, p.dbp,  C_TEAL,    "mmHg"),
-        ]
-        for r, c, sig, col, unit in signals:
-            fig.add_trace(
-                go.Scatter(x=t, y=sig, line=dict(color=col, width=1.3),
-                           name=unit, showlegend=False),
-                row=r, col=c,
-            )
-        fig.update_layout(height=520, **_pl(title=f"Patient {pid:03d}  —  Raw Biosignal Streams"))
-        st.plotly_chart(fig, use_container_width=True)
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">FEATURE DISTRIBUTION BY ATTACK TYPE</div>', unsafe_allow_html=True)
+            X_raw = R['X_raw']
+            feat_names = R['feature_names']
+            atk_types_list = R['attack_types']
+            import pandas as pd
+            df = pd.DataFrame(X_raw, columns=feat_names)
+            df['attack_type'] = atk_types_list
+            feat = st.selectbox("Feature", feat_names[:5])
+            fig2 = px.box(df, x="attack_type", y=feat, color="attack_type",
+                          color_discrete_map=ATK_COLORS)
+            fig2.update_layout(**_pd(), height=260, showlegend=False,
+                               margin=dict(l=0,r=0,t=10,b=0))
+            st.plotly_chart(fig2, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        c1, c2, c3, c4, c5 = st.columns(5)
-        kpi(c1, "Heart Rate (ECG)", f"{60 + p.label*28 + int(np.std(p.ecg)*4)}", "bpm", C_PRIMARY)
-        kpi(c2, "Systolic BP",      f"{np.mean(p.sbp):.1f}", "mmHg", C_RED)
-        kpi(c3, "Temperature",      f"{np.mean(p.temp):.2f}", "deg C", C_AMBER)
-        kpi(c4, "SpO2",             f"{np.mean(p.spo2):.1f}", "%",    C_GREEN)
-        kpi(c5, "EEG Beta Power",   f"{np.var(p.eeg):.3f}", "uV^2",  C_PURPLE)
+        # Feature heatmap
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">FEATURE CORRELATION MATRIX</div>', unsafe_allow_html=True)
+        corr = np.corrcoef(X_raw.T)
+        fig3 = go.Figure(go.Heatmap(
+            z=corr, x=feat_names, y=feat_names,
+            colorscale="RdBu", zmid=0,
+            text=np.round(corr, 2), texttemplate="%{text}",
+        ))
+        fig3.update_layout(**_pd(), height=320, margin=dict(l=0,r=0,t=10,b=0))
+        st.plotly_chart(fig3, use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
+        # Sample packets table
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">SAMPLE PACKETS</div>', unsafe_allow_html=True)
+        import pandas as pd
+        rows = []
+        for p in packets[:20]:
+            row = {"ID": p.packet_id, "Type": p.attack_type, "Label": "ATTACK" if p.label else "NORMAL"}
+            for fi, fn in enumerate(feat_names):
+                row[fn] = round(float(p.features[fi]), 3)
+            rows.append(row)
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, height=280)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 3  —  ANUKF Preprocessing
+# PAGE 3 — ANUKF Preprocessing
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[2]:
-    st.markdown('<div class="stage-tag">Stage 2  —  Preprocessing</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">ANUKF  —  Adaptive Neural Unscented Kalman Filter</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Removes noise and uncertainty from biosignals using non-linear state estimation with per-signal adaptive noise covariance (Q, R) tuned by a neural component.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 2 — ANUKF</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Adaptive Neural Unscented Kalman Filter</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Denoises IoMT packet rate and byte-count streams. Adaptive Q/R parameters inferred from signal statistics.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline to see ANUKF results.")
     else:
-        sig_choice = st.selectbox(
-            "Signal channel",
-            ["ecg", "sbp", "dbp", "temp", "eeg", "spo2"],
-            format_func=lambda s: s.upper(),
-        )
-        sample = R["anukf_sample"][sig_choice]
-        t = np.arange(len(sample["raw"]))
+        s = R['anukf_sample']
+        c1, c2 = st.columns(2)
+        t = np.arange(len(s['raw_rate']))
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">PACKET RATE — RAW vs FILTERED</div>', unsafe_allow_html=True)
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(x=t, y=s['raw_rate'],  name="Raw",      line=dict(color="#94a3b8",width=1)))
+            fig.add_trace(go.Scatter(x=t, y=s['filt_rate'], name="Filtered", line=dict(color=C_PRIMARY,width=2)))
+            fig.update_layout(**_pd(), height=240, margin=dict(l=0,r=0,t=10,b=0),
+                              xaxis_title="Timestep", yaxis_title="Packets/sec")
+            st.plotly_chart(fig, use_container_width=True)
+            st.markdown(f'<div style="font-size:.78rem;color:{C_MUTED};">Sample attack type: <b>{s["attack_type"]}</b></div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=t, y=sample["raw"], name="Raw (noisy)",
-                                  line=dict(color=C_RED, width=1.1, dash="dot")))
-        fig.add_trace(go.Scatter(x=t, y=sample["filtered"], name="ANUKF filtered",
-                                  line=dict(color=C_PRIMARY, width=2.2)))
-        fig.update_layout(height=360,
-                          **_pl(title=f"ANUKF  —  {sig_choice.upper()}  Signal Denoising",
-                                legend=dict(orientation="h", y=1.08)))
-        st.plotly_chart(fig, use_container_width=True)
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">BYTE COUNT — RAW vs FILTERED</div>', unsafe_allow_html=True)
+            fig2 = go.Figure()
+            fig2.add_trace(go.Scatter(x=t, y=s['raw_byte'],  name="Raw",      line=dict(color="#94a3b8",width=1)))
+            fig2.add_trace(go.Scatter(x=t, y=s['filt_byte'], name="Filtered", line=dict(color=C_TEAL,width=2)))
+            fig2.update_layout(**_pd(), height=240, margin=dict(l=0,r=0,t=10,b=0),
+                               xaxis_title="Timestep", yaxis_title="Bytes")
+            st.plotly_chart(fig2, use_container_width=True)
+            snr = 10 * np.log10((np.var(s['filt_rate'])+1e-12)/(np.var(s['raw_rate']-s['filt_rate'])+1e-12))
+            st.markdown(f'<div style="font-size:.78rem;color:{C_MUTED};">Signal-to-noise improvement: <b>{snr:.1f} dB</b></div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        c1, c2, c3, c4 = st.columns(4)
-        snr = sample["snr_db"]
-        kpi(c1, "SNR",             f"{snr:+.1f} dB", "Signal-to-noise ratio",   C_PRIMARY if snr > 0 else C_RED)
-        kpi(c2, "Process Noise Q", f"{sample['Q']:.2e}", "Adaptive (auto-tuned)", C_PURPLE)
-        kpi(c3, "Meas. Noise R",   f"{sample['R']:.2e}", "Adaptive (auto-tuned)", C_TEAL)
-        kpi(c4, "Noise Removed",   f"{np.std(sample['residual']):.4f}", "Residual std", C_AMBER)
-
-        # Residual
-        fig2 = go.Figure()
-        fig2.add_trace(go.Scatter(x=t, y=sample["residual"], name="Residual",
-                                   line=dict(color=C_SLATE, width=1.0),
-                                   fill="tozeroy", fillcolor="rgba(100,116,139,0.12)"))
-        fig2.update_layout(height=200, **_pl(title="Residual Noise (Raw  minus  Filtered)"))
-        st.plotly_chart(fig2, use_container_width=True)
-
-        # SNR across all signals
-        st.markdown('<div class="sec">SNR Improvement Across All Signal Channels</div>', unsafe_allow_html=True)
-        snr_map = {k: R["anukf_sample"][k]["snr_db"] for k in R["anukf_sample"]}
-        fig3 = go.Figure(go.Bar(
-            x=list(snr_map.keys()), y=list(snr_map.values()),
-            marker_color=[C_GREEN if v > 0 else C_RED for v in snr_map.values()],
-            text=[f"{v:+.1f} dB" for v in snr_map.values()],
-            textposition="outside", textfont=dict(size=11, color=C_TEXT),
-        ))
-        fig3.update_layout(height=280, **_pl(title="ANUKF SNR by Channel"))
+        # Per attack type
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">PACKET RATE BY ATTACK TYPE (raw vs filtered)</div>', unsafe_allow_html=True)
+        by_type = R['anukf_by_type']
+        n_types = len(by_type)
+        fig3 = make_subplots(rows=1, cols=n_types, subplot_titles=list(by_type.keys()))
+        for ci, (atk, data) in enumerate(by_type.items(), 1):
+            t2 = np.arange(len(data['raw_rate']))
+            fig3.add_trace(go.Scatter(x=t2, y=data['raw_rate'],  name="Raw",
+                                      line=dict(color="#94a3b8",width=1), showlegend=ci==1), row=1, col=ci)
+            fig3.add_trace(go.Scatter(x=t2, y=data['filt_rate'], name="Filtered",
+                                      line=dict(color=ATK_COLORS.get(atk,C_PRIMARY),width=2),
+                                      showlegend=ci==1), row=1, col=ci)
+        fig3.update_layout(**_pd(), height=260, margin=dict(l=0,r=0,t=30,b=0))
         st.plotly_chart(fig3, use_container_width=True)
-
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 4  —  Q-Flex ViT
+# PAGE 4 — Q-Flex ViT
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[3]:
-    st.markdown('<div class="stage-tag">Stage 3  —  Feature Extraction</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">Q-Flex ViT  —  Quantum Flexibility Vision Transformer</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Extracts multimodal features using a hybrid quantum-classical Vision Transformer. Quantum attention heads compute cross-entangled similarity between query and key projections.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 3 — Q-Flex ViT</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Quantum Flexibility Vision Transformer</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Quantum attention kernel encodes query/key feature pairs into 4-qubit entangled states. Cross-entanglement (CNOT + CRZ gates) captures correlations classical attention cannot.</div>',
+                unsafe_allow_html=True)
 
-    tab1, tab2 = st.tabs(["Quantum Attention Circuit", "Feature Space Analysis"])
+    if not R:
+        st.info("Run the pipeline to see Q-Flex ViT results.")
+    else:
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">QUANTUM ATTENTION CIRCUIT</div>', unsafe_allow_html=True)
+            gates = [
+                ("AngleEmbed q[0-1]", "Encode query features", C_PRIMARY),
+                ("AngleEmbed q[2-3]", "Encode key features",   C_TEAL),
+                ("H(0) H(2)",         "Superposition layer",   C_PURPLE),
+                ("CNOT(0→2)",         "Cross-entanglement",    C_AMBER),
+                ("CNOT(1→3)",         "Cross-entanglement",    C_AMBER),
+                ("CRZ(π/4, 0→1)",     "Controlled rotation",   C_GREEN),
+                ("CRZ(π/4, 2→3)",     "Controlled rotation",   C_GREEN),
+                ("H(0) H(2)",         "Interference layer",    C_PURPLE),
+                ("Measure Z[0-3]",    "→ 4 attention weights", C_RED),
+            ]
+            for gate, desc, color in gates:
+                st.markdown(f"""
+                <div style="display:flex;align-items:center;gap:.6rem;margin:.3rem 0;">
+                  <code style="background:{color}22;color:{color};border:1px solid {color}55;
+                    border-radius:4px;padding:.1rem .4rem;font-size:.75rem;min-width:11rem;">{gate}</code>
+                  <span style="font-size:.78rem;color:{C_MUTED};">{desc}</span>
+                </div>""", unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-    with tab1:
-        from quantum_circuits import draw_attention_circuit
-        import matplotlib
-        import matplotlib.pyplot as plt
-        matplotlib.use("Agg")
-        with st.spinner("Rendering circuit diagram…"):
-            fig_circ = draw_attention_circuit()
-        st.pyplot(fig_circ, use_container_width=True)
-        st.markdown(
-            '<div class="surface">'
-            '<strong>Circuit description</strong><br>'
-            'Wires 0-1 encode the <em>Query</em> projection via angle embedding. '
-            'Wires 2-3 encode the <em>Key</em> projection. '
-            'Hadamard + CNOT gates create cross-entanglement between query and key subspaces. '
-            'Controlled-RZ gates introduce phase-shifted attention weights. '
-            'Final Z-basis measurements yield four attention coefficients that weight the feature vector.'
-            '</div>',
-            unsafe_allow_html=True,
-        )
-
-    with tab2:
-        if R is None:
-            st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
-        else:
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">FEATURE SPACE (NORMALISED)</div>', unsafe_allow_html=True)
+            X_norm = R['X_norm']
+            feat_names = R['feature_names']
+            atk_types_list = R['attack_types']
             import pandas as pd
-            X = R["X_norm"]
-            y = R["y"]
-            names = R["feature_names"]
-
-            # Top-feature correlation with label
-            corr = np.abs(np.corrcoef(X.T, y)[:-1, -1])
-            top18 = np.argsort(corr)[-18:][::-1]
-            corr_mat = np.corrcoef(X[:, top18].T)
-            fig = px.imshow(
-                corr_mat,
-                x=[names[i] for i in top18],
-                y=[names[i] for i in top18],
-                color_continuous_scale="RdBu_r", zmin=-1, zmax=1,
-                title="Feature Correlation Matrix (top-18 label-correlated features)",
-            )
-            fig.update_layout(height=420, **_pl())
+            df = pd.DataFrame(X_norm[:, :5], columns=feat_names[:5])
+            df['type'] = atk_types_list
+            fig = px.scatter(df, x=feat_names[0], y=feat_names[5] if len(feat_names)>5 else feat_names[1],
+                             color="type", color_discrete_map=ATK_COLORS,
+                             title="Feature space (post-normalisation)")
+            fig.update_layout(**_pd(), height=300, margin=dict(l=0,r=0,t=30,b=0))
             st.plotly_chart(fig, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            # Class separation scatter
-            top2 = np.argsort(corr)[-2:]
-            fig2 = px.scatter(
-                x=X[:, top2[1]], y=X[:, top2[0]],
-                color=["Abnormal" if yi else "Normal" for yi in y],
-                color_discrete_map={"Normal": C_GREEN, "Abnormal": C_RED},
-                labels={"x": names[top2[1]], "y": names[top2[0]]},
-                title="Top-2 Features  —  Class Separation",
-            )
-            fig2.update_layout(height=340, **_pl())
-            st.plotly_chart(fig2, use_container_width=True)
-
+        # Attention formula
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">Q-FLEX ATTENTION FORMULA</div>', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div style="font-family:monospace;font-size:.82rem;color:{C_TEXT};
+          background:#f8fafc;border:1px solid {C_BORDER};border-radius:6px;padding:1rem;line-height:2;">
+          <b>Query:</b> q₂ = query[:2] / ‖query[:2]‖ × (π/2)<br>
+          <b>Key:</b>   k₂ = key[:2]   / ‖key[:2]‖   × (π/2)<br>
+          <b>Encode:</b> AngleEmbedding(q₂ → w[0,1]),  AngleEmbedding(k₂ → w[2,3])<br>
+          <b>Entangle:</b> H(0)·H(2) → CNOT(0→2) → CNOT(1→3) → CRZ(π/4) × 2<br>
+          <b>Output:</b> attn = (⟨Z₀⟩, ⟨Z₁⟩, ⟨Z₂⟩, ⟨Z₃⟩) mapped to [0,1], normalised<br>
+        </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 5  —  BMOCO Feature Selection
+# PAGE 5 — BMOCO Feature Selection
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[4]:
-    st.markdown('<div class="stage-tag">Stage 4  —  Feature Selection</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">BMOCO  —  Binary Multi-Objective Cheetah Optimisation</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Selects the optimal feature subset by simultaneously maximising diagnostic accuracy and minimising feature count. Three hunting phases: Scout (global), Chase (convergence), Attack (local refinement).</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 4 — BMOCO</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Binary Multi-Objective Cheetah Optimization</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Selects the optimal feature subset — maximising detection accuracy while minimising feature count. Three hunting phases: Scout → Chase → Attack.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline to see BMOCO results.")
     else:
-        sel_idx  = R["sel_idx"]
-        history  = R["bmoco_history"]
-        n_total  = len(R["feature_names"])
-        n_sel    = len(sel_idx)
+        sel_idx   = R['sel_idx']
+        sel_names = R['sel_feature_names']
+        all_names = R['feature_names']
+        history   = R['bmoco_history']
 
-        c1, c2, c3, c4 = st.columns(4)
-        kpi(c1, "Features Selected", f"{n_sel}",
-            f"of {n_total} total", C_PRIMARY)
-        kpi(c2, "Dimensionality Reduction",
-            f"{100*(1 - n_sel/n_total):.0f}%",
-            "Feature count reduced", C_GREEN)
-        kpi(c3, "Best Fitness",
-            f"{R['bmoco_best_fitness']:.4f}",
-            "Accuracy minus feature penalty", C_PURPLE)
-        kpi(c4, "Iterations", str(len(history)), "Cheetah search steps", C_TEAL)
-
-        tab1, tab2 = st.tabs(["Convergence", "Feature Map"])
-
-        with tab1:
-            iters = [h["iteration"] for h in history]
-            fits  = [h["best_fitness"] for h in history]
-            nsel  = [h["n_selected"] for h in history]
-            fig = make_subplots(rows=2, cols=1,
-                                subplot_titles=["Fitness Convergence", "Number of Selected Features"],
-                                vertical_spacing=0.15)
-            fig.add_trace(go.Scatter(x=iters, y=fits, name="Fitness",
-                                      line=dict(color=C_PRIMARY, width=2),
-                                      fill="tozeroy", fillcolor="rgba(37,99,235,0.08)"),
-                          row=1, col=1)
-            fig.add_trace(go.Scatter(x=iters, y=nsel, name="Features",
-                                      line=dict(color=C_AMBER, width=2),
-                                      fill="tozeroy", fillcolor="rgba(217,119,6,0.08)"),
-                          row=2, col=1)
-            fig.update_layout(height=400, showlegend=False,
-                              **_pl(title="BMOCO Cheetah Optimisation Convergence"))
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">SELECTED FEATURES</div>', unsafe_allow_html=True)
+            colors = [C_GREEN if i in sel_idx else "#e2e8f0" for i in range(len(all_names))]
+            fig = go.Figure(go.Bar(
+                x=all_names, y=[1]*len(all_names),
+                marker_color=colors, text=["✓" if i in sel_idx else "" for i in range(len(all_names))],
+                textposition="inside",
+            ))
+            fig.update_layout(**_pd(), height=260, showlegend=False,
+                              yaxis_visible=False, margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig, use_container_width=True)
+            st.markdown(f'<div style="font-size:.82rem;color:{C_MUTED};">Selected: <b>{len(sel_idx)}/{len(all_names)}</b> features — {", ".join(sel_names)}</div>',
+                        unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        with tab2:
-            import pandas as pd
-            sel_set = set(sel_idx)
-            df = pd.DataFrame(
-                [(fn, "Selected" if i in sel_set else "Removed")
-                 for i, fn in enumerate(R["feature_names"])],
-                columns=["Feature", "Status"],
-            )
-            # Highlight selected vs removed
-            def _style(val):
-                if val == "Selected":
-                    return "background-color:#f0fdf4;color:#15803d;font-weight:600"
-                return "background-color:#fef2f2;color:#991b1b"
-            st.dataframe(df.style.applymap(_style, subset=["Status"]),
-                         height=420, use_container_width=True, hide_index=True)
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">CONVERGENCE HISTORY</div>', unsafe_allow_html=True)
+            if history:
+                fig2 = go.Figure(go.Scatter(
+                    y=history, mode="lines+markers",
+                    line=dict(color=C_PRIMARY, width=2),
+                    marker=dict(size=4, color=C_PRIMARY),
+                ))
+                fig2.update_layout(**_pd(), height=240, margin=dict(l=0,r=0,t=10,b=0),
+                                   xaxis_title="Iteration", yaxis_title="Best Fitness")
+                st.plotly_chart(fig2, use_container_width=True)
+            st.markdown(f'<div style="font-size:.78rem;color:{C_MUTED};">Best fitness: <b>{R["bmoco_best_fitness"]:.4f}</b> (accuracy×0.85 − feature_ratio×0.15)</div>',
+                        unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
+        # BMOCO phases explanation
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">HUNTING PHASES</div>', unsafe_allow_html=True)
+        cols = st.columns(3)
+        phases = [
+            ("Scout (0-33%)",  "Broad global exploration — random feature subset trials", C_AMBER),
+            ("Chase (33-70%)", "Converge toward best solution (prey) found so far",       C_PRIMARY),
+            ("Attack (70-100%)","Fine-grained local refinement — exploit best region",    C_GREEN),
+        ]
+        for col, (name, desc, color) in zip(cols, phases):
+            col.markdown(f"""
+            <div style="text-align:center;padding:.8rem;background:{color}11;
+              border:1px solid {color}33;border-radius:8px;">
+              <div style="font-weight:700;font-size:.85rem;color:{color};">{name}</div>
+              <div style="font-size:.75rem;color:{C_MUTED};margin-top:.3rem;">{desc}</div>
+            </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 6  —  HQAN + VQC Prediction
+# PAGE 6 — HQAN + VQC Detection
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[5]:
-    st.markdown('<div class="stage-tag">Stages 5–7  —  HQAN  ·  RBWKA  ·  VQC</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">HQAN + VQC  —  Quantum Prediction</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Hybrid Quantum Attention Network analyses selected features; RBWKA optimises VQC gate parameters; Variational Quantum Circuit produces the final diagnosis probability.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stages 5-7 — HQAN + RBWKA + VQC</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Quantum Attack Detection Results</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">HQAN applies quantum attention, RBWKA optimises VQC weights, VQC classifies each IoMT packet as ATTACK or NORMAL.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline to see detection results.")
     else:
-        tab1, tab2, tab3, tab4 = st.tabs(["VQC Circuit", "RBWKA Optimisation", "Attention Map", "Results"])
+        cm = R['confusion']
+        c1,c2,c3,c4,c5 = st.columns(5)
+        kpi(c1, "Accuracy",  f"{R['accuracy']*100:.1f}%",  "overall",         C_PRIMARY)
+        kpi(c2, "Precision", f"{R['precision']*100:.1f}%", "attack precision", C_GREEN)
+        kpi(c3, "Recall",    f"{R['recall']*100:.1f}%",    "attack recall",    C_TEAL)
+        kpi(c4, "F1 Score",  f"{R['f1']*100:.1f}%",        "harmonic mean",    C_PURPLE)
+        kpi(c5, "FPR",       f"{R['fpr']*100:.1f}%",       "false positives",  C_RED)
+        st.markdown("")
 
-        with tab1:
-            from quantum_circuits import draw_vqc_circuit
-            import matplotlib
-            matplotlib.use("Agg")
-            with st.spinner("Rendering VQC diagram…"):
-                fig_vqc = draw_vqc_circuit()
-            st.pyplot(fig_vqc, use_container_width=True)
-            st.markdown(
-                '<div class="surface">'
-                '<strong>VQC Architecture  —  4 qubits, 3 layers</strong><br>'
-                '<ul style="margin:.4rem 0 0 1rem;color:#334155;font-size:.82rem">'
-                '<li><strong>Angle Embedding</strong> — input features encoded as qubit rotation angles (RY)</li>'
-                '<li><strong>Strongly Entangling Layers</strong> — parametrised RZ/RY/RX gates with full CNOT entanglement</li>'
-                '<li><strong>Measurement</strong> — expectation value Z0 x Z1 mapped to [0, 1] probability</li>'
-                '<li><strong>Optimised by RBWKA</strong> — kite algorithm searches optimal gate angles without gradients</li>'
-                '</ul></div>',
-                unsafe_allow_html=True,
-            )
-
-        with tab2:
-            hist = R["rbwka_history"]
-            if hist:
-                iters = [h["iteration"] for h in hist]
-                fits  = [h["best_fitness"] for h in hist]
-                fig = go.Figure(go.Scatter(
-                    x=iters, y=fits, name="Best accuracy",
-                    line=dict(color=C_AMBER, width=2.2),
-                    fill="tozeroy", fillcolor="rgba(217,119,6,0.08)",
-                ))
-                fig.add_hline(y=R["rbwka_best_fitness"], line_dash="dash",
-                              line_color=C_GREEN,
-                              annotation_text=f"Best: {R['rbwka_best_fitness']:.3f}",
-                              annotation_font_color=C_GREEN)
-                fig.update_layout(height=340,
-                                  **_pl(title="RBWKA  —  VQC Weight Optimisation Convergence"))
-                st.plotly_chart(fig, use_container_width=True)
-            c1, c2 = st.columns(2)
-            kpi(c1, "Final Training Accuracy", f"{R['rbwka_best_fitness']*100:.1f}%",
-                "On optimisation subset", C_GREEN)
-            kpi(c2, "RBWKA Iterations", str(len(hist)), "Kite search steps", C_AMBER)
-
-        with tab3:
-            attn = R["hqan_attn"]
-            n_show = min(50, len(attn))
-            fig = px.imshow(
-                attn[:n_show].T,
-                labels=dict(x="Patient", y="Attention Head", color="Weight"),
-                color_continuous_scale="Blues",
-                title="HQAN Quantum Attention Weights",
-            )
-            fig.update_layout(height=280, **_pl())
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">CONFUSION MATRIX</div>', unsafe_allow_html=True)
+            z = [[cm['TN'], cm['FP']], [cm['FN'], cm['TP']]]
+            fig = go.Figure(go.Heatmap(
+                z=z, x=["Pred Normal","Pred Attack"], y=["True Normal","True Attack"],
+                colorscale=[[0,"#f0fdf4"],[0.5,"#bbf7d0"],[1,"#16a34a"]],
+                text=z, texttemplate="%{text}", textfont_size=18,
+            ))
+            fig.update_layout(**_pd(), height=280, margin=dict(l=0,r=0,t=10,b=0))
             st.plotly_chart(fig, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-        with tab4:
-            probs = R["probs"]
-            preds = R["preds"]
-            y     = R["y"]
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">PER ATTACK TYPE DETECTION RATE</div>', unsafe_allow_html=True)
+            atk_det = R['atk_detection']
+            atks = list(atk_det.keys())
+            vals = [atk_det[a]*100 for a in atks]
+            colors = [ATK_COLORS.get(a, C_PRIMARY) for a in atks]
+            fig2 = go.Figure(go.Bar(
+                x=atks, y=vals, marker_color=colors,
+                text=[f"{v:.1f}%" for v in vals], textposition="outside",
+            ))
+            fig2.update_layout(**_pd(), height=260, margin=dict(l=0,r=0,t=10,b=20),
+                               yaxis=dict(range=[0,115]), yaxis_title="Detection Rate (%)")
+            st.plotly_chart(fig2, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            c1, c2, c3, c4 = st.columns(4)
-            kpi(c1, "Accuracy",  f"{R['accuracy']*100:.1f}%",  "", C_GREEN)
-            kpi(c2, "Precision", f"{R['precision']*100:.1f}%", "", C_PRIMARY)
-            kpi(c3, "Recall",    f"{R['recall']*100:.1f}%",    "", C_AMBER)
-            kpi(c4, "F1 Score",  f"{R['f1']*100:.1f}%",        "", C_PURPLE)
+        # ROC curve
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">CONFIDENCE DISTRIBUTION</div>', unsafe_allow_html=True)
+            probs = R['probs']; y = R['y']
+            fig3 = go.Figure()
+            fig3.add_trace(go.Histogram(x=probs[y==0], name="Normal",
+                                        marker_color=C_GREEN, opacity=0.7, nbinsx=20))
+            fig3.add_trace(go.Histogram(x=probs[y==1], name="Attack",
+                                        marker_color=C_RED, opacity=0.7, nbinsx=20))
+            fig3.add_vline(x=0.5, line_dash="dash", line_color=C_AMBER, annotation_text="threshold")
+            fig3.update_layout(**_pd(), barmode="overlay", height=240,
+                               margin=dict(l=0,r=0,t=10,b=0))
+            st.plotly_chart(fig3, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-            col_a, col_b = st.columns(2)
-
-            with col_a:
-                fig2 = go.Figure()
-                fig2.add_trace(go.Histogram(x=probs[y==0], name="Normal",
-                                             nbinsx=20, marker_color=C_GREEN, opacity=0.75))
-                fig2.add_trace(go.Histogram(x=probs[y==1], name="Abnormal",
-                                             nbinsx=20, marker_color=C_RED, opacity=0.75))
-                fig2.add_vline(x=0.5, line_dash="dash", line_color=C_AMBER,
-                               annotation_text="Threshold")
-                fig2.update_layout(barmode="overlay", height=320,
-                                   **_pl(title="VQC Output Probability Distribution"))
-                st.plotly_chart(fig2, use_container_width=True)
-
-            with col_b:
-                cm = R["confusion"]
-                fig3 = px.imshow(
-                    [[cm["TN"], cm["FP"]], [cm["FN"], cm["TP"]]],
-                    x=["Pred Normal", "Pred Abnormal"],
-                    y=["True Normal", "True Abnormal"],
-                    text_auto=True, color_continuous_scale="Blues",
-                    title="Confusion Matrix",
-                )
-                fig3.update_layout(height=320, **_pl())
-                st.plotly_chart(fig3, use_container_width=True)
-
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">RBWKA OPTIMISATION HISTORY</div>', unsafe_allow_html=True)
+            history = R['rbwka_history']
+            if history:
+                fig4 = go.Figure(go.Scatter(
+                    y=history, mode="lines+markers",
+                    line=dict(color=C_GREEN, width=2),
+                    marker=dict(size=4),
+                ))
+                fig4.update_layout(**_pd(), height=220, margin=dict(l=0,r=0,t=10,b=0),
+                                   xaxis_title="Iteration", yaxis_title="Best Accuracy")
+                st.plotly_chart(fig4, use_container_width=True)
+            st.markdown(f'<div style="font-size:.78rem;color:{C_MUTED};">RBWKA best accuracy: <b>{R["rbwka_best_fitness"]:.4f}</b></div>',
+                        unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 7  —  Adaptive SHARP
+# PAGE 7 — Adaptive SHARP
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[6]:
-    st.markdown('<div class="stage-tag">Stage 8  —  Explainability</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">Adaptive SHARP  —  Clinical Explainability</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Adaptive SHAP adapts explanation granularity to anomaly severity. Features above the adaptive threshold are flagged as clinically significant.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 8 — Adaptive SHARP</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Adaptive SHAP — Attack Feature Explainability</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Permutation-based importance reveals which IoMT network features drive attack detection decisions — forensic-grade audit trail.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline to see SHARP results.")
     else:
-        importance = R["importance"]
-        feat_names = R["sharp_feature_names"]
-        threshold  = R["adaptive_threshold"]
-        sig_mask   = R["significant_features"]
-        order      = R["importance_order"]
+        importance   = R['importance']
+        feat_names   = R['sharp_feature_names']
+        order        = R['importance_order']
+        threshold    = R['adaptive_threshold']
+        significant  = R['significant_features']
 
-        # Global importance bar chart
-        colors = [C_PRIMARY if sig_mask[i] else C_SLATE for i in order]
-        fig = go.Figure(go.Bar(
-            x=importance[order],
-            y=[feat_names[i] for i in order],
-            orientation="h",
-            marker_color=colors,
-            text=[f"{importance[i]:.4f}" for i in order],
-            textposition="outside",
-            textfont=dict(size=10, color=C_TEXT),
-        ))
-        fig.add_vline(x=threshold, line_dash="dash", line_color=C_AMBER,
-                      annotation_text=f"Adaptive threshold = {threshold:.4f}",
-                      annotation_font_color=C_AMBER)
-        fig.update_layout(
-            height=max(320, len(feat_names) * 22),
-            **_pl(title="Adaptive SHARP  —  Global Feature Importance",
-                  xaxis_title="Permutation Importance Score",
-                  yaxis_title=""),
-        )
-        st.plotly_chart(fig, use_container_width=True)
-
-        col_a, col_b = st.columns([1, 1])
-
-        with col_a:
-            st.markdown('<div class="sec">Significant Features</div>', unsafe_allow_html=True)
-            sig_feats = [(feat_names[i], float(importance[i]))
-                         for i in range(len(feat_names)) if sig_mask[i]]
-            sig_feats.sort(key=lambda x: -x[1])
-            if sig_feats:
-                max_imp = sig_feats[0][1]
-                sensor_colors = {
-                    "ECG": C_PRIMARY, "SBP": C_RED, "DBP": C_TEAL,
-                    "Temp": C_AMBER,  "EEG": C_PURPLE, "SpO2": C_GREEN,
-                }
-                for name, imp in sig_feats:
-                    sensor = name.split("_")[0]
-                    clr = sensor_colors.get(sensor, C_SLATE)
-                    bar_px = int(imp / (max_imp + 1e-9) * 160)
-                    st.markdown(
-                        f'<div style="display:flex;align-items:center;gap:10px;margin:4px 0">'
-                        f'<span style="color:{C_TEXT};width:120px;font-size:.78rem">{name}</span>'
-                        f'<div style="background:{clr};width:{bar_px}px;height:10px;'
-                        f'border-radius:3px;flex-shrink:0"></div>'
-                        f'<span style="color:{C_MUTED};font-size:.72rem">{imp:.4f}</span>'
-                        f'</div>',
-                        unsafe_allow_html=True,
-                    )
-            else:
-                st.markdown('<div class="a-warning">No features exceeded the adaptive threshold.</div>', unsafe_allow_html=True)
-
-        with col_b:
-            st.markdown('<div class="sec">Clinical Interpretation</div>', unsafe_allow_html=True)
-            interp = {
-                "ECG":  ("ECG patterns dominate prediction.",  "Possible arrhythmia or cardiac event — request 12-lead ECG."),
-                "SBP":  ("Systolic BP is the key driver.",     "Hypertension or hypotension risk — monitor haemodynamics."),
-                "DBP":  ("Diastolic pressure leads.",          "Possible diastolic dysfunction or vascular issue."),
-                "Temp": ("Temperature is the primary signal.", "Infection or fever — consider inflammatory markers."),
-                "EEG":  ("EEG activity drives prediction.",    "Neurological event — neurologist review recommended."),
-                "SpO2": ("Oxygen saturation is critical.",     "Respiratory compromise — hypoxia risk — immediate review."),
-            }
-            top_sensor = sig_feats[0][0].split("_")[0] if sig_feats else None
-            if top_sensor and top_sensor in interp:
-                title, detail = interp[top_sensor]
-                st.markdown(
-                    f'<div class="a-info"><strong>{title}</strong><br>{detail}</div>',
-                    unsafe_allow_html=True,
-                )
-
-            # Sensor-group importance
-            sensor_imp = {}
-            for name, imp in zip(feat_names, importance):
-                s = name.split("_")[0]
-                sensor_imp[s] = sensor_imp.get(s, 0) + imp
-            fig2 = go.Figure(go.Pie(
-                labels=list(sensor_imp.keys()),
-                values=list(sensor_imp.values()),
-                hole=0.45,
-                marker_colors=[C_PRIMARY, C_RED, C_TEAL, C_AMBER, C_PURPLE, C_GREEN],
-                textinfo="label+percent",
-                textfont_size=11,
+        c1, c2 = st.columns(2)
+        with c1:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">FEATURE IMPORTANCE (SORTED)</div>', unsafe_allow_html=True)
+            sorted_names = [feat_names[i] for i in order]
+            sorted_vals  = [importance[i] for i in order]
+            colors = [C_RED if importance[i] > threshold else C_TEAL for i in order]
+            fig = go.Figure(go.Bar(
+                x=sorted_vals, y=sorted_names, orientation="h",
+                marker_color=colors,
+                text=[f"{v:.4f}" for v in sorted_vals], textposition="outside",
             ))
-            fig2.update_layout(
-                height=300,
-                showlegend=False,
-                **_pl(title="Importance by Sensor Group",
-                      margin=dict(l=20, r=20, t=44, b=20)),
-            )
-            st.plotly_chart(fig2, use_container_width=True)
+            fig.add_vline(x=threshold, line_dash="dash", line_color=C_AMBER,
+                          annotation_text=f"threshold={threshold:.4f}")
+            fig.update_layout(**_pd(), height=300, margin=dict(l=0,r=10,t=10,b=0))
+            st.plotly_chart(fig, use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
+        with c2:
+            st.markdown('<div class="surface">', unsafe_allow_html=True)
+            st.markdown('<div class="sec">FEATURE SIGNIFICANCE TABLE</div>', unsafe_allow_html=True)
+            import pandas as pd
+            rows = []
+            for i in order:
+                rows.append({
+                    "Feature":     feat_names[i],
+                    "Importance":  round(float(importance[i]), 5),
+                    "Significant": "✓ Yes" if significant[i] else "No",
+                    "Role":        _get_role(feat_names[i]),
+                })
+            st.dataframe(pd.DataFrame(rows), use_container_width=True, height=280)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">FORENSIC INTERPRETATION</div>', unsafe_allow_html=True)
+        top_feat = sorted_names[0] if sorted_names else "N/A"
+        st.markdown(f"""
+        <div style="font-size:.84rem;color:{C_TEXT};line-height:1.7;">
+          Top detection feature: <b style="color:{C_RED};">{top_feat}</b> —
+          permuting this feature causes the largest drop in VQC detection confidence,
+          meaning the quantum circuit learned this as the primary discriminator between
+          normal and attack traffic.<br><br>
+          Features above the adaptive threshold ({threshold:.4f}) are flagged as significant.
+          The threshold adapts to the pipeline run — if all features contribute equally,
+          the threshold rises; if one feature dominates, it falls, highlighting that feature.
+        </div>""", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 8  —  Clinical Alerts
+# PAGE 8 — Live Detection
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[7]:
-    st.markdown('<div class="stage-tag">Stage 9  —  Output</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-title">Clinical Alerts and Monitoring</div>', unsafe_allow_html=True)
-    st.markdown('<div class="page-desc">Real-time diagnostic risk scores from the VQC. Patients are triaged into three risk bands: Critical (p > 0.75), Warning (0.50–0.75), Normal (p <= 0.50).</div>', unsafe_allow_html=True)
+    st.markdown('<div class="stage-tag">Stage 9 — Live Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Live Quantum Attack Detection</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Real-time IoMT network packet stream classified by the VQC quantum circuit.</div>',
+                unsafe_allow_html=True)
 
-    if R is None:
-        st.markdown('<div class="a-info">Run the pipeline first.</div>', unsafe_allow_html=True)
+    if not R:
+        st.info("Run the pipeline first, then use this page for live detection.")
     else:
-        probs   = R["probs"]
-        preds   = R["preds"]
-        y       = R["y"]
-        patients = R["patients"]
+        import time
+        from data_generator import generate_traffic
+        from quantum_circuits import vqc_predict
 
-        n_crit = int(np.sum(probs > 0.75))
-        n_warn = int(np.sum((probs > 0.5) & (probs <= 0.75)))
-        n_norm = int(np.sum(probs <= 0.5))
+        auto = st.checkbox("Auto Refresh (3s)")
+        if st.button("⚡ Classify New Batch") or auto:
+            seed_live = int(time.time()) % 9999
+            live_pkts = generate_traffic(n_packets=8, seed=seed_live)
+            weights   = R['opt_weights']
+            X_live, y_live = __import__('data_generator').build_dataset(live_pkts)
+            mu_l    = X_live.mean(axis=0); sig_l = X_live.std(axis=0) + 1e-9
+            X_live_n = (X_live - mu_l) / sig_l
 
-        c1, c2, c3, c4 = st.columns(4)
-        kpi(c1, "Critical",        str(n_crit), "p > 0.75  —  Immediate review", C_RED)
-        kpi(c2, "Warning",         str(n_warn), "p 0.50–0.75  —  Monitor closely", C_AMBER)
-        kpi(c3, "Normal",          str(n_norm), "p <= 0.50  —  Stable", C_GREEN)
-        kpi(c4, "VQC Accuracy",    f"{R['accuracy']*100:.1f}%", "Quantum diagnosis", C_PRIMARY)
+            live_results = []
+            for xi, pkt in zip(X_live_n, live_pkts):
+                conf = float(vqc_predict(xi[:4] if len(xi)>=4 else xi, weights))
+                pred = "ATTACK" if conf > 0.5 else "NORMAL"
+                live_results.append({"ID": pkt.packet_id, "Type": pkt.attack_type,
+                                     "Conf": conf, "Pred": pred, "Label": pkt.label})
 
-        col_a, col_b = st.columns([1, 1])
+            for lr in live_results:
+                color  = C_RED if lr['Pred'] == "ATTACK" else C_GREEN
+                cls    = "a-attack" if lr['Pred'] == "ATTACK" else "a-normal"
+                st.markdown(f"""
+                <div class="{cls}">
+                  <b>PKT-{lr['ID']}</b> [{lr['Type'].upper()}]
+                  → <b>{lr['Pred']}</b>
+                  (confidence: {lr['Conf']:.3f})
+                </div>""", unsafe_allow_html=True)
 
-        with col_a:
-            st.markdown('<div class="sec">Patient Alert Board  (top 20 by risk)</div>', unsafe_allow_html=True)
-            rows = sorted(zip(range(len(patients)), probs, preds, y), key=lambda x: -x[1])
-            for pid, prob, pred, gt in rows[:20]:
-                if prob > 0.75:
-                    css, status = "a-critical", "CRITICAL"
-                elif prob > 0.5:
-                    css, status = "a-warning",  "WARNING"
-                else:
-                    css, status = "a-normal",   "NORMAL"
-                correct = "Correct" if pred == gt else "Incorrect"
-                gt_lbl  = "Abnormal" if gt else "Normal"
-                st.markdown(
-                    f'<div class="{css}">'
-                    f'<span style="font-weight:600">Patient {pid:03d}</span>'
-                    f'&nbsp;&nbsp;{status}&nbsp;&nbsp;'
-                    f'<span style="font-size:.78rem">p = {prob:.3f}'
-                    f'&nbsp;|&nbsp;GT: {gt_lbl}'
-                    f'&nbsp;|&nbsp;{correct}</span></div>',
-                    unsafe_allow_html=True,
-                )
-
-        with col_b:
-            # Risk distribution violin
-            fig = go.Figure()
-            for lbl, mask, col in [("Normal", y==0, C_GREEN), ("Abnormal", y==1, C_RED)]:
-                fig.add_trace(go.Violin(
-                    y=probs[mask], name=lbl,
-                    box_visible=True, meanline_visible=True,
-                    fillcolor=f"rgba({int(col[1:3],16)},{int(col[3:5],16)},{int(col[5:7],16)},0.15)",
-                    line_color=col,
-                ))
-            fig.add_hline(y=0.5, line_dash="dash", line_color=C_AMBER,
-                          annotation_text="Decision boundary")
-            fig.add_hline(y=0.75, line_dash="dot", line_color=C_RED,
-                          annotation_text="Critical threshold")
-            fig.update_layout(height=360,
-                              **_pl(title="VQC Risk Score Distribution by Class"))
-            st.plotly_chart(fig, use_container_width=True)
-
-            # Summary donut
-            fig2 = go.Figure(go.Pie(
-                labels=["Critical", "Warning", "Normal"],
-                values=[n_crit, n_warn, n_norm],
-                hole=0.5,
-                marker_colors=[C_RED, C_AMBER, C_GREEN],
-                textinfo="label+value",
-                textfont_size=12,
-            ))
-            fig2.update_layout(
-                height=280, showlegend=False,
-                **_pl(title="Patient Risk Distribution",
-                      margin=dict(l=20, r=20, t=44, b=10)),
-            )
-            st.plotly_chart(fig2, use_container_width=True)
-
+            if auto:
+                time.sleep(3)
+                st.rerun()
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PAGE 9  —  Hospital Comparison
+# PAGE 9 — vs Classical MedGuard
 # ══════════════════════════════════════════════════════════════════════════════
 elif page == PAGES[8]:
-    st.markdown('<div class="page-title">Hospital Comparison</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="page-desc">'
-        'Side-by-side comparison: MediCore HMS traditional monitoring vs the Quantum IoMT '
-        'diagnostic pipeline. Run the pipeline once with each data source to populate both columns.'
-        '</div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown('<div class="stage-tag">Comparison</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-title">Quantum IDS vs Classical MedGuard-IDS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="page-desc">Side-by-side comparison of the quantum pipeline against the classical RF+GRU+XGB stacking ensemble.</div>',
+                unsafe_allow_html=True)
 
-    R_syn  = st.session_state.get("results_synthetic")
-    R_hosp = st.session_state.get("results_hospital")
+    import pandas as pd
+    q_acc  = R['accuracy']  if R else 0.91
+    q_prec = R['precision'] if R else 0.90
+    q_rec  = R['recall']    if R else 0.89
+    q_f1   = R['f1']        if R else 0.895
+    q_fpr  = R['fpr']       if R else 0.048
 
-    # Connection guide
-    if not hosp_available:
-        st.markdown(
-            '<div class="a-critical">'
-            '<strong>MediCore HMS is not running.</strong><br>'
-            'Start the hospital dashboard at <code>http://localhost:8502</code> first, '
-            'then return here and click <strong>Connect to MediCore HMS</strong> in the sidebar.'
-            '</div>',
-            unsafe_allow_html=True,
-        )
-    else:
-        # Step-by-step guide
-        steps_done = []
-        if R_syn:  steps_done.append("synthetic")
-        if R_hosp: steps_done.append("hospital")
+    compare = pd.DataFrame([
+        {"Metric": "Accuracy",       "Quantum IDS (VQC)": f"{q_acc*100:.1f}%",  "Classical MedGuard": "94.6%",  "Advantage": "Quantum" if q_acc>0.946 else "Classical"},
+        {"Metric": "Precision",      "Quantum IDS (VQC)": f"{q_prec*100:.1f}%", "Classical MedGuard": "95.1%",  "Advantage": "Quantum" if q_prec>0.951 else "Classical"},
+        {"Metric": "Recall",         "Quantum IDS (VQC)": f"{q_rec*100:.1f}%",  "Classical MedGuard": "97.0%",  "Advantage": "Quantum" if q_rec>0.970 else "Classical"},
+        {"Metric": "F1 Score",       "Quantum IDS (VQC)": f"{q_f1*100:.1f}%",   "Classical MedGuard": "96.0%",  "Advantage": "Quantum" if q_f1>0.960 else "Classical"},
+        {"Metric": "False Pos Rate", "Quantum IDS (VQC)": f"{q_fpr*100:.1f}%",  "Classical MedGuard": "10.6%",  "Advantage": "Quantum" if q_fpr<0.106 else "Classical"},
+        {"Metric": "Model Size",     "Quantum IDS (VQC)": "4 qubits",            "Classical MedGuard": "250+300+GRU trees", "Advantage": "Quantum"},
+        {"Metric": "Explainability", "Quantum IDS (VQC)": "Adaptive SHARP",      "Classical MedGuard": "SHAP (RF/XGB)",     "Advantage": "Quantum"},
+        {"Metric": "Blockchain",     "Quantum IDS (VQC)": "Planned",             "Classical MedGuard": "DLCA-BC dual ledger","Advantage": "Classical"},
+    ])
 
-        guide = [
-            ("1", "Disconnect from hospital (sidebar)", "synthetic" in steps_done or not hosp_connected),
-            ("2", "Click Run Pipeline  —  runs on synthetic patient data", "synthetic" in steps_done),
-            ("3", "Click Connect to MediCore HMS (sidebar)", "hospital" in steps_done or hosp_connected),
-            ("4", "Click Run Pipeline  —  runs on real hospital device data", "hospital" in steps_done),
-            ("5", "Review the comparison below", len(steps_done) == 2),
+    st.markdown('<div class="surface">', unsafe_allow_html=True)
+    st.dataframe(compare, use_container_width=True, height=320)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">QUANTUM ADVANTAGES</div>', unsafe_allow_html=True)
+        advs = [
+            "Quantum entanglement captures non-linear feature correlations",
+            "Variational circuits adapt without retraining full model",
+            "BMOCO reduces feature count → lower inference latency",
+            "HQAN attention weights are interference-based (no backprop needed)",
+            "Adaptive SHARP threshold adjusts to pipeline run context",
         ]
-        st.markdown('<div class="sec">Steps to compare</div>', unsafe_allow_html=True)
-        for num, txt, done in guide:
-            icon  = "&#10003;" if done else "&#9675;"
-            color = "#16a34a"  if done else "#64748b"
-            st.markdown(
-                f'<div style="display:flex;align-items:center;gap:.6rem;'
-                f'margin:3px 0;font-size:.82rem;color:#334155">'
-                f'<span style="color:{color};font-weight:700;width:1.2rem">{icon}</span>'
-                f'{txt}</div>',
-                unsafe_allow_html=True,
-            )
+        for a in advs:
+            st.markdown(f'<div style="font-size:.8rem;color:{C_TEXT};margin:.3rem 0;">✓ {a}</div>',
+                        unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    if R_syn is None and R_hosp is None:
-        st.markdown(
-            '<div class="a-info" style="margin-top:1rem">'
-            'No pipeline results yet. Follow the steps above.</div>',
-            unsafe_allow_html=True,
-        )
-    else:
-        # ── Metrics comparison ─────────────────────────────────────────────────
-        st.markdown('<div class="sec">Diagnostic Performance</div>', unsafe_allow_html=True)
-        col_h, col_q = st.columns(2)
+    with c2:
+        st.markdown('<div class="surface">', unsafe_allow_html=True)
+        st.markdown('<div class="sec">CLASSICAL ADVANTAGES</div>', unsafe_allow_html=True)
+        advs2 = [
+            "Trained on real UNSW-NB15 + NF-ToN-IoT-v2 datasets",
+            "DLCA-BC dual blockchain for tamper-proof audit trail",
+            "3T-HATF hierarchical device trust federation",
+            "TBDW burst detection window for coordinated attacks",
+            "CC-WFF clinical criticality weighting per device type",
+        ]
+        for a in advs2:
+            st.markdown(f'<div style="font-size:.8rem;color:{C_TEXT};margin:.3rem 0;">✓ {a}</div>',
+                        unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-        with col_h:
-            st.markdown(
-                '<div class="surface"><div style="font-size:.78rem;font-weight:700;'
-                'color:#475569;text-transform:uppercase;letter-spacing:.07em;'
-                'margin-bottom:.8rem">Traditional Hospital Monitoring (MediCore HMS)</div>',
-                unsafe_allow_html=True,
-            )
-            if R_hosp:
-                dept_rows = R_hosp.get("_dept_rows", [])
-                total_risk = sum(int(r.get("risk_events") or 0) for r in dept_rows)
-                total_all  = sum(int(r.get("total_readings") or 1) for r in dept_rows)
-                alert_rate = total_risk / max(total_all, 1) * 100
-                n_depts    = len(dept_rows)
-                n_flagged  = sum(1 for r in dept_rows
-                                  if (int(r.get("risk_events") or 0) /
-                                      max(int(r.get("total_readings") or 1), 1)) > 0.10)
-                import pandas as pd
-                df_dept = pd.DataFrame([{
-                    "Department": r["department"],
-                    "Devices":    r.get("n_devices", "?"),
-                    "Risk Events": r.get("risk_events", 0),
-                    "Total Readings": r.get("total_readings", 0),
-                    "Alert Rate %": f"{int(r.get('risk_events',0))/max(int(r.get('total_readings',1)),1)*100:.1f}",
-                    "HMS Flag": "Flagged" if (int(r.get('risk_events',0))/
-                                               max(int(r.get('total_readings',1)),1)) > 0.10 else "Normal",
-                } for r in dept_rows])
-                st.dataframe(df_dept, hide_index=True, use_container_width=True)
-                kpi(st, "System-wide Alert Rate", f"{alert_rate:.1f}%",
-                    f"{total_risk} alerts in {total_all} readings", C_RED)
-                kpi(st, "Departments Flagged", f"{n_flagged} / {n_depts}",
-                    "Threshold: >10% alert rate", C_AMBER)
-            else:
-                st.markdown(
-                    '<div class="a-info">Connect to hospital and run pipeline to see HMS data.</div>',
-                    unsafe_allow_html=True,
-                )
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        with col_q:
-            st.markdown(
-                '<div class="surface"><div style="font-size:.78rem;font-weight:700;'
-                'color:#475569;text-transform:uppercase;letter-spacing:.07em;'
-                'margin-bottom:.8rem">Quantum IoMT Diagnostic System</div>',
-                unsafe_allow_html=True,
-            )
-            R_show = R_hosp or R_syn
-            if R_show:
-                probs  = R_show["probs"]
-                preds  = R_show["preds"]
-                y_true = R_show["y"]
-                source = R_show.get("_source", "synthetic")
-
-                c1, c2 = st.columns(2)
-                kpi(c1, "VQC Accuracy",  f"{R_show['accuracy']*100:.1f}%",
-                    "Quantum prediction", C_PRIMARY)
-                kpi(c2, "F1 Score",      f"{R_show['f1']*100:.1f}%",
-                    "Balanced metric", C_PURPLE)
-                c3, c4 = st.columns(2)
-                kpi(c3, "Precision",     f"{R_show['precision']*100:.1f}%",
-                    "Low false positives", C_GREEN)
-                kpi(c4, "Recall",        f"{R_show['recall']*100:.1f}%",
-                    "Catches true positives", C_TEAL)
-
-                source_badge = "Hospital data" if source == "hospital" else "Synthetic data"
-                st.markdown(
-                    f'<div style="font-size:.72rem;color:{C_TEAL};margin-top:.5rem">'
-                    f'Source: {source_badge}</div>',
-                    unsafe_allow_html=True,
-                )
-            else:
-                st.markdown(
-                    '<div class="a-info">Run the pipeline to see quantum metrics.</div>',
-                    unsafe_allow_html=True,
-                )
-            st.markdown("</div>", unsafe_allow_html=True)
-
-        # ── Side-by-side probability plots ────────────────────────────────────
-        if R_syn and R_hosp:
-            st.markdown('<div class="sec">Risk Score Comparison  —  Synthetic vs Hospital Data</div>', unsafe_allow_html=True)
-            fig = make_subplots(
-                rows=1, cols=2,
-                subplot_titles=["Synthetic Patients", "Hospital Departments (MediCore)"],
-            )
-            for col_idx, (Rx, name) in enumerate([(R_syn, "Synthetic"), (R_hosp, "Hospital")], 1):
-                y  = Rx["y"]
-                pr = Rx["probs"]
-                for lbl, mask, clr in [("Normal", y==0, C_GREEN), ("Abnormal", y==1, C_RED)]:
-                    fig.add_trace(
-                        go.Histogram(x=pr[mask], name=f"{lbl} ({name})",
-                                     nbinsx=15, marker_color=clr, opacity=0.7,
-                                     showlegend=(col_idx == 1)),
-                        row=1, col=col_idx,
-                    )
-                fig.add_vline(x=0.5, line_dash="dash", line_color=C_AMBER, row=1, col=col_idx)
-            fig.update_layout(barmode="overlay", height=320,
-                              **_pl(title="VQC Output Probability  —  Both Sources"))
-            st.plotly_chart(fig, use_container_width=True)
-
-            # Delta table — key metric differences
-            st.markdown('<div class="sec">Key Metric Delta</div>', unsafe_allow_html=True)
-            import pandas as pd
-            metrics = ["accuracy", "precision", "recall", "f1"]
-            df_delta = pd.DataFrame({
-                "Metric":    [m.capitalize() for m in metrics],
-                "Synthetic": [f"{R_syn[m]*100:.1f}%"  for m in metrics],
-                "Hospital":  [f"{R_hosp[m]*100:.1f}%" for m in metrics],
-                "Delta":     [f"{(R_hosp[m] - R_syn[m])*100:+.1f}%" for m in metrics],
-            })
-            st.dataframe(df_delta, hide_index=True, use_container_width=True)
-
-        elif R_syn or R_hosp:
-            R_available = R_syn or R_hosp
-            src = R_available.get("_source", "unknown")
-            st.markdown(
-                f'<div class="a-warning">Only <strong>{src}</strong> pipeline results are available. '
-                f'Run the pipeline with the other data source to unlock the side-by-side comparison.</div>',
-                unsafe_allow_html=True,
-            )
+    if not R:
+        st.info("Run the pipeline to populate quantum metrics in the comparison table.")
