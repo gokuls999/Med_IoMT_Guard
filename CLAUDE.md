@@ -1,6 +1,6 @@
 # IoMT Research Project — Master Memory File
 > Always read this file first when resuming work in this repository.
-> Last updated: 2026-06-18
+> Last updated: 2026-07-01
 
 ---
 
@@ -11,12 +11,18 @@
 **Git user:** Gokul Sanil
 **Branch:** main
 
-This repository contains **two research threads** sharing the same codebase:
+This repository contains **two independent but complementary PhD research threads**:
 
-| Thread | Focus | Status |
-|--------|-------|--------|
-| **MedGuard-IDS** (Gokul) | IoMT cybersecurity — network intrusion detection | Built & running |
-| **Binu's Quantum IoMT** | IoMT diagnostic accuracy — quantum-enhanced analytics | Research spec defined; implementation pending |
+| Thread | Researcher | Paper Title | Focus | Port | Status |
+|--------|-----------|-------------|-------|------|--------|
+| **MedGuard-IDS** | Gokul | Enhancing Security in IoMT Using Blockchain & Differential Privacy | Network intrusion detection, blockchain tamper-proof logs, trust engine, RF+XGB+GRU stacking | 8501 | **Built & running** |
+| **Quantum IoMT Diagnostics** | Binu | Quantum-Enhanced IoMT Diagnostic Framework | Diagnostic accuracy via ANUKF → Q-Flex ViT → BMOCO → HQAN → RBWKA → VQC → Adaptive SHARP | 8504 | **Built & running** |
+
+> **Key distinction (confirmed 2026-07-01):**
+> - Port 8501 = Gokul's security/blockchain research — ALREADY BUILT
+> - Port 8504 = Binu's quantum enhancement research — BEING BUILT
+> - They are compared side-by-side in Binu's Grok analysis to show complementary contributions
+> - Do NOT confuse the two — they are separate PhD papers with different objectives
 
 ---
 

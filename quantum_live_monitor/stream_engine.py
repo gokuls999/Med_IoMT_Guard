@@ -188,7 +188,7 @@ def run_evaluation(n_patients: int = 80, seed: int = 42) -> dict:
         _fp = int(np.sum((p==1)&(y==0))); _tn = int(np.sum((p==0)&(y==0)))
         roc_tpr.append(_tp/(_tp+_fn) if (_tp+_fn) else 0)
         roc_fpr.append(_fp/(_fp+_tn) if (_fp+_tn) else 0)
-    auc = max(0.0, min(1.0, abs(float(np.trapz(roc_tpr[::-1], roc_fpr[::-1])))))
+    auc = max(0.0, min(1.0, abs(float(np.trapezoid(roc_tpr[::-1], roc_fpr[::-1])))))
 
     return dict(
         acc=round(acc,4), prec=round(prec,4), rec=round(rec,4),

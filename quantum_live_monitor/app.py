@@ -100,6 +100,11 @@ def _pl(**kw):
     base.update(kw)
     return base
 
+def _rgba(hex_color: str, alpha: float) -> str:
+    h = hex_color.lstrip("#")
+    r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    return f"rgba({r},{g},{b},{alpha})"
+
 def kpi(col, label, value, sub, color):
     col.markdown(
         f'<div class="kpi-card" style="border-top-color:{color}">'
@@ -284,7 +289,7 @@ if page == 0:
                 threshold=dict(line=dict(color=C["red"],width=3), thickness=0.8, value=50),
             ),
         ))
-        gauge.update_layout(**_pl(), height=200, margin=dict(l=20,r=20,t=20,b=10))
+        gauge.update_layout(**_pl(margin=dict(l=20,r=20,t=20,b=10)), height=200)
         st.plotly_chart(gauge, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -297,8 +302,8 @@ if page == 0:
             marker_color=RISK_COLORS,
             text=list(rc.values()), textposition="outside",
         ))
-        fig_risk.update_layout(**_pl(), height=200,
-                               margin=dict(l=10,r=10,t=10,b=20), showlegend=False)
+        fig_risk.update_layout(**_pl(margin=dict(l=10,r=10,t=10,b=20)), height=200,
+                               showlegend=False)
         st.plotly_chart(fig_risk, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -310,7 +315,7 @@ if page == 0:
         fig_t = go.Figure()
         fig_t.add_trace(go.Scatter(y=trace, mode="lines", line=dict(color=C["primary"],width=1.5)))
         fig_t.add_hline(y=0.5, line_dash="dash", line_color=C["amber"], annotation_text="threshold")
-        fig_t.update_layout(**_pl(), height=160, margin=dict(l=40,r=20,t=10,b=20),
+        fig_t.update_layout(**_pl(margin=dict(l=40,r=20,t=10,b=20)), height=160,
                             yaxis=dict(range=[0,1]))
         st.plotly_chart(fig_t, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
@@ -449,7 +454,7 @@ elif page == 2:
                 colorscale=[[0,"#f0fdf4"],[0.5,"#bbf7d0"],[1,"#16a34a"]],
                 text=cm, texttemplate="%{text}", textfont_size=18,
             ))
-            fig.update_layout(**_pl(), height=260, margin=dict(l=20,r=20,t=10,b=20))
+            fig.update_layout(**_pl(margin=dict(l=20,r=20,t=10,b=20)), height=260)
             st.plotly_chart(fig, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -461,7 +466,7 @@ elif page == 2:
                                       line=dict(color=C["primary"],width=2), name=f"AUC={R['auc']:.3f}"))
             fig2.add_trace(go.Scatter(x=[0,1], y=[0,1], mode="lines",
                                       line=dict(color="#94a3b8",dash="dash"), name="Random"))
-            fig2.update_layout(**_pl(), height=260, margin=dict(l=20,r=20,t=10,b=20),
+            fig2.update_layout(**_pl(margin=dict(l=20,r=20,t=10,b=20)), height=260,
                                xaxis_title="FPR", yaxis_title="TPR")
             st.plotly_chart(fig2, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
@@ -476,8 +481,7 @@ elif page == 2:
         fig3.add_trace(go.Histogram(x=confs_np[y_np==1], name="Attack",
                                     marker_color=C["red"], opacity=0.7, nbinsx=20))
         fig3.add_vline(x=0.5, line_dash="dash", line_color=C["amber"], annotation_text="decision threshold")
-        fig3.update_layout(**_pl(), barmode="overlay", height=220,
-                           margin=dict(l=20,r=20,t=10,b=20))
+        fig3.update_layout(**_pl(margin=dict(l=20,r=20,t=10,b=20)), barmode="overlay", height=220)
         st.plotly_chart(fig3, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -525,15 +529,14 @@ elif page == 3:
             for q in qubits:
                 fig_vqc.add_shape(type="rect", x0=gx-0.3, x1=gx+0.3,
                                   y0=q-0.3, y1=q+0.3,
-                                  fillcolor=gcolor+"44", line=dict(color=gcolor, width=1.5))
+                                  fillcolor=_rgba(gcolor, 0.27), line=dict(color=gcolor, width=1.5))
             fig_vqc.add_annotation(x=gx, y=-0.7, text=gname, showarrow=False,
                                    font=dict(size=9, color=gcolor))
         fig_vqc.add_shape(type="rect", x0=4.1, x1=4.5, y0=-0.3, y1=1.3,
-                          fillcolor=C["red"]+"33", line=dict(color=C["red"]))
+                          fillcolor=_rgba(C["red"], 0.2), line=dict(color=C["red"]))
         fig_vqc.add_annotation(x=4.3, y=0.5, text="Meas\nZ₀Z₁", showarrow=False,
                                font=dict(size=8, color=C["red"]))
-        fig_vqc.update_layout(**_pl(), height=220, showlegend=False,
-                              margin=dict(l=40,r=20,t=10,b=30),
+        fig_vqc.update_layout(**_pl(margin=dict(l=40,r=20,t=10,b=30)), height=220, showlegend=False,
                               xaxis=dict(range=[-0.3,5], showgrid=False, zeroline=False, showticklabels=False),
                               yaxis=dict(range=[-1,3.5], showgrid=False, zeroline=False, showticklabels=False))
         st.plotly_chart(fig_vqc, use_container_width=True)
@@ -577,7 +580,7 @@ elif page == 3:
                                text=np.round(w[li],2), texttemplate="%{text}"),
                     row=1, col=li+1,
                 )
-            fig_w.update_layout(**_pl(), height=200, margin=dict(l=20,r=20,t=30,b=10))
+            fig_w.update_layout(**_pl(margin=dict(l=20,r=20,t=30,b=10)), height=200)
             st.plotly_chart(fig_w, use_container_width=True)
             st.markdown('</div>', unsafe_allow_html=True)
 
@@ -615,8 +618,8 @@ elif page == 4:
                 line=dict(color=res["color"],width=2),
                 marker=dict(size=5), name=res["label"],
             ))
-        fig.update_layout(**_pl(), height=320, xaxis_title="Attack Intensity",
-                          yaxis_title="VQC Accuracy", margin=dict(l=40,r=20,t=20,b=40))
+        fig.update_layout(**_pl(margin=dict(l=40,r=20,t=20,b=40)), height=320,
+                          xaxis_title="Attack Intensity", yaxis_title="VQC Accuracy")
         st.plotly_chart(fig, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
