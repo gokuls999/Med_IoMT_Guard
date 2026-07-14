@@ -8,15 +8,6 @@ echo  =====================================================
 echo    IoMT Research Suite — All 5 Dashboards
 echo  =====================================================
 echo.
-echo  Dashboards:
-echo    8501  MedGuard-IDS (Classical AI Attack Detection)
-echo    8502  MediCore Hospital HMS
-echo    8503  IoMT Attack Lab
-echo    8504  Quantum IDS Research
-echo    8505  Quantum IDS Live Monitor
-echo.
-echo  =====================================================
-echo.
 
 :: ── Check Python ────────────────────────────────────────
 python --version >nul 2>&1
@@ -27,28 +18,73 @@ if errorlevel 1 (
     echo  Please install Python 3.10 or newer from:
     echo    https://www.python.org/downloads/
     echo.
-    echo  IMPORTANT: During installation, tick the box that says
+    echo  IMPORTANT: During installation, tick the box
     echo  "Add Python to PATH" before clicking Install Now.
-    echo.
-    echo  After installing Python, run this file again.
     echo.
     pause
     exit /b
 )
 
-echo  [OK] Python found.
+for /f "tokens=*" %%v in ('python --version 2^>^&1') do echo  [OK] %%v found.
 echo.
 
-:: ── Install packages (safe to run again — skips already installed) ──
-echo  Installing required packages...
-echo  (First run takes 3-5 minutes. Subsequent runs are instant.)
+:: ── Upgrade pip silently ────────────────────────────────
+echo  Upgrading pip...
+python -m pip install --upgrade pip --quiet --disable-pip-version-check
+echo  [OK] pip ready.
 echo.
-pip install streamlit pandas numpy scikit-learn xgboost torch joblib ^
-    plotly openpyxl fpdf2 pennylane pennylane-lightning scipy ^
-    --quiet --disable-pip-version-check
 
+:: ── Core packages ───────────────────────────────────────
+echo  Installing core packages (streamlit, plotly, pandas, numpy)...
+pip install streamlit plotly pandas numpy scikit-learn xgboost joblib ^
+    openpyxl fpdf2 scipy torch --quiet --disable-pip-version-check
+if errorlevel 1 (
+    echo.
+    echo  [WARN] Some core packages may have had issues.
+    echo  Trying again without --quiet to show errors...
+    pip install streamlit plotly pandas numpy scikit-learn xgboost joblib ^
+        openpyxl fpdf2 scipy torch
+)
+echo  [OK] Core packages done.
 echo.
-echo  [OK] Packages ready.
+
+:: ── PennyLane (quantum) — install separately so errors are visible ──
+echo  Installing PennyLane quantum computing library...
+pip install pennylane --disable-pip-version-check
+if errorlevel 1 (
+    color 0C
+    echo.
+    echo  [ERROR] PennyLane failed to install.
+    echo  This is usually a Python version issue.
+    echo.
+    echo  Try running this command manually:
+    echo    pip install pennylane --pre
+    echo.
+    echo  If that also fails, please contact the researcher.
+    pause
+    exit /b
+)
+echo  [OK] PennyLane installed.
+
+echo  Installing PennyLane Lightning simulator...
+pip install pennylane-lightning --disable-pip-version-check
+if errorlevel 1 (
+    echo  [WARN] pennylane-lightning not available — using default simulator instead.
+    echo  The dashboards will still work, just slightly slower.
+)
+echo.
+
+:: ── Verify PennyLane import works ───────────────────────
+echo  Verifying quantum library import...
+python -c "import pennylane; print('  [OK] PennyLane', pennylane.__version__, 'ready.')"
+if errorlevel 1 (
+    color 0C
+    echo.
+    echo  [ERROR] PennyLane installed but cannot be imported.
+    echo  Please restart your computer and run START_HERE.bat again.
+    pause
+    exit /b
+)
 echo.
 
 :: ── Stop any dashboards already running ─────────────────
@@ -58,37 +94,35 @@ taskkill /f /im pythonw.exe >nul 2>&1
 timeout /t 2 /nobreak >nul
 
 :: ── Launch all 5 dashboards ──────────────────────────────
-echo  Starting dashboards (each opens in its own window)...
+echo  Starting dashboards...
 echo.
 
-start "8501 MedGuard-IDS" cmd /k "cd /d "%~dp0Med-IoMT" && echo Starting MedGuard-IDS on port 8501... && python -m streamlit run demo_app.py --server.port 8501 --server.headless true"
-echo  [1/5] MedGuard-IDS starting...
+start "8501 MedGuard-IDS" cmd /k "cd /d "%~dp0Med-IoMT" && echo [8501] MedGuard-IDS starting... && python -m streamlit run demo_app.py --server.port 8501 --server.headless true"
+echo  [1/5] MedGuard-IDS (8501) starting...
 timeout /t 4 /nobreak >nul
 
-start "8502 Hospital HMS" cmd /k "cd /d "%~dp0hospital_workflow_system" && echo Starting MediCore Hospital on port 8502... && python -m streamlit run dashboard.py --server.port 8502 --server.headless true"
-echo  [2/5] Hospital HMS starting...
+start "8502 Hospital HMS" cmd /k "cd /d "%~dp0hospital_workflow_system" && echo [8502] Hospital HMS starting... && python -m streamlit run dashboard.py --server.port 8502 --server.headless true"
+echo  [2/5] Hospital HMS (8502) starting...
 timeout /t 4 /nobreak >nul
 
-start "8503 Attack Lab" cmd /k "cd /d "%~dp0iomt_attack_lab" && echo Starting Attack Lab on port 8503... && python -m streamlit run app.py --server.port 8503 --server.headless true"
-echo  [3/5] Attack Lab starting...
+start "8503 Attack Lab" cmd /k "cd /d "%~dp0iomt_attack_lab" && echo [8503] Attack Lab starting... && python -m streamlit run app.py --server.port 8503 --server.headless true"
+echo  [3/5] Attack Lab (8503) starting...
 timeout /t 4 /nobreak >nul
 
-start "8504 Quantum IDS" cmd /k "cd /d "%~dp0quantum_diagnostic" && echo Starting Quantum IDS Research on port 8504... && python -m streamlit run app.py --server.port 8504 --server.headless true"
-echo  [4/5] Quantum IDS Research starting...
+start "8504 Quantum IDS" cmd /k "cd /d "%~dp0quantum_diagnostic" && echo [8504] Quantum IDS Research starting... && python -m streamlit run app.py --server.port 8504 --server.headless true"
+echo  [4/5] Quantum IDS Research (8504) starting...
 timeout /t 4 /nobreak >nul
 
-start "8505 Quantum Monitor" cmd /k "cd /d "%~dp0quantum_live_monitor" && echo Starting Quantum Live Monitor on port 8505... && python -m streamlit run app.py --server.port 8505 --server.headless true"
-echo  [5/5] Quantum Live Monitor starting...
+start "8505 Quantum Monitor" cmd /k "cd /d "%~dp0quantum_live_monitor" && echo [8505] Quantum Live Monitor starting... && python -m streamlit run app.py --server.port 8505 --server.headless true"
+echo  [5/5] Quantum Live Monitor (8505) starting...
 timeout /t 4 /nobreak >nul
 
-:: ── Wait for apps to fully initialise before opening browser ──
+:: ── Wait then open browser ───────────────────────────────
 echo.
-echo  Waiting for dashboards to be ready (15 seconds)...
-timeout /t 15 /nobreak >nul
+echo  Waiting 20 seconds for dashboards to be ready...
+timeout /t 20 /nobreak >nul
 
-:: ── Open browser tabs ────────────────────────────────────
-echo.
-echo  Opening dashboards in your browser...
+echo  Opening in browser...
 start "" "http://localhost:8501"
 timeout /t 1 /nobreak >nul
 start "" "http://localhost:8502"
@@ -101,14 +135,20 @@ start "" "http://localhost:8505"
 
 echo.
 echo  =====================================================
-echo    All 5 dashboards are now open in your browser!
+echo    All 5 dashboards launched!
 echo  =====================================================
 echo.
-echo  If any page shows "ERR_CONNECTION_REFUSED":
-echo    Wait 30 seconds, then press F5 to refresh.
+echo    8501 - MedGuard-IDS (Classical AI)
+echo    8502 - MediCore Hospital HMS
+echo    8503 - IoMT Attack Lab
+echo    8504 - Quantum IDS Research
+echo    8505 - Quantum IDS Live Monitor
 echo.
-echo  The 5 black windows in the taskbar are the servers.
-echo  DO NOT close them — the dashboards need them running.
+echo  If any page shows "ERR_CONNECTION_REFUSED":
+echo    Wait 30 seconds and press F5 to refresh.
+echo.
+echo  Keep the 5 black terminal windows open —
+echo  closing them stops the dashboards.
 echo.
 echo  To stop everything: run STOP_ALL.bat
 echo.
